@@ -23,7 +23,7 @@
                     {
 
                         @Html.AntiForgeryToken()
-                        @ViewBag.ThongBao
+                        @ViewBag.Error
                         <div class="form-group" style="padding-top: 20px">
                             
                             @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
