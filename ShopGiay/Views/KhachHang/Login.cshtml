@@ -7,17 +7,15 @@
 <div class="login">
     <div class="wrap">
         <div class="col_1_of_login span_1_of_login">
-            <h4 class="title">New Customers</h4>
-            <h5 class="sub_title">Register Account</h5>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan</p>
+            <h4 class="title">ĐĂNG KÝ TÀI KHOẢN MỚI</h4>
             <div class="button1">
-                <a href="/KhachHang/Register"><input type="submit" name="Submit" value="Continue"></a>
+                <a href="/KhachHang/Register"><input type="submit" name="Submit" value="ĐĂNG KÝ"></a>
             </div>
             <div class="clear"></div>
         </div>
         <div class="col_1_of_login span_1_of_login">
             <div class="login-title">
-                <h4 class="title">Registered Customers</h4>
+                <h4 class="title">ĐĂNG NHẬP</h4>
                 <div class="comments-area">
                     @using (Html.BeginForm("Login", "KhachHang", FormMethod.Post))
                     {
@@ -36,7 +34,7 @@
                             @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "badge badge-danger" })
                         </div>
                         <div class="form-group" style="padding-top: 30px">
-                            <input type="submit" value="Login">
+                            <input type="submit" value="ĐĂNG NHẬP">
                         </div>
                      }
                 </div>
