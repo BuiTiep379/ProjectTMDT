@@ -284,19 +284,10 @@
     </dl>
     @using (Html.BeginForm())
     {
-        if (TempData["ThongBao"] != null)
-        {
-            <div class="alert alert-success alert-dismissible" role="alert">
-                <strong>@TempData["ThongBao"]</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        }
         @Html.AntiForgeryToken()
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Trở về", "DanhSachNV")
+            <button type="submit" value="Delete" class="btn btn-default">Xóa</button>||
+            <button>@Html.ActionLink("Trở về", "DanhSachNV")</button>
         </div>
     }
 </div>

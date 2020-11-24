@@ -20,27 +20,39 @@ namespace ShopGiay.Areas.Admin.Controllers
             return View();
         }
         // Hiện thị danh sách nhân viên
-        public ActionResult DanhSachNV(string search, int? page)
+        public ActionResult DanhSachNV(string search, int? page, int? size)
         {
             ViewBag.Search = search;
-            int pageNumber = (page ?? 1);
-            int pageSize = 5;
-            
-            if (search != null)
+            //Tạo list pagesize 
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "5", Value = "5" });
+            items.Add(new SelectListItem { Text = "10", Value = "10" });
+            // giữ kích thước trang được chọn trên Droplist
+            foreach (var item in items)
             {
-                List<NHANVIEN> listNV = db.NHANVIENs.Where(m => m.TenNV.Contains(search)).ToList();
-                if (listNV.Count == 0)
+                if (item.Value == size.ToString()) item.Selected = true;
+            }
+            ViewBag.Size = items;// viewbag dropdownlist
+            ViewBag.CurrentSize = size;
+            
+            page = page ?? 1; // nếu null page =1
+            int pageNumber = (page ?? 1);
+            int pageSize =(size ?? 5);
+            var listNV = from nv in db.NHANVIENs select nv;
+            listNV = listNV.OrderBy(x => x.MaNV);
+            if (!String.IsNullOrEmpty(search))
+            {
+                listNV = listNV.Where(x => x.TenNV.Contains(search));
+                if (listNV == null)
                 {
                     // Lưu message vào TempData
                     TempData["ThongBao"] = "Không có nhân viên nào phù hợp!";
-                    return View(db.NHANVIENs.OrderBy(m => m.TenNV).ToPagedList(pageNumber, pageSize));
+                    return View(listNV.ToPagedList(pageNumber, pageSize));
                 }
-                // nếu có nhân viên thì hiện thị list nhân viên tìm kiếm được
-                return View(db.NHANVIENs.OrderBy(m => m.TenNV).ToPagedList(pageNumber, pageSize));
-
+                return View(listNV.ToPagedList(pageNumber, pageSize));
             }
             // nếu từ khóa null thì trả về list nhân viên ban đầu
-            return View(db.NHANVIENs.OrderBy(m => m.TenNV).ToPagedList(pageNumber, pageSize));
+            return View(listNV.ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public ActionResult AddNhanVien()
