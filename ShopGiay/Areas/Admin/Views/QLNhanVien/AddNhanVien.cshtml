@@ -259,11 +259,11 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-5">
-                    @Html.Label("Nam")
                     @Html.RadioButton("GioiTinh", "Nam", true, null)
+                    @Html.Label("Nam")
                     <br />
-                    @Html.Label("Nữ")
                     @Html.RadioButton("GioiTinh", "Nu", null)
+                    @Html.Label("Nữ")
                     @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
                 </div>
             </div>
