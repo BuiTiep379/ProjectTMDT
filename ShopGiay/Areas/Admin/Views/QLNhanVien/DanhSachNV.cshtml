@@ -1,17 +1,22 @@
-﻿
+﻿@using PagedList.Mvc;
+@model PagedList.PagedList<ShopGiay.Models.NHANVIEN>
 @{
-    ViewBag.Title = "Index";
+    string quyen = (string)Session["Quyen"];
+    if (quyen == "0")
+    {
+        Response.Redirect("Admin/Login/KhongCoQuyen");
+    }
+    ViewBag.Title = "DanhSachNV";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayouts.cshtml";
 }
 
-<h2>Index</h2>
 @section sidebarMenu
 {
     <div class="sidebar-menu sticky-sidebar-menu">
 
         <!-- logo start -->
         <div class="logo">
-            <h1><a href="index.html">Collective</a></h1>
+            <h1><a href="/Admin/Login/Index">Trang chủ</a></h1>
         </div>
 
         <!-- if logo is image enable this -->
@@ -198,5 +203,84 @@
             </div>
         </div>
         <!--notification menu end -->
-    </div>    
+    </div>
 }
+@using (Html.BeginForm("DanhSachNV", "QLNhanVien", FormMethod.Post))
+{
+    <h3>Danh sách nhân viên</h3>
+    <div class="col-lg-10">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" value="@ViewBag.Search" placeholder="Tìm kiếm" />
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+            <div class="col-lg-6">
+                @Html.ActionLink("Thêm mới nhân viên", "AddNhanVien", "QLNhanVien", new { @class = "btn btn-primary" });
+            </div>
+        </div>
+    </div>
+}
+<br />
+<hr />
+<div>
+    @if (TempData["ThongBao"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible" role="alertdialog">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+</div>
+
+<table width="100%" class="table table-striped table-bordered table-hover" id="Table-NhanVien">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().MaNV)</th>
+            <th>@Html.DisplayNameFor(model => model.First().TenNV)</th>
+            <th>@Html.DisplayNameFor(model => model.First().DiaChi)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Sdt)</th>
+            <th>@Html.DisplayNameFor(model => model.First().GioiTinh)</th>
+            <th>@Html.DisplayNameFor(model => model.First().NgaySinh)</th>
+            <th>@Html.DisplayNameFor(model => model.First().CMND)</th>
+            <th>@Html.DisplayNameFor(model => model.First().QuyenNV)</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.MaNV)</td>
+                <td>@Html.DisplayFor(modelItem => item.TenNV)</td>
+                <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Sdt)</td>
+                <td>@Html.DisplayFor(modelItem => item.GioiTinh)</td>
+                <td>@Html.DisplayFor(modelItem => item.NgaySinh)</td>
+                <td>@Html.DisplayFor(modelItem => item.CMND)</td>
+                <td>@Html.DisplayFor(modelItem => item.QuyenNV)</td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "EditNhanVien", new { @manv = item.MaNV }) |
+                    @Html.ActionLink("Chi tiết", "DetailNhanVien", new { @manv = item.MaNV }) |
+                    @Html.ActionLink("Xóa", "DeleteNhanVien", new { @manv = item.MaNV })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*Tạo link liên kết các trang*@
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        <div>
+            @Html.PagedListPager(Model, page => Url.Action("DanhSachNhanVien", new { @timkiem = @ViewBag.TuKhoa, page = page }))
+        </div>
+        <script>
+            $(document).ready(function () {
+                $('#Table-NhanVien').DataTable({
+                    responsive: true
+                });
+            });
+        </script>

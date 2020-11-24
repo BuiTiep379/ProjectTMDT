@@ -26,7 +26,7 @@ namespace ShopGiay.Models
             [StringLength(250, MinimumLength = 3, ErrorMessage = "{0} không hợp lệ")]
 
             public string DiaChi { get; set; }
-            [Display(Name = "Email")]
+            [Display(Name = "Địa chỉ email")]
             [Required(ErrorMessage = "{0} không được để trống")]
             [DataType(DataType.EmailAddress)]
             [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
@@ -36,7 +36,8 @@ namespace ShopGiay.Models
             [Required(ErrorMessage = "{0} không được để trống")]
             [Display(Name = "Số điện thoại")]
             [DataType(DataType.PhoneNumber)]
-            [RegularExpression(@"^\(?([0-9]{3})\)([0-9]{3})([0-9]{4})$", ErrorMessage = "{0} không hợp lệ")]
+            [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
+                   ErrorMessage = "Entered phone format is not valid.")]
             public string Sdt { get; set; }
             [Required(ErrorMessage = "{0} không được để trống")]
             [Display(Name = "Giới tính")]
@@ -53,7 +54,7 @@ namespace ShopGiay.Models
             [Required(ErrorMessage = "{0} không được để trống")]
             [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$", ErrorMessage = "Mật khẩu phải tối thiểu sáu ký tự, ít nhất một chữ cái và một số")]//Tối thiểu tám ký tự, ít nhất một chữ cái và một số
             public string MatKhau { get; set; }
-            [Display(Name = "Quyền")]
+            [Display(Name = "Quyền nhân viên")]
             public string QuyenNV { get; set; }
         }   
     }

@@ -84,7 +84,6 @@ namespace ShopGiay.Controllers
                 }
                 else
                 {
-                    ViewBag.ThongBao = "Đăng nhập lỗi!";
                     return RedirectToAction("Login");
                 }
             }

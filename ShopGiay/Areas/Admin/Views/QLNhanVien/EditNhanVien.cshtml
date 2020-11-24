@@ -1,17 +1,22 @@
-﻿
+﻿@model ShopGiay.Models.NHANVIEN
+
 @{
-    ViewBag.Title = "Index";
+    string quyenNV = (string)Session["Quyen"];
+
+    if (quyenNV == "0")
+    {
+        Response.Redirect("/Admin/Login/KhongCoQuyen");
+    }
+    ViewBag.Title = "Chỉnh sửa nhân viên";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayouts.cshtml";
 }
-
-<h2>Index</h2>
 @section sidebarMenu
 {
     <div class="sidebar-menu sticky-sidebar-menu">
 
         <!-- logo start -->
         <div class="logo">
-            <h1><a href="index.html">Collective</a></h1>
+            <h1><a href="/Admin/Login/Index">Trang chủ</a></h1>
         </div>
 
         <!-- if logo is image enable this -->
@@ -198,5 +203,110 @@
             </div>
         </div>
         <!--notification menu end -->
-    </div>    
+    </div>
 }
+<h2>CHỈNH SỬA NHÂN VIÊN</h2>
+<hr />
+<div @*style="padding-left: 300px"*@>
+
+    @using (Html.BeginForm())
+    {
+        if (TempData["ThongBao"] != null)
+        {
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <strong>@TempData["ThongBao"]</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text text-danger" })
+    <div class="form-group" style="padding-top: 10px">
+        @Html.LabelFor(model => model.MaNV, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.DisplayFor(model => model.MaNV, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MaNV, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px">
+        @Html.LabelFor(model => model.TenNV, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.TextBoxFor(model => model.TenNV, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TenNV, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" style="padding-top: 10px">
+        @Html.LabelFor(model => model.DiaChi, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" style="padding-top: 10px">
+        @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" style="padding-top: 10px">
+        @Html.LabelFor(model => model.Sdt, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.TextBoxFor(model => model.Sdt, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Sdt, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" style="padding-top: 10px">
+        @Html.LabelFor(model => model.GioiTinh, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.RadioButton("GioiTinh", "Nam", true, null)
+            @Html.Label("Nam") 
+            <br />
+            @Html.RadioButton("GioiTinh", "Nữ", null)
+            @Html.Label("Nữ")
+            @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" style="padding-top: 10px">
+        @Html.LabelFor(model => model.NgaySinh, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.EditorFor(model => model.NgaySinh, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" style="padding-top: 10px">
+        @Html.LabelFor(model => model.CMND, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.TextBoxFor(model => model.CMND, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CMND, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px">
+        @Html.LabelFor(model => model.MatKhau, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px">
+        @Html.LabelFor(model => model.QuyenNV, new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.TextBoxFor(model => model.QuyenNV, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.QuyenNV, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success" />
+            @Html.ActionLink("Trở về", "DanhSachNV", null, new { @class = "btn btn-danger" })
+        </div>
+    </div>
+</div>
+    }
+</div>

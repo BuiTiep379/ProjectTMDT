@@ -35,7 +35,6 @@ namespace ShopGiay.Areas.Admin.Controllers
                 if (nv.QuyenNV == "1")
                 {
                     ViewBag.ThongBao = "Xin chào, Admin:" + nv.TenNV;
-                    FormsAuthentication.SetAuthCookie(nv.TenNV, false);
                     Session["TaiKhoanNV"] = nv;
                     Session["User"] = nv.TenNV;
                     Session["Pw"] = nv.MatKhau;
@@ -46,7 +45,6 @@ namespace ShopGiay.Areas.Admin.Controllers
                 else
                 {
                     ViewBag.ThongBao = "Hello" + nv.TenNV;
-                    FormsAuthentication.SetAuthCookie(nv.TenNV, false);
                     Session["TaiKhoanNV"] = nv;
                     Session["User"] = nv.TenNV;
                     Session["Pw"] = nv.MatKhau;
@@ -59,9 +57,12 @@ namespace ShopGiay.Areas.Admin.Controllers
         }
         public ActionResult Logout()
         {
-            Session.Abandon();
-            //FormsAuthentication.SignOut();
+            Session.Clear();
             return RedirectToAction("Login");
+        }
+        public ActionResult KhongCoQuyen()
+        {
+            return View();
         }
     }
 }
