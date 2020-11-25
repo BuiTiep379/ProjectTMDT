@@ -22,7 +22,6 @@ namespace ShopGiay.Areas.Admin.Controllers
         // Hiện thị danh sách nhân viên
         public ActionResult DanhSachNV(string search, int? page, int? size)
         {
-            ViewBag.Search = search;
             //Tạo list pagesize 
             List<SelectListItem> items = new List<SelectListItem>();
             items.Add(new SelectListItem { Text = "5", Value = "5" });
@@ -43,12 +42,6 @@ namespace ShopGiay.Areas.Admin.Controllers
             if (!String.IsNullOrEmpty(search))
             {
                 listNV = listNV.Where(x => x.TenNV.Contains(search));
-                if (listNV == null)
-                {
-                    // Lưu message vào TempData
-                    TempData["ThongBao"] = "Không có nhân viên nào phù hợp!";
-                    return View(listNV.ToPagedList(pageNumber, pageSize));
-                }
                 return View(listNV.ToPagedList(pageNumber, pageSize));
             }
             // nếu từ khóa null thì trả về list nhân viên ban đầu
@@ -131,12 +124,11 @@ namespace ShopGiay.Areas.Admin.Controllers
         }
         [HttpPost, ActionName("DeleteNhanVien")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteCofirm(int maNV)
+        public ActionResult DeleteConfirm(int maNV)
         {
-            NHANVIEN category = db.NHANVIENs.Find(maNV);
-            db.NHANVIENs.Remove(category);
+            NHANVIEN nv = db.NHANVIENs.Find(maNV);
+            db.NHANVIENs.Remove(nv);
             db.SaveChanges();
-            TempData["ThongBao"] = "Xóa nhân viên thành công!";
             return RedirectToAction("DanhSachNV");
         }
     }
