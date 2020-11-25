@@ -16,7 +16,7 @@
 
         <!-- logo start -->
         <div class="logo">
-            <h1><a href="/Admin/Login/Index">Trang chủ</a></h1>
+            <h1><a href="/Admin/Login">Collective</a></h1>
         </div>
 
         <!-- if logo is image enable this -->
@@ -29,7 +29,7 @@
         <!-- //image logo -->
 
         <div class="logo-icon text-center">
-            <a href="index.html" title="logo"><img src="~/Content/Admin/assets/images/logo.png" alt="logo-icon"> </a>
+            <a href="/Admin/Login/Index" title="logo"><img src="~/Content/Admin/assets/images/logo.png" alt="logo-icon"> </a>
         </div>
         <!-- //logo end -->
 
@@ -49,6 +49,7 @@
                         <li><a href="/Admin/QLNhanVien/DanhSachNV">Danh sách nhân viên</a></li>
                         <li><a href="cards.html">Danh sách khách hàng</a> </li>
                         <li><a href="people.html">Danh sách đơn hàng</a></li>
+                        <li><a href="people.html">Danh sách loại hàng</a></li>
                     </ul>
                 </li>
                 <li><a href="pricing.html"><i class="fa fa-table"></i> <span>Pricing tables</span></a></li>
@@ -210,7 +211,7 @@
     <h3>Danh sách nhân viên</h3>
     <div class="col-lg-8">
         <div class="input-group custom-search-form">
-            <input style="background-color:white" id="search" name="search" type="text" value="" class="form-control" placeholder="Tìm kiếm theo tên"/>
+            <input style="background-color:white" id="search" name="search" type="text" value="" class="form-control" placeholder="Tìm kiếm theo tên" />
             <span class="input-group-btn">
                 <button class="btn btn-success" type="submit">
                     <i class="fa fa-search"></i>
@@ -224,16 +225,6 @@
 }
 <br />
 <hr />
-<div>
-    @if (TempData["ThongBao"] != null)
-    {
-        <div class="alert alert-danger alert-dismissible" role="alertdialog">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    }
-</div>
 
 <table width="100%" class="table table-striped table-bordered table-hover" id="Table-NhanVien">
     <thead>
@@ -264,9 +255,9 @@
                 <td>@Html.DisplayFor(modelItem => item.CMND)</td>
                 <td>@Html.DisplayFor(modelItem => item.QuyenNV)</td>
                 <td>
-                    @Html.ActionLink("Chỉnh sửa", "EditNhanVien", new { @manv = item.MaNV }) |
-                    @Html.ActionLink("Chi tiết", "DetailNhanVien", new { @manv = item.MaNV }) |
-                    @Html.ActionLink("Xóa", "DeleteNhanVien", new { @manv = item.MaNV })
+                    <button class="btn btn-success">@Html.ActionLink("Chỉnh sửa", "EditNhanVien","QLNhanVien", new { @manv = item.MaNV }, new { @style = "color: white", })</button>
+                    <button class="btn btn-info">@Html.ActionLink("Chi tiết", "DetailNhanVien", "QLNhanVien", new { @manv = item.MaNV }, new { @style = "color: white", })</button>
+                    <button class="btn btn-danger">  @Html.ActionLink("Xóa", "DeleteNhanVien", "QLNhanVien", new { @manv = item.MaNV }, new { @style = "color: white", })</button>
                 </td>
             </tr>
         }

@@ -1,14 +1,15 @@
-﻿@model ShopGiay.Models.NHANVIEN
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<ShopGiay.Models.KHACHHANG>
+
 @{
     string quyen = (string)Session["Quyen"];
     if (quyen == "0")
     {
         Response.Redirect("/Admin/Login/KhongCoQuyen");
     }
-    ViewBag.Title = "AddNhanVien";
+    ViewBag.Title = "DanhSachKH";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayouts.cshtml";
 }
-
 @section sidebarMenu
 {
     <div class="sidebar-menu sticky-sidebar-menu">
@@ -206,100 +207,71 @@
     </div>
 }
 
-<br />
-<h2>THÊM MỚI</h2>
-<hr />
-@using (Html.BeginForm())
+@using (Html.BeginForm("DanhSachKH", "QLKhachHang", FormMethod.Post))
 {
-    if (TempData["ThongBao"] != null)
-    {
-        <div class="alert alert-success alert-dismissible" role="alert">
-            <strong>@TempData["ThongBao"]</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    }
-    @Html.AntiForgeryToken()
-    <div class="col-md-offset-2">
-        <div class="form-horizontal">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.TenNV, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-5">
-                    @Html.TextBoxFor(model => model.TenNV, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.TenNV, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-5">
-                    @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-5">
-                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Sdt, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-5">
-                    @Html.TextBoxFor(model => model.Sdt, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Sdt, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-5">
-                    @Html.RadioButton("GioiTinh", "Nam", true, null)
-                    @Html.Label("Nam")
-                    <br />
-                    @Html.RadioButton("GioiTinh", "Nu", null)
-                    @Html.Label("Nữ")
-                    @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.NgaySinh, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-5">
-                    @Html.EditorFor(model => model.NgaySinh, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.CMND, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-5">
-                    @Html.TextBoxFor(model => model.CMND, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.CMND, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-5">
-                    @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-success" />
-                    @Html.ActionLink("Trở về", "DanhSachNV", "QLNhanVien", new { @class = "btn btn-danger" })
-                </div>
-            </div>
+    <h3>Danh sách nhân viên</h3>
+    <div class="col-lg-8">
+        <div class="input-group custom-search-form">
+            <input style="background-color:white" id="search" name="search" type="text" value="" class="form-control" placeholder="Tìm kiếm theo tên" />
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
         </div>
     </div>
 }
+<br />
+<hr />
+<table width="100%" class="table table-striped table-bordered table-hover" id="Table-KhachHang">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().MaKH)</th>
+            <th>@Html.DisplayNameFor(model => model.First().TenKH)</th>
+            <th>@Html.DisplayNameFor(model => model.First().DiaChi)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Sdt)</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItems => item.MaKH)</td>
+                <td>@Html.DisplayFor(modelItems => item.TenKH)</td>
+                <td>@Html.DisplayFor(modelItems => item.DiaChi)</td>
+                <td>@Html.DisplayFor(modelItems => item.Email)</td>
+                <td>@Html.DisplayFor(modelItems => item.Sdt)</td>
+                <td>
+                    <button class="btn btn-info">@Html.ActionLink("Chi tiết", "DetailKhachHang", "QLKhachHang", new { @makh = item.MaKH }, new { @style = "color: white", })</button>
+                    <button class="btn btn-danger"> @Html.ActionLink("Xóa", "DeleteKhachHang", "QLKhachHang", new { @makh = item.MaKH }, new { @style = "color: white", })</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<div class="row">
+    <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6">
+        @using (Html.BeginForm("DanhSachKH", "QLKhachHang", FormMethod.Get))
+        {
+            <p>
+                Kích thước trang: @Html.DropDownList("size", (List<SelectListItem>)ViewBag.Size, new { @onchange = "this.form.submit();" })
+            </p>
+        }
+    </div>
+    <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6 text-right">
+        Trang: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    </div>
+</div>
+
+@Html.PagedListPager(Model, page => Url.Action("DanhSachKH", new { page, size = ViewBag.CurrentSize }))
+<script>
+    $(document).ready(function () {
+        $('#Table-KhachHang').DataTable({
+            responsive: true
+        });
+    });
+</script>
+

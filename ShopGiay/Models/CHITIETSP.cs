@@ -12,14 +12,17 @@ namespace ShopGiay.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class KHACHHANG
+    public partial class CHITIETSP
     {
-        public int MaKH { get; set; }
-        public string TenKH { get; set; }
-        public string DiaChi { get; set; }
-        public string Email { get; set; }
-        public string Sdt { get; set; }
-        public string MatKhau { get; set; }
-        public string XacNhanMatKhau { get; set; }
+        public int MaSP { get; set; }
+        public int MaLoai { get; set; }
+        public int MaSize { get; set; }
+        public int MaMau { get; set; }
+        public int SoLuong { get; set; }
+    
+        public virtual LOAISP LOAISP { get; set; }
+        public virtual MAUSAC MAUSAC { get; set; }
+        public virtual SIZE SIZE { get; set; }
+        public virtual SANPHAN SANPHAN { get; set; }
     }
 }
