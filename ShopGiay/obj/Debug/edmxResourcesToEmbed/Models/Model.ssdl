@@ -108,6 +108,16 @@
     <Property Name="MaSize" Type="int" Nullable="false" />
     <Property Name="Size" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <Association Name="FK_CTDH_DH">
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
     <End Role="CHITIETDONHANG" Type="Self.CHITIETDONHANG" Multiplicity="*" />
@@ -216,6 +226,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DH_KHACHHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DH_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ShopGiayModelStoreContainer">
     <EntitySet Name="CHITIETDONHANG" EntityType="Self.CHITIETDONHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CHITIETSP" EntityType="Self.CHITIETSP" Schema="dbo" store:Type="Tables" />
@@ -226,6 +260,7 @@
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SANPHAN" EntityType="Self.SANPHAN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SIZE" EntityType="Self.SIZE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_CTDH_DH" Association="Self.FK_CTDH_DH">
       <End Role="DONHANG" EntitySet="DONHANG" />
       <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANG" />
@@ -261,6 +296,14 @@
     <AssociationSet Name="FK_CTSP_SP" Association="Self.FK_CTSP_SP">
       <End Role="SANPHAN" EntitySet="SANPHAN" />
       <End Role="CHITIETSP" EntitySet="CHITIETSP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DH_KHACHHANG" Association="Self.FK_DH_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="DONHANG" EntitySet="DONHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DH_NHANVIEN" Association="Self.FK_DH_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="DONHANG" EntitySet="DONHANG" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
