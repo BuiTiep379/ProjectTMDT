@@ -167,7 +167,7 @@
     <Compile Include="Models\MAUSAC.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Metadata\KHACHANG.cs" />
+    <Compile Include="Models\Metadata\KHACHHANG.cs" />
     <Compile Include="Models\Metadata\NHANVIEN.cs" />
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>

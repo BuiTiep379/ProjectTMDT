@@ -26,7 +26,7 @@ namespace ShopGiay.Models
         public string Email { get; set; }
         public string Sdt { get; set; }
         public string MatKhau { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DONHANG> DONHANGs { get; set; }
     }

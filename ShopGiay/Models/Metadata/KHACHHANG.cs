@@ -30,8 +30,7 @@ namespace ShopGiay.Models
         [Display(Name = "Email")]
         [Key]
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
-            ErrorMessage = "Vui lòng nhập đúng đinh dạng là Email")]
+        [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",ErrorMessage = "Vui lòng nhập đúng đinh dạng là Email")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "{0} không được để trống")]
@@ -49,7 +48,7 @@ namespace ShopGiay.Models
 
         [Display(Name = "xác nhận mật khẩu")]
         [Required(ErrorMessage = "{0} không được để trống")]
-        [Compare("Matkhau", ErrorMessage = "{0} không trùng khớp với mật khẩu")]
+        [Compare("MatKhau", ErrorMessage = "{0} không trùng khớp với mật khẩu")]
         [NotMapped]
         public string XacNhanMatKhau { get; set; }
     }
