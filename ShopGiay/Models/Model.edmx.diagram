@@ -4,25 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2bc1fd7003e745e9b8636348d9e8426e" Name="Diagram1">
-        <EntityTypeShape EntityType="ShopGiayModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShopGiayModel.NHANVIEN" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShopGiayModel.CHITIETDONHANG" Width="1.5" PointX="6" PointY="7" />
-        <EntityTypeShape EntityType="ShopGiayModel.CHITIETSP" Width="1.5" PointX="3" PointY="7.25" />
-        <EntityTypeShape EntityType="ShopGiayModel.DONHANG" Width="1.5" PointX="3.75" PointY="13.75" />
-        <EntityTypeShape EntityType="ShopGiayModel.LOAISP" Width="1.5" PointX="3.75" PointY="11.25" />
-        <EntityTypeShape EntityType="ShopGiayModel.MAUSAC" Width="1.5" PointX="3.75" PointY="18.125" />
-        <EntityTypeShape EntityType="ShopGiayModel.SANPHAN" Width="1.5" PointX="3.75" PointY="20.625" />
-        <EntityTypeShape EntityType="ShopGiayModel.SIZE" Width="1.5" PointX="0.75" PointY="7.75" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTDH_DH" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTDH_LOAI" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTDH_MAU" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTDH_SIZE" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTDH_SP" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTSP_LOAI" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTSP_MAU" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTSP_SIZE" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTSP_SP" />
+      <Diagram DiagramId="4bc83562c7dd4d9c918a25c33fa0a816" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopGiayModel.CHITIETDONHANG" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.CHITIETSP" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.DONHANG" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.KHACHHANG" Width="1.5" PointX="1.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.LOAISP" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.MAUSAC" Width="1.5" PointX="0.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.NHANVIEN" Width="1.5" PointX="1.5" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.SANPHAN" Width="1.5" PointX="0.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.SIZE" Width="1.5" PointX="0.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopGiayModel.sysdiagram" Width="1.5" PointX="3.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTDH_DH" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTDH_LOAI" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTDH_MAU" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTDH_SIZE" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTDH_SP" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTSP_LOAI" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTSP_MAU" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTSP_SIZE" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTSP_SP" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_DH_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopGiayModel.FK_DH_NHANVIEN" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

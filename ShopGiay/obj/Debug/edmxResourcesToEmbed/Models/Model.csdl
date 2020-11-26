@@ -1,78 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ShopGiayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="KHACHHANG">
-    <Key>
-      <PropertyRef Name="MaKH" />
-    </Key>
-    <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DiaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="NHANVIEN">
-    <Key>
-      <PropertyRef Name="MaNV" />
-    </Key>
-    <Property Name="MaNV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-    <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
-    <Property Name="CMND" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="QuyenNV" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-  </EntityType>
-  <EntityContainer Name="ShopGiayEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
-    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
-    <EntitySet Name="CHITIETDONHANGs" EntityType="ShopGiayModel.CHITIETDONHANG" />
-    <EntitySet Name="CHITIETSPs" EntityType="ShopGiayModel.CHITIETSP" />
-    <EntitySet Name="DONHANGs" EntityType="ShopGiayModel.DONHANG" />
-    <EntitySet Name="LOAISPs" EntityType="ShopGiayModel.LOAISP" />
-    <EntitySet Name="MAUSACs" EntityType="ShopGiayModel.MAUSAC" />
-    <EntitySet Name="SANPHANs" EntityType="ShopGiayModel.SANPHAN" />
-    <EntitySet Name="SIZEs" EntityType="ShopGiayModel.SIZE" />
-    <AssociationSet Name="FK_CTDH_DH" Association="ShopGiayModel.FK_CTDH_DH">
-      <End Role="DONHANG" EntitySet="DONHANGs" />
-      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CTDH_LOAI" Association="ShopGiayModel.FK_CTDH_LOAI">
-      <End Role="LOAISP" EntitySet="LOAISPs" />
-      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CTDH_MAU" Association="ShopGiayModel.FK_CTDH_MAU">
-      <End Role="MAUSAC" EntitySet="MAUSACs" />
-      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CTDH_SIZE" Association="ShopGiayModel.FK_CTDH_SIZE">
-      <End Role="SIZE" EntitySet="SIZEs" />
-      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CTDH_SP" Association="ShopGiayModel.FK_CTDH_SP">
-      <End Role="SANPHAN" EntitySet="SANPHANs" />
-      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CTSP_LOAI" Association="ShopGiayModel.FK_CTSP_LOAI">
-      <End Role="LOAISP" EntitySet="LOAISPs" />
-      <End Role="CHITIETSP" EntitySet="CHITIETSPs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CTSP_MAU" Association="ShopGiayModel.FK_CTSP_MAU">
-      <End Role="MAUSAC" EntitySet="MAUSACs" />
-      <End Role="CHITIETSP" EntitySet="CHITIETSPs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CTSP_SIZE" Association="ShopGiayModel.FK_CTSP_SIZE">
-      <End Role="SIZE" EntitySet="SIZEs" />
-      <End Role="CHITIETSP" EntitySet="CHITIETSPs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CTSP_SP" Association="ShopGiayModel.FK_CTSP_SP">
-      <End Role="SANPHAN" EntitySet="SANPHANs" />
-      <End Role="CHITIETSP" EntitySet="CHITIETSPs" />
-    </AssociationSet>
-  </EntityContainer>
   <EntityType Name="CHITIETDONHANG">
     <Key>
       <PropertyRef Name="MaDH" />
@@ -84,15 +11,15 @@
     <Property Name="MaDH" Type="Int32" Nullable="false" />
     <Property Name="MaSP" Type="Int32" Nullable="false" />
     <Property Name="SoLuong" Type="Int32" Nullable="false" />
-    <Property Name="DonGia" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="MaLoai" Type="Int32" Nullable="false" />
     <Property Name="MaSize" Type="Int32" Nullable="false" />
     <Property Name="MaMau" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="DONHANG" Relationship="ShopGiayModel.FK_CTDH_DH" FromRole="CHITIETDONHANG" ToRole="DONHANG" />
-    <NavigationProperty Name="LOAISP" Relationship="ShopGiayModel.FK_CTDH_LOAI" FromRole="CHITIETDONHANG" ToRole="LOAISP" />
-    <NavigationProperty Name="MAUSAC" Relationship="ShopGiayModel.FK_CTDH_MAU" FromRole="CHITIETDONHANG" ToRole="MAUSAC" />
-    <NavigationProperty Name="SIZE" Relationship="ShopGiayModel.FK_CTDH_SIZE" FromRole="CHITIETDONHANG" ToRole="SIZE" />
-    <NavigationProperty Name="SANPHAN" Relationship="ShopGiayModel.FK_CTDH_SP" FromRole="CHITIETDONHANG" ToRole="SANPHAN" />
+    <NavigationProperty Name="DONHANG" Relationship="Self.FK_CTDH_DH" FromRole="CHITIETDONHANG" ToRole="DONHANG" />
+    <NavigationProperty Name="LOAISP" Relationship="Self.FK_CTDH_LOAI" FromRole="CHITIETDONHANG" ToRole="LOAISP" />
+    <NavigationProperty Name="MAUSAC" Relationship="Self.FK_CTDH_MAU" FromRole="CHITIETDONHANG" ToRole="MAUSAC" />
+    <NavigationProperty Name="SIZE" Relationship="Self.FK_CTDH_SIZE" FromRole="CHITIETDONHANG" ToRole="SIZE" />
+    <NavigationProperty Name="SANPHAN" Relationship="Self.FK_CTDH_SP" FromRole="CHITIETDONHANG" ToRole="SANPHAN" />
   </EntityType>
   <EntityType Name="CHITIETSP">
     <Key>
@@ -106,10 +33,10 @@
     <Property Name="MaSize" Type="Int32" Nullable="false" />
     <Property Name="MaMau" Type="Int32" Nullable="false" />
     <Property Name="SoLuong" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="LOAISP" Relationship="ShopGiayModel.FK_CTSP_LOAI" FromRole="CHITIETSP" ToRole="LOAISP" />
-    <NavigationProperty Name="MAUSAC" Relationship="ShopGiayModel.FK_CTSP_MAU" FromRole="CHITIETSP" ToRole="MAUSAC" />
-    <NavigationProperty Name="SIZE" Relationship="ShopGiayModel.FK_CTSP_SIZE" FromRole="CHITIETSP" ToRole="SIZE" />
-    <NavigationProperty Name="SANPHAN" Relationship="ShopGiayModel.FK_CTSP_SP" FromRole="CHITIETSP" ToRole="SANPHAN" />
+    <NavigationProperty Name="LOAISP" Relationship="Self.FK_CTSP_LOAI" FromRole="CHITIETSP" ToRole="LOAISP" />
+    <NavigationProperty Name="MAUSAC" Relationship="Self.FK_CTSP_MAU" FromRole="CHITIETSP" ToRole="MAUSAC" />
+    <NavigationProperty Name="SIZE" Relationship="Self.FK_CTSP_SIZE" FromRole="CHITIETSP" ToRole="SIZE" />
+    <NavigationProperty Name="SANPHAN" Relationship="Self.FK_CTSP_SP" FromRole="CHITIETSP" ToRole="SANPHAN" />
   </EntityType>
   <EntityType Name="DONHANG">
     <Key>
@@ -127,7 +54,21 @@
     <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="CHITIETDONHANGs" Relationship="ShopGiayModel.FK_CTDH_DH" FromRole="DONHANG" ToRole="CHITIETDONHANG" />
+    <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CTDH_DH" FromRole="DONHANG" ToRole="CHITIETDONHANG" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_DH_KHACHHANG" FromRole="DONHANG" ToRole="KHACHHANG" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_DH_NHANVIEN" FromRole="DONHANG" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DONHANGs" Relationship="Self.FK_DH_KHACHHANG" FromRole="KHACHHANG" ToRole="DONHANG" />
   </EntityType>
   <EntityType Name="LOAISP">
     <Key>
@@ -135,17 +76,33 @@
     </Key>
     <Property Name="MaLoai" Type="Int32" Nullable="false" />
     <Property Name="TenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="CHITIETDONHANGs" Relationship="ShopGiayModel.FK_CTDH_LOAI" FromRole="LOAISP" ToRole="CHITIETDONHANG" />
-    <NavigationProperty Name="CHITIETSPs" Relationship="ShopGiayModel.FK_CTSP_LOAI" FromRole="LOAISP" ToRole="CHITIETSP" />
+    <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CTDH_LOAI" FromRole="LOAISP" ToRole="CHITIETDONHANG" />
+    <NavigationProperty Name="CHITIETSPs" Relationship="Self.FK_CTSP_LOAI" FromRole="LOAISP" ToRole="CHITIETSP" />
   </EntityType>
   <EntityType Name="MAUSAC">
     <Key>
       <PropertyRef Name="MaMau" />
     </Key>
     <Property Name="MaMau" Type="Int32" Nullable="false" />
-    <Property Name="MauSac1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="CHITIETDONHANGs" Relationship="ShopGiayModel.FK_CTDH_MAU" FromRole="MAUSAC" ToRole="CHITIETDONHANG" />
-    <NavigationProperty Name="CHITIETSPs" Relationship="ShopGiayModel.FK_CTSP_MAU" FromRole="MAUSAC" ToRole="CHITIETSP" />
+    <Property Name="MauSac1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CTDH_MAU" FromRole="MAUSAC" ToRole="CHITIETDONHANG" />
+    <NavigationProperty Name="CHITIETSPs" Relationship="Self.FK_CTSP_MAU" FromRole="MAUSAC" ToRole="CHITIETSP" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="CMND" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="QuyenNV" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="DONHANGs" Relationship="Self.FK_DH_NHANVIEN" FromRole="NHANVIEN" ToRole="DONHANG" />
   </EntityType>
   <EntityType Name="SANPHAN">
     <Key>
@@ -157,12 +114,12 @@
     <Property Name="MaNSX" Type="Int32" />
     <Property Name="SoLuong" Type="Int32" />
     <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="Anh2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Anh3" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="MoTa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Anh2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Anh3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="NgayCapNhat" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="CHITIETDONHANGs" Relationship="ShopGiayModel.FK_CTDH_SP" FromRole="SANPHAN" ToRole="CHITIETDONHANG" />
-    <NavigationProperty Name="CHITIETSPs" Relationship="ShopGiayModel.FK_CTSP_SP" FromRole="SANPHAN" ToRole="CHITIETSP" />
+    <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CTDH_SP" FromRole="SANPHAN" ToRole="CHITIETDONHANG" />
+    <NavigationProperty Name="CHITIETSPs" Relationship="Self.FK_CTSP_SP" FromRole="SANPHAN" ToRole="CHITIETSP" />
   </EntityType>
   <EntityType Name="SIZE">
     <Key>
@@ -170,12 +127,22 @@
     </Key>
     <Property Name="MaSize" Type="Int32" Nullable="false" />
     <Property Name="Size1" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="CHITIETDONHANGs" Relationship="ShopGiayModel.FK_CTDH_SIZE" FromRole="SIZE" ToRole="CHITIETDONHANG" />
-    <NavigationProperty Name="CHITIETSPs" Relationship="ShopGiayModel.FK_CTSP_SIZE" FromRole="SIZE" ToRole="CHITIETSP" />
+    <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CTDH_SIZE" FromRole="SIZE" ToRole="CHITIETDONHANG" />
+    <NavigationProperty Name="CHITIETSPs" Relationship="Self.FK_CTSP_SIZE" FromRole="SIZE" ToRole="CHITIETSP" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_CTDH_DH">
-    <End Type="ShopGiayModel.DONHANG" Role="DONHANG" Multiplicity="1" />
-    <End Type="ShopGiayModel.CHITIETDONHANG" Role="CHITIETDONHANG" Multiplicity="*" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
+    <End Role="CHITIETDONHANG" Type="Self.CHITIETDONHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="DONHANG">
         <PropertyRef Name="MaDH" />
@@ -186,8 +153,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CTDH_LOAI">
-    <End Type="ShopGiayModel.LOAISP" Role="LOAISP" Multiplicity="1" />
-    <End Type="ShopGiayModel.CHITIETDONHANG" Role="CHITIETDONHANG" Multiplicity="*" />
+    <End Role="LOAISP" Type="Self.LOAISP" Multiplicity="1" />
+    <End Role="CHITIETDONHANG" Type="Self.CHITIETDONHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="LOAISP">
         <PropertyRef Name="MaLoai" />
@@ -198,8 +165,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CTDH_MAU">
-    <End Type="ShopGiayModel.MAUSAC" Role="MAUSAC" Multiplicity="1" />
-    <End Type="ShopGiayModel.CHITIETDONHANG" Role="CHITIETDONHANG" Multiplicity="*" />
+    <End Role="MAUSAC" Type="Self.MAUSAC" Multiplicity="1" />
+    <End Role="CHITIETDONHANG" Type="Self.CHITIETDONHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MAUSAC">
         <PropertyRef Name="MaMau" />
@@ -210,8 +177,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CTDH_SIZE">
-    <End Type="ShopGiayModel.SIZE" Role="SIZE" Multiplicity="1" />
-    <End Type="ShopGiayModel.CHITIETDONHANG" Role="CHITIETDONHANG" Multiplicity="*" />
+    <End Role="SIZE" Type="Self.SIZE" Multiplicity="1" />
+    <End Role="CHITIETDONHANG" Type="Self.CHITIETDONHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SIZE">
         <PropertyRef Name="MaSize" />
@@ -222,8 +189,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CTDH_SP">
-    <End Type="ShopGiayModel.SANPHAN" Role="SANPHAN" Multiplicity="1" />
-    <End Type="ShopGiayModel.CHITIETDONHANG" Role="CHITIETDONHANG" Multiplicity="*" />
+    <End Role="SANPHAN" Type="Self.SANPHAN" Multiplicity="1" />
+    <End Role="CHITIETDONHANG" Type="Self.CHITIETDONHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SANPHAN">
         <PropertyRef Name="MaSP" />
@@ -234,8 +201,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CTSP_LOAI">
-    <End Type="ShopGiayModel.LOAISP" Role="LOAISP" Multiplicity="1" />
-    <End Type="ShopGiayModel.CHITIETSP" Role="CHITIETSP" Multiplicity="*" />
+    <End Role="LOAISP" Type="Self.LOAISP" Multiplicity="1" />
+    <End Role="CHITIETSP" Type="Self.CHITIETSP" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="LOAISP">
         <PropertyRef Name="MaLoai" />
@@ -246,8 +213,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CTSP_MAU">
-    <End Type="ShopGiayModel.MAUSAC" Role="MAUSAC" Multiplicity="1" />
-    <End Type="ShopGiayModel.CHITIETSP" Role="CHITIETSP" Multiplicity="*" />
+    <End Role="MAUSAC" Type="Self.MAUSAC" Multiplicity="1" />
+    <End Role="CHITIETSP" Type="Self.CHITIETSP" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MAUSAC">
         <PropertyRef Name="MaMau" />
@@ -258,8 +225,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CTSP_SIZE">
-    <End Type="ShopGiayModel.SIZE" Role="SIZE" Multiplicity="1" />
-    <End Type="ShopGiayModel.CHITIETSP" Role="CHITIETSP" Multiplicity="*" />
+    <End Role="SIZE" Type="Self.SIZE" Multiplicity="1" />
+    <End Role="CHITIETSP" Type="Self.CHITIETSP" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SIZE">
         <PropertyRef Name="MaSize" />
@@ -270,8 +237,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CTSP_SP">
-    <End Type="ShopGiayModel.SANPHAN" Role="SANPHAN" Multiplicity="1" />
-    <End Type="ShopGiayModel.CHITIETSP" Role="CHITIETSP" Multiplicity="*" />
+    <End Role="SANPHAN" Type="Self.SANPHAN" Multiplicity="1" />
+    <End Role="CHITIETSP" Type="Self.CHITIETSP" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SANPHAN">
         <PropertyRef Name="MaSP" />
@@ -281,4 +248,84 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DH_KHACHHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DH_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShopGiayEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CHITIETDONHANGs" EntityType="Self.CHITIETDONHANG" />
+    <EntitySet Name="CHITIETSPs" EntityType="Self.CHITIETSP" />
+    <EntitySet Name="DONHANGs" EntityType="Self.DONHANG" />
+    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+    <EntitySet Name="LOAISPs" EntityType="Self.LOAISP" />
+    <EntitySet Name="MAUSACs" EntityType="Self.MAUSAC" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="SANPHANs" EntityType="Self.SANPHAN" />
+    <EntitySet Name="SIZEs" EntityType="Self.SIZE" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_CTDH_DH" Association="Self.FK_CTDH_DH">
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTDH_LOAI" Association="Self.FK_CTDH_LOAI">
+      <End Role="LOAISP" EntitySet="LOAISPs" />
+      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTDH_MAU" Association="Self.FK_CTDH_MAU">
+      <End Role="MAUSAC" EntitySet="MAUSACs" />
+      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTDH_SIZE" Association="Self.FK_CTDH_SIZE">
+      <End Role="SIZE" EntitySet="SIZEs" />
+      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTDH_SP" Association="Self.FK_CTDH_SP">
+      <End Role="SANPHAN" EntitySet="SANPHANs" />
+      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTSP_LOAI" Association="Self.FK_CTSP_LOAI">
+      <End Role="LOAISP" EntitySet="LOAISPs" />
+      <End Role="CHITIETSP" EntitySet="CHITIETSPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTSP_MAU" Association="Self.FK_CTSP_MAU">
+      <End Role="MAUSAC" EntitySet="MAUSACs" />
+      <End Role="CHITIETSP" EntitySet="CHITIETSPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTSP_SIZE" Association="Self.FK_CTSP_SIZE">
+      <End Role="SIZE" EntitySet="SIZEs" />
+      <End Role="CHITIETSP" EntitySet="CHITIETSPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTSP_SP" Association="Self.FK_CTSP_SP">
+      <End Role="SANPHAN" EntitySet="SANPHANs" />
+      <End Role="CHITIETSP" EntitySet="CHITIETSPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DH_KHACHHANG" Association="Self.FK_DH_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DH_NHANVIEN" Association="Self.FK_DH_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>

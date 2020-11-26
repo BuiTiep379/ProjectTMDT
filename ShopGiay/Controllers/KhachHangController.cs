@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -29,20 +30,19 @@ namespace ShopGiay.Controllers
         {
             if (ModelState.IsValid)
             {
-                var check = db.KHACHHANGs.FirstOrDefault(model => model.Email == khachHang.Email);
-                if (check == null)
+                var check = EmaiExist(khachHang.Email);
+                if (check)
+                {
+                    ModelState.AddModelError("EmailExist", "Email đã tồn tại!");
+                    return View(khachHang);
+                }
+                else
                 {
                     khachHang.MatKhau = GetMD5(khachHang.MatKhau);
                     db.KHACHHANGs.Add(khachHang);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                else
-                {
-                    ViewBag.ThongBao = "Email đã tồn tại!";
-                    return View();
-                }
-
             }
             return View();
 
@@ -94,6 +94,14 @@ namespace ShopGiay.Controllers
             Session.Clear();//remove session
             return RedirectToAction("Login");
         }
-
+        [NonAction]
+        public bool EmaiExist(string email)
+        {
+            using (ShopGiayEntities DB = new ShopGiayEntities())
+            {
+                var v = db.KHACHHANGs.Where(x => x.Email == email).FirstOrDefault();
+                return v != null;
+            }
+        }
     }
 }

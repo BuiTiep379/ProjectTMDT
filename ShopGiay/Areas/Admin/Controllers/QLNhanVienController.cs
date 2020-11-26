@@ -57,10 +57,20 @@ namespace ShopGiay.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                // thêm dữ liệu vào bảng nhân viên
-                db.NHANVIENs.Add(nv);
-                db.SaveChanges();
-                TempData["ThongBao"] = "Thêm nhân viên thành công!";
+                var email = nv.Email;
+                var kt = db.NHANVIENs.Where(x => x.Email == email);
+                if (kt != null)
+                {
+                    TempData["ThongBao"] = "Email đã tồn tại!";
+                }
+                else
+                {
+                    // thêm dữ liệu vào bảng nhân viên
+                    db.NHANVIENs.Add(nv);
+                    db.SaveChanges();
+                    TempData["ThongBao"] = "Thêm nhân viên thành công!";
+                }
+               
             }
             else
             {
