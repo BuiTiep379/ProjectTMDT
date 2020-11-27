@@ -84,7 +84,7 @@
       <PropertyRef Name="MaMau" />
     </Key>
     <Property Name="MaMau" Type="Int32" Nullable="false" />
-    <Property Name="MauSac1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MauSac" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CTDH_MAU" FromRole="MAUSAC" ToRole="CHITIETDONHANG" />
     <NavigationProperty Name="CHITIETSPs" Relationship="Self.FK_CTSP_MAU" FromRole="MAUSAC" ToRole="CHITIETSP" />
   </EntityType>

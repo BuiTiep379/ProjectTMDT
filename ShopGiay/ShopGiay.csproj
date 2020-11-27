@@ -145,6 +145,7 @@
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLKhachHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLLoaiSPController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLMauSacController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLNhanVienController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,6 +171,7 @@
     </Compile>
     <Compile Include="Models\Metadata\KHACHHANG.cs" />
     <Compile Include="Models\Metadata\LOAISP.cs" />
+    <Compile Include="Models\Metadata\MAUSAC.cs" />
     <Compile Include="Models\Metadata\NHANVIEN.cs" />
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -360,6 +362,9 @@
     <Content Include="Areas\Admin\Views\QLLoaiSP\DanhSachLoaiSP.cshtml" />
     <Content Include="Areas\Admin\Views\QLLoaiSP\AddLoaiSP.cshtml" />
     <Content Include="Areas\Admin\Views\QLLoaiSP\EditLoaiSP.cshtml" />
+    <Content Include="Areas\Admin\Views\QLMauSac\DanhSachMauSac.cshtml" />
+    <Content Include="Areas\Admin\Views\QLMauSac\AddMau.cshtml" />
+    <Content Include="Areas\Admin\Views\QLMauSac\EditMau.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

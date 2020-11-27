@@ -68,7 +68,7 @@
     <Key>
       <PropertyRef Name="MaMau" />
     </Key>
-    <Property Name="MaMau" Type="int" Nullable="false" />
+    <Property Name="MaMau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MauSac" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="NHANVIEN">

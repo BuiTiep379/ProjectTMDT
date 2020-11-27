@@ -67,7 +67,7 @@
       <EntityTypeMapping TypeName="ShopGiayModel.MAUSAC">
         <MappingFragment StoreEntitySet="MAUSAC">
           <ScalarProperty Name="MaMau" ColumnName="MaMau" />
-          <ScalarProperty Name="MauSac1" ColumnName="MauSac" />
+          <ScalarProperty Name="MauSac" ColumnName="MauSac" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

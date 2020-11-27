@@ -73,7 +73,7 @@
           <Key>
             <PropertyRef Name="MaMau" />
           </Key>
-          <Property Name="MaMau" Type="int" Nullable="false" />
+          <Property Name="MaMau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MauSac" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="NHANVIEN">
@@ -399,7 +399,7 @@
             <PropertyRef Name="MaMau" />
           </Key>
           <Property Name="MaMau" Type="Int32" Nullable="false" />
-          <Property Name="MauSac1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MauSac" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CTDH_MAU" FromRole="MAUSAC" ToRole="CHITIETDONHANG" />
           <NavigationProperty Name="CHITIETSPs" Relationship="Self.FK_CTSP_MAU" FromRole="MAUSAC" ToRole="CHITIETSP" />
         </EntityType>
@@ -715,7 +715,7 @@
             <EntityTypeMapping TypeName="ShopGiayModel.MAUSAC">
               <MappingFragment StoreEntitySet="MAUSAC">
                 <ScalarProperty Name="MaMau" ColumnName="MaMau" />
-                <ScalarProperty Name="MauSac1" ColumnName="MauSac" />
+                <ScalarProperty Name="MauSac" ColumnName="MauSac" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
