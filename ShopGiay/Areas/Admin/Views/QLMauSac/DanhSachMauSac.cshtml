@@ -1,8 +1,7 @@
-﻿
-@model PagedList.IPagedList<ShopGiay.Models.LOAISP>
-@using PagedList.Mvc;
+﻿@model PagedList.IPagedList<ShopGiay.Models.MAUSAC>
+    @using PagedList.Mvc;
 @{
-    ViewBag.Title = "DanhSachLoaiSP";
+    ViewBag.Title = "DanhSachMauSac";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayouts.cshtml";
 }
 
@@ -203,30 +202,30 @@
     </div>
 }
 
-@using (Html.BeginForm("DanhSachLoaiSP", "QLLoaiSP", FormMethod.Get))
+@using (Html.BeginForm("DanhSachMauSac", "QLMauSac", FormMethod.Get))
 {
-    <h3>Danh sách loại sản phẩm</h3>
+    <h3>Danh sách màu sản phẩm</h3>
     <div class="col-lg-8">
         <div class="input-group custom-search-form">
-                @Html.TextBox("Search", null, new {@class = "form-control", @placeholder = "Search Products"})
+            @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Tìm kiếm theo tên" })
             <span class="input-group-btn">
                 <button class="btn btn-success" type="submit">
                     <i class="fa fa-search"></i>
                 </button>
             </span>
             <div class="col-lg-4">
-                 @Html.ActionLink("Thêm mới loại sản phẩm", "AddLoaiSP", "QLLoaiSP", new { @class = "btn btn-primary"})
+                @Html.ActionLink("Thêm mới màu sản phẩm", "AddMau", "QLMauSac", new { @class = "btn btn-primary" })
             </div>
         </div>
     </div>
 }
 <br />
 <hr />
-<table width="100%" class="table table-striped table-bordered table-hover" id="Table-LoaiSP">
+<table width="100%" class="table table-striped table-bordered table-hover" id="Table-MauSac">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.First().MaLoai)</th>
-            <th>@Html.DisplayNameFor(model => model.First().TenLoai)</th>
+            <th>@Html.DisplayNameFor(model => model.First().MaMau)</th>
+            <th>@Html.DisplayNameFor(model => model.First().MauSac)</th>
             <th>Thao tác</th>
         </tr>
     </thead>
@@ -234,11 +233,10 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.MaLoai)</td>
-                <td>@Html.DisplayFor(modelItem => item.TenLoai)</td>
+                <td>@Html.DisplayFor(modelItem => item.MaMau)</td>
+                <td>@Html.DisplayFor(modelItem => item.MauSac)</td>
                 <td>
-                    <button class="btn btn-success">@Html.ActionLink("Chỉnh sửa", "EditLoaiSP", "QLLoaiSP", new { @maLoai = item.MaLoai }, new { @style = "color: white", })</button>
-                    <button class="btn btn-danger">  @Html.ActionLink("Xóa", "DeleteLoaiSP", "QLLoaiSP", new { @maLoai = item.MaLoai }, new { @style = "color: white", })</button>
+                    <button class="btn btn-success">@Html.ActionLink("Chỉnh sửa", "EditMau", "QLMauSac", new { @maMau = item.MaMau }, new { @style = "color: white", })</button>
                 </td>
             </tr>
         }
@@ -248,7 +246,7 @@
 <br />
 <div class="row">
     <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6">
-        @using (Html.BeginForm("DanhSachLoaiSP", "QLLoaiSP", FormMethod.Get))
+        @using (Html.BeginForm("DanhSachMauSac", "QLMauSac", FormMethod.Get))
         {
             <p>
                 Kích thước trang: @Html.DropDownList("size", (List<SelectListItem>)ViewBag.Size, new { @onchange = "this.form.submit();" })
@@ -260,11 +258,12 @@
     </div>
 </div>
 
-@Html.PagedListPager(Model, page => Url.Action("DanhSachLoaiSP","QLLoaiSP", new { page, size = ViewBag.CurrentSize }))
+@Html.PagedListPager(Model, page => Url.Action("DanhSachMauSac", "QLMauSac", new { page, size = ViewBag.CurrentSize }))
 <script>
     $(document).ready(function () {
-        $('#Table-LoaiSP').DataTable({
+        $('#Table-MauSac').DataTable({
             responsive: true
         });
     });
 </script>
+
