@@ -1,11 +1,6 @@
 ﻿@using PagedList.Mvc;
 @model PagedList.PagedList<ShopGiay.Models.NHANVIEN>
 @{
-    string quyen = (string)Session["Quyen"];
-    if (quyen == "0")
-    {
-        Response.Redirect("Admin/Login/KhongCoQuyen");
-    }
     ViewBag.Title = "DanhSachNV";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayouts.cshtml";
 }
@@ -47,9 +42,9 @@
                     </a>
                     <ul class="sub-menu-list">
                         <li><a href="/Admin/QLNhanVien/DanhSachNV">Danh sách nhân viên</a></li>
-                        <li><a href="cards.html">Danh sách khách hàng</a> </li>
+                        <li><a href="/Admin/QLKhachHang/DanhSachKH">Danh sách khách hàng</a> </li>
                         <li><a href="people.html">Danh sách đơn hàng</a></li>
-                        <li><a href="people.html">Danh sách loại hàng</a></li>
+                        <li><a href="/Admin/QLLoaiSP/DanhSachLoaiSP">Danh sách loại hàng</a></li>
                     </ul>
                 </li>
                 <li><a href="pricing.html"><i class="fa fa-table"></i> <span>Pricing tables</span></a></li>
@@ -255,7 +250,6 @@
                 <td>@Html.DisplayFor(modelItem => item.CMND)</td>
                 <td>@Html.DisplayFor(modelItem => item.QuyenNV)</td>
                 <td>
-                    <button class="btn btn-success">@Html.ActionLink("Chỉnh sửa", "EditNhanVien","QLNhanVien", new { @manv = item.MaNV }, new { @style = "color: white", })</button>
                     <button class="btn btn-info">@Html.ActionLink("Chi tiết", "DetailNhanVien", "QLNhanVien", new { @manv = item.MaNV }, new { @style = "color: white", })</button>
                     <button class="btn btn-danger">  @Html.ActionLink("Xóa", "DeleteNhanVien", "QLNhanVien", new { @manv = item.MaNV }, new { @style = "color: white", })</button>
                 </td>
