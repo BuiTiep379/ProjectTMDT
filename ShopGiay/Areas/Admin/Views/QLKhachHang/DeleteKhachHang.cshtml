@@ -1,10 +1,5 @@
 ﻿@model ShopGiay.Models.KHACHHANG
 @{
-    string quyen = (string)Session["Quyen"];
-    if (quyen == null)
-    {
-        Response.Redirect("/Admin/Login/KhongCoQuyen");
-    }
     ViewBag.Title = "DeleteKhachHang";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayouts.cshtml";
 }

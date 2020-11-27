@@ -60,9 +60,5 @@ namespace ShopGiay.Areas.Admin.Controllers
             Session.Clear();
             return RedirectToAction("Login");
         }
-        public ActionResult KhongCoQuyen()
-        {
-            return View();
-        }
     }
 }

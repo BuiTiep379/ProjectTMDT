@@ -46,12 +46,10 @@ namespace ShopGiay.Models
 
         public string MatKhau { get; set; }
 
-        [Display(Name = "xác nhận mật khẩu")]
-        [Required(ErrorMessage = "{0} không được để trống")]
-        [Compare("MatKhau", ErrorMessage = "{0} không trùng khớp với mật khẩu")]
-        [NotMapped]
-        public string XacNhanMatKhau { get; set; }
+        //[Display(Name = "xác nhận mật khẩu")]
+        //[Required(ErrorMessage = "{0} không được để trống")]
+        //[Compare("MatKhau", ErrorMessage = "{0} không trùng khớp với mật khẩu")]
+        //[NotMapped]
+        //public string XacNhanMatKhau { get; set; }
     }
-
-    
 }

@@ -1,10 +1,5 @@
 ﻿@model ShopGiay.Models.NHANVIEN
 @{
-    string quyen = (string)Session["Quyen"];
-    if (quyen == "0")
-    {
-        Response.Redirect("/Admin/Login/KhongCoQuyen");
-    }
     ViewBag.Title = "DetailNhanVien";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayouts.cshtml";
 }
@@ -48,7 +43,7 @@
                         <li><a href="/Admin/QLNhanVien/DanhSachNV">Danh sách nhân viên</a></li>
                         <li><a href="/Admin/QLKhachHang/DanhSachKH">Danh sách khách hàng</a> </li>
                         <li><a href="people.html">Danh sách đơn hàng</a></li>
-                        <li><a href="people.html">Danh sách loại hàng</a></li>
+                        <li><a href="/Admin/QLLoaiSP/DanhSachLoaiSP">Danh sách loại hàng</a></li>
                     </ul>
                 </li>
                 <li><a href="pricing.html"><i class="fa fa-table"></i> <span>Pricing tables</span></a></li>
@@ -285,7 +280,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Chỉnh sửa", "EditNhanVien", "QLNhanVien", new { @manv = Model.MaNV }, new { @class = "btn btn-success" }) 
     @Html.ActionLink("Trở về", "DanhSachNV", "QLNhanVien", new { @class = "btn btn-info" })
 </p>
 

@@ -1,9 +1,8 @@
-﻿@model ShopGiay.Models.NHANVIEN
+﻿@model ShopGiay.Models.LOAISP
 @{
-    ViewBag.Title = "DeleteNhanvien";
+    ViewBag.Title = "EditLoaiSP";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayouts.cshtml";
 }
-
 @section sidebarMenu
 {
     <div class="sidebar-menu sticky-sidebar-menu">
@@ -200,91 +199,37 @@
         <!--notification menu end -->
     </div>
 }
-<h2>Xóa nhân viên</h2>
-<h3>
-    Có chắc bạn muốn xóa nhân viên này?
-</h3>
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MaNV)
-        </dt>
+<h2>CHỈNH SỬA LOẠI SẢN PHẨM</h2>
+<hr />
+<div @*style="padding-left: 300px"*@>
 
-        <dd>
-            @Html.DisplayFor(model => model.MaNV)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TenNV)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TenNV)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DiaChi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sdt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sdt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GioiTinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GioiTinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgaySinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CMND)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CMND)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.QuyenNV)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QuyenNV)
-        </dd>
-    </dl>
     @using (Html.BeginForm())
     {
-        @*@Html.AntiForgeryToken()*@
-        <div class="form-actions no-color">
-            <button type="submit" value="Delete" class="btn btn-danger">Xóa</button>
-            <button class="btn btn-info" style="color: white">@Html.ActionLink("Trở về", "DanhSachNV")</button>
+        if (TempData["ThongBao"] != null)
+        {
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <strong>@TempData["ThongBao"]</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text text-danger" })
+            <div class="form-group" style="padding-top: 10px">
+                @Html.LabelFor(model => model.TenLoai, new { @class = "control-label col-md-2" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(model => model.TenLoai, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TenLoai, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" style="padding-top: 10px">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                    @Html.ActionLink("Trở về", "DanhSachLoaiSP", null, new { @class = "btn btn-info" })
+                </div>
+            </div>
         </div>
     }
 </div>
-

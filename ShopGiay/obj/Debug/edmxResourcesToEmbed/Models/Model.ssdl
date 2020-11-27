@@ -61,7 +61,7 @@
     <Key>
       <PropertyRef Name="MaLoai" />
     </Key>
-    <Property Name="MaLoai" Type="int" Nullable="false" />
+    <Property Name="MaLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenLoai" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="MAUSAC">

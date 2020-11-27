@@ -7,6 +7,7 @@ using ShopGiay.Models;
 using PagedList;
 using System.Net;
 using PagedList.Mvc;
+using System.Data.Entity;
 
 namespace ShopGiay.Areas.Admin.Controllers
 {
@@ -37,6 +38,7 @@ namespace ShopGiay.Areas.Admin.Controllers
             page = page ?? 1; // nếu null page =1
             int pageNumber = (page ?? 1);
             int pageSize =(size ?? 5);
+
             var listNV = from nv in db.NHANVIENs select nv;
             listNV = listNV.OrderBy(x => x.MaNV);
             if (!String.IsNullOrEmpty(search))
@@ -53,6 +55,7 @@ namespace ShopGiay.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddNhanVien(NHANVIEN nv)
         {
             if (ModelState.IsValid)
@@ -78,37 +81,7 @@ namespace ShopGiay.Areas.Admin.Controllers
             }
             return View();
         }
-        [HttpGet]
-        public ActionResult EditNhanVien(int maNV)
-        {
-            // Lấy nhân viên theo mã
-            NHANVIEN nv = db.NHANVIENs.SingleOrDefault(m => m.MaNV == maNV);
-            if (nv == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }
-            // nếu có nhân viên thì trả về view của nhân viên đó
-            return View(nv);
-        }
-        [HttpPost]
-        [ValidateInput(false)]// cho phép chèn code HTML xuống database với toàn bộ các field, nội dung truyền lên url false nó không kiểm tra.
-        public ActionResult EditNhanVien(NHANVIEN nv)
-        {
-            // thêm vào csdl 
-            if (ModelState.IsValid)
-            {
-                // thực hiện cập nhật trong model
-                db.Entry(nv).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                TempData["ThongBao"] = "Chỉnh sửa nhân viên thành công!";
-            }
-            else
-            {
-                TempData["ThongBao"] = "Chỉnh sửa nhân viên không thành công!";
-            }
-            return View(nv);
-        }
+        
         public ActionResult DetailNhanVien(int maNV)
         {
             NHANVIEN nv = db.NHANVIENs.SingleOrDefault(m => m.MaNV == maNV);
