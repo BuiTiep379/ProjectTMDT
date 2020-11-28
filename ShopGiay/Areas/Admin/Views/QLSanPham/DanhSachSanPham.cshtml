@@ -1,0 +1,335 @@
+﻿@model PagedList.IPagedList<ShopGiay.Models.SANPHAM>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "DanhSachSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayouts.cshtml";
+
+}
+@section sidebarMenu
+{
+    <div class="sidebar-menu sticky-sidebar-menu">
+
+        <!-- logo start -->
+        <div class="logo">
+            <h1><a href="/Admin/Login">Collective</a></h1>
+        </div>
+
+        <!-- if logo is image enable this -->
+        <!-- image logo --
+        <div class="logo">
+          <a href="index.html">
+            <img src="image-path" alt="Your logo" title="Your logo" class="img-fluid" style="height:35px;" />
+          </a>
+        </div>
+        <!-- //image logo -->
+
+        <div class="logo-icon text-center">
+            <a href="/Admin/Login/Index" title="logo"><img src="~/Content/Admin/assets/images/logo.png" alt="logo-icon"> </a>
+        </div>
+        <!-- //logo end -->
+
+        <div class="sidebar-menu-inner">
+
+            <!-- sidebar nav start -->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+                <li class="active">
+                    <a href="/Admin/Login/Index"><i class="fa fa-tachometer"></i><span> Trang chủ</span></a>
+                </li>
+                <li class="menu-list">
+                    <a href="#">
+                        <i class="fa fa-cogs"></i>
+                        <span><i class="lnr lnr-chevron-right"></i>Quản lý</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/Admin/QLNhanVien/DanhSachNV">Danh sách nhân viên</a></li>
+                        <li><a href="/Admin/QLKhachHang/DanhSachKH">Danh sách khách hàng</a> </li>
+                        <li><a href="people.html">Danh sách đơn hàng</a></li>
+                        <li><a href="/Admin/QLLoaiSP/DanhSachLoaiSP">Danh sách loại hàng</a></li>
+                    </ul>
+                </li>
+                <li><a href="pricing.html"><i class="fa fa-table"></i> <span>Pricing tables</span></a></li>
+                <li><a href="blocks.html"><i class="fa fa-th"></i> <span>Content blocks</span></a></li>
+                <li><a href="forms.html"><i class="fa fa-file-text"></i> <span>Forms</span></a></li>
+            </ul>
+            <!-- //sidebar nav end -->
+            <!-- toggle button start -->
+            <a class="toggle-btn">
+                <i class="fa fa-angle-double-left menu-collapsed__left"><span>Collapse Sidebar</span></i>
+                <i class="fa fa-angle-double-right menu-collapsed__right"></i>
+            </a>
+            <!-- //toggle button end -->
+        </div>
+    </div>
+}
+
+@section headerStarts
+{
+    <div class="header sticky-header">
+
+        <!-- notification menu start -->
+        <div class="menu-right">
+            <div class="navbar user-panel-top">
+                <div class="search-box">
+                    <form action="#search-results.html" method="get">
+                        <input class="search-input" placeholder="Search Here..." type="search" id="search">
+                        <button class="search-submit" value=""><span class="fa fa-search"></span></button>
+                    </form>
+                </div>
+                <div class="user-dropdown-details d-flex">
+                    <div class="profile_details_left">
+                        <ul class="nofitications-dropdown">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-bell-o"></i><span class="badge blue">3</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="notification_header">
+                                            <h3>You have 3 new notifications</h3>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="grid">
+                                            <div class="user_img"><img src="~/Content/Admin/assets/images/avatar1.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>Johnson purchased template</p>
+                                                <span>Just Now</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="odd">
+                                        <a href="#" class="grid">
+                                            <div class="user_img"><img src="~/Content/Admin/assets/images/avatar2.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>New customer registered </p>
+                                                <span>1 hour ago</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="grid">
+                                            <div class="user_img"><img src="~/Content/Admin/assets/images/avatar3.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>Lorem ipsum dolor sit amet </p>
+                                                <span>2 hours ago</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="notification_bottom">
+                                            <a href="#all" class="bg-primary">See all notifications</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-comment-o"></i><span class="badge blue">4</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="notification_header">
+                                            <h3>You have 4 new messages</h3>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="grid">
+                                            <div class="user_img"><img src="~/Content/Admin/assets/images/avatar1.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>Johnson purchased template</p>
+                                                <span>Just Now</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="odd">
+                                        <a href="#" class="grid">
+                                            <div class="user_img"><img src="~/Content/Admin/assets/images/avatar2.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>New customer registered </p>
+                                                <span>1 hour ago</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="grid">
+                                            <div class="user_img"><img src="~/Content/Admin/assets/images/avatar3.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>Lorem ipsum dolor sit amet </p>
+                                                <span>2 hours ago</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="grid">
+                                            <div class="user_img"><img src="~/Content/Admin/assets/images/avatar1.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>Johnson purchased template</p>
+                                                <span>Just Now</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="notification_bottom">
+                                            <a href="#all" class="bg-primary">See all messages</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="profile_details">
+                        <ul>
+                            <li class="dropdown profile_details_drop">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu3" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <div class="profile_img">
+                                        <img src="~/Content/Admin/assets/images/profileimg.jpg" class="rounded-circle" alt="" />
+                                        <div class="user-active">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu drp-mnu" aria-labelledby="dropdownMenu3">
+                                    <li class="logout"> <a href="/Admin/Login/Logout"><i class="fa fa-power-off"></i> Logout</a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--notification menu end -->
+    </div>
+}
+<br />
+<h2>SẢN PHẨM</h2>
+<br />
+@using (Html.BeginForm("DanhSachSanPham", "QLSanPham", FormMethod.Post))
+{
+    <h3>Danh sách sản phẩm</h3>
+    <div class="col-lg-8">
+        <div class="input-group custom-search-form">
+            <input style="background-color:white" id="search" name="search" type="text" value="" class="form-control" placeholder="Tìm kiếm theo tên" />
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+            <div class="col-lg-4">
+                @Html.ActionLink("Thêm mới sản phẩm", "DanhSachSanPham", "QLSanPham", new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+}
+<br />
+<hr />
+<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().MaSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().TenSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Anh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().NhanHieu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().SoLuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DonGia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Anh2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Anh3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().MoTa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaSP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSP)
+                </td>
+                <td>
+                    <img width="50" height="50" src="@Url.Content("~/HinhAnh/HinhAnhSP/" + item.Anh)" alt="">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NHANHIEU.MaNhanHieu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    <span>@item.DonGia VNĐ</span>
+                </td>
+                <td>
+                    <img width="50" height="50" src="@Url.Content("~/HinhAnh/HinhAnhSP/" + item.Anh2)" alt="">
+                </td>
+                <td>
+                    <img width="50" height="50" src="@Url.Content("~/HinhAnh/HinhAnhSP/" + item.Anh3)" alt="">
+                </td>
+                <td>
+                    @*Nếu tên sách dài quá 100 kí tự sẽ cắt tên sách ra lấy từ 0 đến kí tự 99*@
+                    @if (item.MoTa.Length < 100)
+                    {
+                        @Html.DisplayFor(modelItem => item.MoTa)
+                    }
+                    else
+                    {
+
+                        <span>@item.MoTa.Substring(0, 19)...</span>
+
+                    }
+                    @*@Html.DisplayFor(modelItem => item.MoTa)*@
+                </td>
+                <td>
+                    <button class="btn btn-info">@Html.ActionLink("Chỉnh sửa", "EditSanPham", "QLSanPham", new { @maSP = item.MaSP }, new { @style = "color: white", })</button>
+                    <button class="btn btn-info">@Html.ActionLink("Chi tiết", "DetailSanPham", "QLSanPham", new { @maSP = item.MaSP }, new { @style = "color: white", })</button>
+                    <button class="btn btn-danger">  @Html.ActionLink("Xóa", "DeleteSanPham", "QLSanPham", new { @maSP = item.MaSP }, new { @style = "color: white", })</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*Tạo link liên kết các trang*@
+<br />
+<div class="row">
+    <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6">
+        @using (Html.BeginForm("DanhSachSanPham", "QLSanPham", FormMethod.Get))
+        {
+            <p>
+                Kích thước trang: @Html.DropDownList("size", (List<SelectListItem>)ViewBag.Size, new { @onchange = "this.form.submit();" })
+            </p>
+        }
+    </div>
+    <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6 text-right">
+        Trang: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    </div>
+</div>
+@Html.PagedListPager(Model, page => Url.Action("DanhSachSanPham", new { page, size = ViewBag.CurrentSize }))
+<script>
+    $(document).ready(function () {
+        $('#Table-NhanVien').DataTable({
+            responsive: true
+        });
+    });
+</script>
+
+
+

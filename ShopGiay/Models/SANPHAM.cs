@@ -12,10 +12,10 @@ namespace ShopGiay.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SANPHAN
+    public partial class SANPHAM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SANPHAN()
+        public SANPHAM()
         {
             this.CHITIETDONHANGs = new HashSet<CHITIETDONHANG>();
             this.CHITIETSPs = new HashSet<CHITIETSP>();
@@ -23,8 +23,8 @@ namespace ShopGiay.Models
     
         public int MaSP { get; set; }
         public string TenSP { get; set; }
+        public Nullable<int> NhanHieu { get; set; }
         public string Anh { get; set; }
-        public Nullable<int> MaNSX { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<decimal> DonGia { get; set; }
         public string Anh2 { get; set; }
@@ -36,5 +36,6 @@ namespace ShopGiay.Models
         public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETSP> CHITIETSPs { get; set; }
+        public virtual NHANHIEU NHANHIEU { get; set; }
     }
 }

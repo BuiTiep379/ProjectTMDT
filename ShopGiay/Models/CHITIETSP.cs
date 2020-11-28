@@ -23,6 +23,6 @@ namespace ShopGiay.Models
         public virtual LOAISP LOAISP { get; set; }
         public virtual MAUSAC MAUSAC { get; set; }
         public virtual SIZE SIZE { get; set; }
-        public virtual SANPHAN SANPHAN { get; set; }
+        public virtual SANPHAM SANPHAM { get; set; }
     }
 }
