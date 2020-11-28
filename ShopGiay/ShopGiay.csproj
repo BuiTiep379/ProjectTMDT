@@ -147,6 +147,7 @@
     <Compile Include="Areas\Admin\Controllers\QLLoaiSPController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLMauSacController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLNhanVienController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLSanPhamController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -173,6 +174,7 @@
     <Compile Include="Models\Metadata\LOAISP.cs" />
     <Compile Include="Models\Metadata\MAUSAC.cs" />
     <Compile Include="Models\Metadata\NHANVIEN.cs" />
+    <Compile Include="Models\Metadata\SANPHAM.cs" />
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -188,10 +190,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\NHANHIEU.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NHANVIEN.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SANPHAN.cs">
+    <Compile Include="Models\SANPHAM.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SIZE.cs">
@@ -365,6 +370,7 @@
     <Content Include="Areas\Admin\Views\QLMauSac\DanhSachMauSac.cshtml" />
     <Content Include="Areas\Admin\Views\QLMauSac\AddMau.cshtml" />
     <Content Include="Areas\Admin\Views\QLMauSac\EditMau.cshtml" />
+    <Content Include="Areas\Admin\Views\QLSanPham\DanhSachSanPham.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
