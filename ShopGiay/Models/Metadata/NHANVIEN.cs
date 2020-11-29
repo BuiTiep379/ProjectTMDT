@@ -30,6 +30,7 @@ namespace ShopGiay.Models
 
         public string DiaChi { get; set; }
         [Display(Name = "Địa chỉ email")]
+        [Index(IsUnique = true)]
         [Required(ErrorMessage = "{0} không được để trống")]
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",

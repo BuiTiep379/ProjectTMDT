@@ -23,8 +23,8 @@ namespace ShopGiay.Models
     
         public int MaSP { get; set; }
         public string TenSP { get; set; }
-        public Nullable<int> NhanHieu { get; set; }
         public string Anh { get; set; }
+        public Nullable<int> MaNhanHieu { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<decimal> DonGia { get; set; }
         public string Anh2 { get; set; }

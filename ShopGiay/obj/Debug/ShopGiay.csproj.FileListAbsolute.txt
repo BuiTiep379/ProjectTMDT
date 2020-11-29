@@ -174,3 +174,7 @@ C:\Users\BUITIEP\Documents\GitHub\ProjectTMDT\ShopGiay\obj\Debug\ShopGiay.dll
 C:\Users\BUITIEP\Documents\GitHub\ProjectTMDT\ShopGiay\obj\Debug\ShopGiay.pdb
 C:\Users\BUITIEP\Documents\GitHub\ProjectTMDT\ShopGiay\bin\DelegateDecompiler.dll
 C:\Users\BUITIEP\Documents\GitHub\ProjectTMDT\ShopGiay\bin\Mono.Reflection.dll
+C:\Users\BUITIEP\Documents\GitHub\ProjectTMDT\ShopGiay\bin\log4net.dll
+C:\Users\BUITIEP\Documents\GitHub\ProjectTMDT\ShopGiay\bin\PayPal.dll
+C:\Users\BUITIEP\Documents\GitHub\ProjectTMDT\ShopGiay\bin\log4net.xml
+C:\Users\BUITIEP\Documents\GitHub\ProjectTMDT\ShopGiay\bin\PayPal.xml

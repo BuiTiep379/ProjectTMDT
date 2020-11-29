@@ -19,6 +19,7 @@ namespace ShopGiay.Models
         public int MaLoai { get; set; }
         [Display(Name = "Tên loại sản phẩm")]
         [Required(ErrorMessage ="Tên loại sản phẩm không được để trống")]
+        [Index(IsUnique = true)]
         public string TenLoai { get; set; }
     }
 }

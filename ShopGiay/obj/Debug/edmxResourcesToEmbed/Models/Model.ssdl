@@ -99,12 +99,12 @@
     </Key>
     <Property Name="MaSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenSP" Type="nvarchar" MaxLength="100" />
-    <Property Name="NhanHieu" Type="int" />
-    <Property Name="Anh" Type="varchar" MaxLength="50" />
+    <Property Name="Anh" Type="varchar(max)" />
+    <Property Name="MaNhanHieu" Type="int" />
     <Property Name="SoLuong" Type="int" />
     <Property Name="DonGia" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="Anh2" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Anh3" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Anh2" Type="varchar(max)" />
+    <Property Name="Anh3" Type="varchar(max)" />
     <Property Name="MoTa" Type="nvarchar(max)" Nullable="false" />
     <Property Name="NgayCapNhat" Type="date" Nullable="false" />
   </EntityType>
@@ -114,16 +114,6 @@
     </Key>
     <Property Name="MaSize" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Size" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <Association Name="FK_CTDH_DH">
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
@@ -265,7 +255,7 @@
         <PropertyRef Name="MaNhanHieu" />
       </Principal>
       <Dependent Role="SANPHAM">
-        <PropertyRef Name="NhanHieu" />
+        <PropertyRef Name="MaNhanHieu" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -280,7 +270,6 @@
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SIZE" EntityType="Self.SIZE" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_CTDH_DH" Association="Self.FK_CTDH_DH">
       <End Role="DONHANG" EntitySet="DONHANG" />
       <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANG" />
