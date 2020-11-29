@@ -22,7 +22,7 @@ namespace ShopGiay.Models
         }
     
         public int MaSize { get; set; }
-        public int Size1 { get; set; }
+        public int Size { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }

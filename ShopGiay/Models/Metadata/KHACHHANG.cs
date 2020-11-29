@@ -28,7 +28,7 @@ namespace ShopGiay.Models
 
         [Required(ErrorMessage = "{0} không được để trống")]
         [Display(Name = "Email")]
-        [Key]
+        [Index(IsUnique = true)]
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",ErrorMessage = "Vui lòng nhập đúng đinh dạng là Email")]
         public string Email { get; set; }

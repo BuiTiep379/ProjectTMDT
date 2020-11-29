@@ -28,7 +28,7 @@
       <PropertyRef Name="MaSize" />
       <PropertyRef Name="MaMau" />
     </Key>
-    <Property Name="MaSP" Type="Int32" Nullable="false" />
+    <Property Name="MaSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MaLoai" Type="Int32" Nullable="false" />
     <Property Name="MaSize" Type="Int32" Nullable="false" />
     <Property Name="MaMau" Type="Int32" Nullable="false" />
@@ -42,7 +42,7 @@
     <Key>
       <PropertyRef Name="MaDH" />
     </Key>
-    <Property Name="MaDH" Type="Int32" Nullable="false" />
+    <Property Name="MaDH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MaKH" Type="Int32" />
     <Property Name="MaNV" Type="Int32" />
     <Property Name="NgayDatHang" Type="DateTime" Precision="3" />
@@ -74,7 +74,7 @@
     <Key>
       <PropertyRef Name="MaLoai" />
     </Key>
-    <Property Name="MaLoai" Type="Int32" Nullable="false" />
+    <Property Name="MaLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CTDH_LOAI" FromRole="LOAISP" ToRole="CHITIETDONHANG" />
     <NavigationProperty Name="CHITIETSPs" Relationship="Self.FK_CTSP_LOAI" FromRole="LOAISP" ToRole="CHITIETSP" />
@@ -83,10 +83,18 @@
     <Key>
       <PropertyRef Name="MaMau" />
     </Key>
-    <Property Name="MaMau" Type="Int32" Nullable="false" />
+    <Property Name="MaMau" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MauSac" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CTDH_MAU" FromRole="MAUSAC" ToRole="CHITIETDONHANG" />
     <NavigationProperty Name="CHITIETSPs" Relationship="Self.FK_CTSP_MAU" FromRole="MAUSAC" ToRole="CHITIETSP" />
+  </EntityType>
+  <EntityType Name="NHANHIEU">
+    <Key>
+      <PropertyRef Name="MaNhanHieu" />
+    </Key>
+    <Property Name="MaNhanHieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNhanHieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SANPHAMs" Relationship="ShopGiayModel.FK_SP_NHANHIEU" FromRole="NHANHIEU" ToRole="SANPHAM" />
   </EntityType>
   <EntityType Name="NHANVIEN">
     <Key>
@@ -108,20 +116,10 @@
     <Key>
       <PropertyRef Name="MaSize" />
     </Key>
-    <Property Name="MaSize" Type="Int32" Nullable="false" />
-    <Property Name="Size1" Type="Int32" Nullable="false" />
+    <Property Name="MaSize" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Size" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CHITIETDONHANGs" Relationship="Self.FK_CTDH_SIZE" FromRole="SIZE" ToRole="CHITIETDONHANG" />
     <NavigationProperty Name="CHITIETSPs" Relationship="Self.FK_CTSP_SIZE" FromRole="SIZE" ToRole="CHITIETSP" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_CTDH_DH">
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
@@ -238,9 +236,9 @@
     <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
     <EntitySet Name="LOAISPs" EntityType="Self.LOAISP" />
     <EntitySet Name="MAUSACs" EntityType="Self.MAUSAC" />
+    <EntitySet Name="NHANHIEUx" EntityType="Self.NHANHIEU" />
     <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
     <EntitySet Name="SIZEs" EntityType="Self.SIZE" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <AssociationSet Name="FK_CTDH_DH" Association="Self.FK_CTDH_DH">
       <End Role="DONHANG" EntitySet="DONHANGs" />
       <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANGs" />
@@ -277,7 +275,6 @@
       <End Role="NHANVIEN" EntitySet="NHANVIENs" />
       <End Role="DONHANG" EntitySet="DONHANGs" />
     </AssociationSet>
-    <EntitySet Name="NHANHIEUx" EntityType="ShopGiayModel.NHANHIEU" />
     <EntitySet Name="SANPHAMs" EntityType="ShopGiayModel.SANPHAM" />
     <AssociationSet Name="FK_CTDH_SP" Association="ShopGiayModel.FK_CTDH_SP">
       <End Role="SANPHAM" EntitySet="SANPHAMs" />
@@ -292,26 +289,18 @@
       <End Role="SANPHAM" EntitySet="SANPHAMs" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="NHANHIEU">
-    <Key>
-      <PropertyRef Name="MaNhanHieu" />
-    </Key>
-    <Property Name="MaNhanHieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenNhanHieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="SANPHAMs" Relationship="ShopGiayModel.FK_SP_NHANHIEU" FromRole="NHANHIEU" ToRole="SANPHAM" />
-  </EntityType>
   <EntityType Name="SANPHAM">
     <Key>
       <PropertyRef Name="MaSP" />
     </Key>
     <Property Name="MaSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="NhanHieu" Type="Int32" />
-    <Property Name="Anh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Anh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MaNhanHieu" Type="Int32" />
     <Property Name="SoLuong" Type="Int32" />
     <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="Anh2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Anh3" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Anh2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Anh3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="MoTa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="NgayCapNhat" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="CHITIETDONHANGs" Relationship="ShopGiayModel.FK_CTDH_SP" FromRole="SANPHAM" ToRole="CHITIETDONHANG" />
@@ -350,7 +339,7 @@
         <PropertyRef Name="MaNhanHieu" />
       </Principal>
       <Dependent Role="SANPHAM">
-        <PropertyRef Name="NhanHieu" />
+        <PropertyRef Name="MaNhanHieu" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ShopGiay.Models.Metadata
+namespace ShopGiay.Models
 {
     [MetadataType(typeof(MAUSACMetadata))]
     public partial class MAUSAC
