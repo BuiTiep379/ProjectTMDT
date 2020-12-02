@@ -20,16 +20,16 @@ namespace ShopGiay.Models
         [Required(ErrorMessage = "{0} không được để trống")]
         [Display(Name = "Tên sản phẩm")]
         public string TenSP { get; set; }
+        [Display(Name = "Loại sản phẩm")]
+        [Required(ErrorMessage = "{0} không được để trống")]
+        public Nullable<int> MaLoai { get; set; }
         [Display(Name = "Nhãn hiệu")]
         [Required(ErrorMessage = "{0} không được để trống")]
         public Nullable<int> MaNhanHieu { get; set; }
         [Display(Name = "Ảnh")]
         [Required(ErrorMessage = "{0} không được để trống")]
         public string Anh { get; set; }
-        [Required(ErrorMessage = "{0} không được để trống")]
-        [Display(Name = "Số lượng tổng")]
-        public Nullable<int> SoLuong { get; set; }
-
+      
         [Required(ErrorMessage = "{0} không được để trống")]
         [Display(Name = "Giá bán")]
         public Nullable<decimal> DonGia { get; set; }

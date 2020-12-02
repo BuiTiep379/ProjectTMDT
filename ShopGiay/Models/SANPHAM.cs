@@ -25,7 +25,7 @@ namespace ShopGiay.Models
         public string TenSP { get; set; }
         public string Anh { get; set; }
         public Nullable<int> MaNhanHieu { get; set; }
-        public Nullable<int> SoLuong { get; set; }
+        public Nullable<int> MaLoai { get; set; }
         public Nullable<decimal> DonGia { get; set; }
         public string Anh2 { get; set; }
         public string Anh3 { get; set; }
@@ -36,6 +36,7 @@ namespace ShopGiay.Models
         public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETSP> CHITIETSPs { get; set; }
+        public virtual LOAISP LOAISP { get; set; }
         public virtual NHANHIEU NHANHIEU { get; set; }
     }
 }

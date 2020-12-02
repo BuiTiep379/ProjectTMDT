@@ -18,12 +18,10 @@ namespace ShopGiay.Models
         public int MaSP { get; set; }
         public int SoLuong { get; set; }
         public decimal DonGia { get; set; }
-        public int MaLoai { get; set; }
         public int MaSize { get; set; }
         public int MaMau { get; set; }
     
         public virtual DONHANG DONHANG { get; set; }
-        public virtual LOAISP LOAISP { get; set; }
         public virtual MAUSAC MAUSAC { get; set; }
         public virtual SIZE SIZE { get; set; }
         public virtual SANPHAM SANPHAM { get; set; }

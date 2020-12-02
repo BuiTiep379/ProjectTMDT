@@ -17,16 +17,13 @@ namespace ShopGiay.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LOAISP()
         {
-            this.CHITIETDONHANGs = new HashSet<CHITIETDONHANG>();
-            this.CHITIETSPs = new HashSet<CHITIETSP>();
+            this.SANPHAMs = new HashSet<SANPHAM>();
         }
     
         public int MaLoai { get; set; }
         public string TenLoai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETSP> CHITIETSPs { get; set; }
+        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
     }
 }

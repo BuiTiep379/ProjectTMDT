@@ -4,6 +4,18 @@
     Layout = "~/Views/Shared/_ClientLayouts.cshtml";
 }
 
+@section headertop {
+    @Html.Action("HeaderTopPartial", "Store")
+}
+@section headerbottom {
+    @Html.Action("HeaderBottomPartial", "Store")
+}
+@section indexbanner{
+
+}
+@section footer{
+    @Html.Action("FooterPartial", "Store")
+}
 <div class="login">
     <div class="wrap">
         <div class="col_1_of_login span_1_of_login">
@@ -39,6 +51,4 @@
         <div class="clear"></div>
     </div>
 </div>
-
-
 

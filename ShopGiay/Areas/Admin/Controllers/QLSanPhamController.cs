@@ -29,7 +29,7 @@ namespace ShopGiay.Areas.Admin.Controllers
             foreach (var item in items)
             {
                 if (item.Value == size.ToString())
-                   item.Selected = true;
+                    item.Selected = true;
             }
 
             ViewBag.Size = items;
@@ -52,14 +52,17 @@ namespace ShopGiay.Areas.Admin.Controllers
         public ActionResult AddSanPham()
         {
             ViewBag.MaNhanHieu = new SelectList(db.NHANHIEUx, "MaNhanHieu", "TenNhanHieu");
+            ViewBag.MaLoai = new SelectList(db.LOAISPs, "MaLoai", "TenLoai");
             ViewBag.TenSanPham = new SelectList(db.SANPHAMs.ToList().OrderBy(x => x.MaSP), "MaSP", "TenSP");
             return View();
         }
-       [HttpPost]
-       [ValidateInput(false)]
-       public ActionResult AddSanPham(SANPHAM sp, HttpPostedFileBase fileUpload, HttpPostedFileBase fileUpload2, HttpPostedFileBase fileUpload3)
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult AddSanPham(SANPHAM sp, HttpPostedFileBase fileUpload, HttpPostedFileBase fileUpload2, HttpPostedFileBase fileUpload3)
         {
             int maNhanHieu = int.Parse(Request.Form["MaNhanHieu"]);
+            int maLoai = int.Parse(Request.Form["MaLoai"]);
+            ViewBag.MaLoai = new SelectList(db.LOAISPs, "MaLoai", "TenLoai", sp.MaLoai);
             ViewBag.MaNhanHieu = new SelectList(db.NHANHIEUx, "MaNhanHieu", "TenNhanHieu", sp.MaNhanHieu);
             if (fileUpload == null)
             {
@@ -67,7 +70,7 @@ namespace ShopGiay.Areas.Admin.Controllers
                 return View();
             }
             //Thêm vào cơ sở dữ liệu
-            if (ModelState.Count == 7)
+            if (ModelState.Count == 8)
             {
                 //Lưu tên file
                 var fileName = Path.GetFileName(fileUpload.FileName);
@@ -116,6 +119,7 @@ namespace ShopGiay.Areas.Admin.Controllers
                 sp.Anh3 = fileUpload3.FileName;
                 //sp.NgayCapNhat = DateTime.Now;
                 sp.MaNhanHieu = maNhanHieu;
+                sp.MaLoai = maLoai;
                 db.SANPHAMs.Add(sp);
                 db.SaveChanges();
                 TempData["ThongBao"] = "Thêm mới sản phẩm thành công!";
@@ -136,6 +140,7 @@ namespace ShopGiay.Areas.Admin.Controllers
             }
             // nếu có đưa dữ liệu vào viewBagNhanHieu
             ViewBag.NhanHieu = new SelectList(db.NHANHIEUx, "MaNhanHieu", "TenNhanHieu", sp.MaNhanHieu);
+            ViewBag.Loai = new SelectList(db.LOAISPs, "MaLoai", "TenLoai", sp.MaLoai);
             return View(sp);
         }
         [HttpPost]
@@ -144,10 +149,12 @@ namespace ShopGiay.Areas.Admin.Controllers
         {
             // lấy mã nhãn hiệu
             int maNhanHieu = int.Parse(Request.Form["NhanHieu"]);
+            int maLoai = int.Parse(Request.Form["MaLoai"]);
             // thêm vào cơ sở dữ liệu 
             if (ModelState.IsValid)
             {
                 sp.MaNhanHieu = maNhanHieu;
+                sp.MaLoai = maLoai;
                 sp.NgayCapNhat = DateTime.Now;
                 db.Entry(sp).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
@@ -158,6 +165,7 @@ namespace ShopGiay.Areas.Admin.Controllers
                 TempData["ThongBao"] = "Chỉnh sửa sản phẩm không thành công!";
             }
             ViewBag.NhanHieu = new SelectList(db.NHANHIEUx, "MaNhanHieu", "TenNhanHieu", sp.MaNhanHieu);
+            ViewBag.Loai = new SelectList(db.LOAISPs, "MaLoai", "TenLoai", sp.MaLoai);
             return View(sp);
         }
 
@@ -212,6 +220,6 @@ namespace ShopGiay.Areas.Admin.Controllers
             }
             return View(listSP);
         }
-       
+
     }
 }

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using ShopGiay.Models;
+using PagedList;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ShopGiay.Controllers
 {
@@ -18,8 +18,6 @@ namespace ShopGiay.Controllers
         {
             return View();
         }
-
-        [HttpGet]
         public ActionResult Register()
         {
             return View();
@@ -45,7 +43,6 @@ namespace ShopGiay.Controllers
                 }
             }
             return View();
-
         }
         public static string GetMD5(string str)
         {
@@ -61,7 +58,6 @@ namespace ShopGiay.Controllers
             }
             return byte2String;
         }
-        [HttpGet]
         public ActionResult Login()
         {
             return View();
@@ -97,10 +93,10 @@ namespace ShopGiay.Controllers
         [NonAction]
         public bool EmaiExist(string email)
         {
-            using (ShopGiayEntities DB = new ShopGiayEntities())
+            using (ShopGiayEntities db = new ShopGiayEntities())
             {
-                var v = db.KHACHHANGs.Where(x => x.Email == email).FirstOrDefault();
-                return v != null;
+                var check = db.KHACHHANGs.Where(x => x.Email == email).FirstOrDefault();
+                return check != null;
             }
         }
     }

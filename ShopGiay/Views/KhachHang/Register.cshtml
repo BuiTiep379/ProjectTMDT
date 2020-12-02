@@ -4,7 +4,15 @@
     Layout = "~/Views/Shared/_ClientLayouts.cshtml";
 }
 
+@section headertop {
+    @Html.Action("HeaderTopPartial", "Store")
+}
+@section headerbottom {
+    @Html.Action("HeaderBottomPartial", "Store")
+}
+@section indexbanner{
 
+}
 <div class="login">
     <div class="wrap">
         <div class="col_1_of_login span_1_of_login">
@@ -28,7 +36,7 @@
                         <div class="form-group" style="padding-top: 10px">
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
-                            @Html.ValidationMessage("EmailExist", new { @class = "text-danger"})
+                            @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
                         </div>
                         <div class="form-group" style="padding-top: 10px">
                             @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control", @placeholder = "Địa chỉ" })
@@ -56,3 +64,8 @@
         <div class="clear"></div>
     </div>
 </div>
+@section footer{
+    @Html.Action("FooterPartial", "Store")
+}
+
+

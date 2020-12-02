@@ -1,0 +1,21 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ClientLayouts.cshtml";
+}
+
+@section headertop {
+    @Html.Action("HeaderTopPartial", "Store")
+}
+@section headerbottom {
+    @Html.Action("HeaderBottomPartial", "Store")
+}
+@section indexbanner{
+    @Html.Action("SanPhamNoiBat", "SanPham",  Model as IDictionary<string, object>)
+}
+<hr />
+@Html.Action("DanhSachSanPhamNoiBat", "SanPham", Model as IDictionary<string, object>)
+@section footer{
+    @Html.Action("FooterPartial", "Store")
+}
+
