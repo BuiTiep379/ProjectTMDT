@@ -153,7 +153,10 @@
     <Compile Include="Areas\Admin\Controllers\QLMauSacController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLNhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLSanPhamController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,6 +182,7 @@
     <Compile Include="Models\Metadata\KHACHHANG.cs" />
     <Compile Include="Models\Metadata\LOAISP.cs" />
     <Compile Include="Models\Metadata\MAUSAC.cs" />
+    <Compile Include="Models\Metadata\NHANHIEU.cs" />
     <Compile Include="Models\Metadata\NHANVIEN.cs" />
     <Compile Include="Models\Metadata\SANPHAM.cs" />
     <Compile Include="Models\Model.Context.cs">
@@ -320,76 +324,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="HinhAnh\HinhAnhSPfiles\adidasClimaCool_W_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSPfiles\adidasClimaCool_W_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSPfiles\adidasClimaCool_W_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\20993959_1168486196630554_1385889649028302521_n.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\27867997_1546048338846230_7357743860098806239_n.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\28276824_1546048145512916_9092076304203200998_n.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\3.jpeg" />
-    <Content Include="HinhAnh\HinhAnhSP\30020002_1328362360642936_1173845949_n.png" />
-    <Content Include="HinhAnh\HinhAnhSP\30118636_1328362323976273_478900059_n.png" />
-    <Content Include="HinhAnh\HinhAnhSP\30118666_1328362290642943_1366575665_n.png" />
-    <Content Include="HinhAnh\HinhAnhSP\adidasClimaCool_W_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\adidasClimaCool_W_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\adidasClimaCool_W_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\Adidaspharelwilliam_white_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\Adidaspharelwilliam_white_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\Adidaspharelwilliam_white_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\adidasTubularDoomSock_Black_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\adidasTubularDoomSock_Black_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\adidasTubularDoomSock_Black_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\adidasultraboost4_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\adidasultraboost4_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\adidasultraboost4_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\BAITXNewBalance791_black_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\BAITXNewBalance791_black_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\BAITXNewBalance791_black_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\baoboitieptuc.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\bulbs.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\buoncuaanh.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\ChuckTaylorAllStarMonoLeather_black_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\ChuckTaylorAllStarMonoLeather_black_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\ChuckTaylorAllStarMonoLeather_black_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\ConverseChuckTaylorAllStarIIHiLuxLeather_red_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\ConverseChuckTaylorAllStarIIHiLuxLeather_red_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\ConverseChuckTaylorAllStarIIHiLuxLeather_red_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\d1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\flowerbubs.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\giamdochangtyyeuvotanxuong.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\GumPack574_gray_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\GumPack574_gray_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\GumPack574_gray_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\images\adidasClimaCool_W_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\images\adidasClimaCool_W_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\images\adidasClimaCool_W_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\lactroi.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\legumes.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\muatrencuoctinh.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\nguoilaoi.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\nguoiphanboi.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\NikeAirPrestoFlyknitUltra_black_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\NikeAirPrestoFlyknitUltra_black_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\NikeAirPrestoFlyknitUltra_black_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\NikeRosheOne2018_black_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\NikeRosheOne2018_black_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\NikeRosheOne2018_black_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\pumaIgniteLimitlessKnit_Black_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\pumaIgniteLimitlessKnit_Black_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\pumaIgniteLimitlessKnit_Black_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\PumaLaunchesNewevoKNIT_red_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\PumaLaunchesNewevoKNIT_red_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\PumaLaunchesNewevoKNIT_red_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\taconyeunhau.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\thandaodanton.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\tubers.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\vagetablea.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\_thumbs\Images\adidasClimaCool_W_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\_thumbs\Images\adidasClimaCool_W_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP\_thumbs\Images\adidasClimaCool_W_3.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP_thumbs\Files\adidasClimaCool_W_1.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP_thumbs\Files\adidasClimaCool_W_2.jpg" />
-    <Content Include="HinhAnh\HinhAnhSP_thumbs\Files\adidasClimaCool_W_3.jpg" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -470,16 +404,23 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_ClientLayouts.cshtml" />
-    <Content Include="Views\KhachHang\Index.cshtml" />
+    <Content Include="Views\Store\FooterPartial.cshtml" />
+    <Content Include="Views\Store\HeaderTopPartial.cshtml" />
+    <Content Include="Views\Store\HeaderBottomPartial.cshtml" />
+    <Content Include="Views\Store\IndexBanner.cshtml" />
     <Content Include="Views\KhachHang\Register.cshtml" />
+    <Content Include="Views\KhachHang\Index.cshtml" />
     <Content Include="Views\KhachHang\Login.cshtml" />
+    <Content Include="Views\SanPham\SanPhamNoiBat.cshtml" />
+    <Content Include="Views\Store\Index.cshtml" />
+    <Content Include="Views\SanPham\DanhSachSanPhamNoiBat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="HinhAnh\HinhAnhSP\files\" />
-    <Folder Include="HinhAnh\HinhAnhSP\flash\" />
+    <Folder Include="HinhAnh\HinhAnhSP\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

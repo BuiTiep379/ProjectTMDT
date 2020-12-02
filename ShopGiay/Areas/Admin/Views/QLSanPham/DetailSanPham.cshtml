@@ -215,9 +215,6 @@
                 @Html.Label("Số lượng")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().LOAISP.TenLoai)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.First().MAUSAC.MauSac)
             </th>
             <th>
@@ -237,9 +234,6 @@
                     @Html.DisplayFor(modelItem => item.SoLuong)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LOAISP.TenLoai)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.MAUSAC.MauSac)
                 </td>
                 <td>
@@ -254,7 +248,8 @@
         }
     </tbody>
 </table>
-@Html.ActionLink("Trở về", "ShowSanPham", new { @masp = @TempData["MaSP"] }, new { @class = "btn btn-danger" })
+@Html.ActionLink("Hiện thị", "ShowSanPham", new { @masp = @TempData["MaSP"] }, new { @class = "btn btn-success" })
+@Html.ActionLink("Trở về","DanhSachSanPham", null, new { @class = "btn btn-info"})
 <br />
 Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
 <div>

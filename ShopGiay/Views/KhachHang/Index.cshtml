@@ -5,4 +5,16 @@
 }
 
 <h2>Index</h2>
+@section headertop {
+    @Html.Action("HeaderTopPartial", "Store")
+}
+@section headerbottom {
+    @Html.Action("HeaderBottomPartial", "Store")
+}
+@section indexbanner{
+    @Html.Action("IndexBannerPartial","Store")
+}
+@section footer{
+    @Html.Action("FooterPartial", "Store")
+}
 
