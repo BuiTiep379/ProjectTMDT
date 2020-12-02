@@ -212,13 +212,13 @@
                 @Html.DisplayNameFor(model => model.First().SANPHAM.TenSP)
             </th>
             <th>
-                @Html.Label("Số lượng")
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.First().MAUSAC.MauSac)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.First().SIZE.Size)
+            </th>
+            <th>
+                @Html.Label("Số lượng")
             </th>
             <th></th>
         </tr>
@@ -226,25 +226,25 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SANPHAM.TenSP)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SoLuong)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MAUSAC.MauSac)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SIZE.Size)
-                </td>
-                <td>
-                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SANPHAM.TenSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MAUSAC.MauSac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SIZE.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
         }
     </tbody>
 </table>

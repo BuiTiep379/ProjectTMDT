@@ -14,6 +14,7 @@ namespace ShopGiay.Models
     
     public partial class CHITIETSP
     {
+        public int ID { get; set; }
         public int MaSP { get; set; }
         public int MaSize { get; set; }
         public int MaMau { get; set; }

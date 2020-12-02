@@ -16,11 +16,10 @@
   </EntityType>
   <EntityType Name="CHITIETSP">
     <Key>
-      <PropertyRef Name="MaSP" />
-      <PropertyRef Name="MaSize" />
-      <PropertyRef Name="MaMau" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="MaSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaSP" Type="int" Nullable="false" />
     <Property Name="MaSize" Type="int" Nullable="false" />
     <Property Name="MaMau" Type="int" Nullable="false" />
     <Property Name="SoLuong" Type="int" Nullable="false" />

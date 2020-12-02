@@ -60,5 +60,6 @@ namespace ShopGiay.Areas.Admin.Controllers
             Session.Clear();
             return RedirectToAction("Login");
         }
+
     }
 }

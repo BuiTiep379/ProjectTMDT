@@ -83,16 +83,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CHITIETSPs">
-      <EntityTypeMapping TypeName="ShopGiayModel.CHITIETSP">
-        <MappingFragment StoreEntitySet="CHITIETSP">
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-          <ScalarProperty Name="MaMau" ColumnName="MaMau" />
-          <ScalarProperty Name="MaSize" ColumnName="MaSize" />
-          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="LOAISPs">
       <EntityTypeMapping TypeName="ShopGiayModel.LOAISP">
         <MappingFragment StoreEntitySet="LOAISP">
@@ -114,6 +104,17 @@
           <ScalarProperty Name="Anh" ColumnName="Anh" />
           <ScalarProperty Name="TenSP" ColumnName="TenSP" />
           <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHITIETSPs">
+      <EntityTypeMapping TypeName="ShopGiayModel.CHITIETSP">
+        <MappingFragment StoreEntitySet="CHITIETSP">
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="MaMau" ColumnName="MaMau" />
+          <ScalarProperty Name="MaSize" ColumnName="MaSize" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

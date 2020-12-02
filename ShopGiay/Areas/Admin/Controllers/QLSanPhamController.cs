@@ -70,7 +70,7 @@ namespace ShopGiay.Areas.Admin.Controllers
                 return View();
             }
             //Thêm vào cơ sở dữ liệu
-            if (ModelState.Count == 8)
+            if (ModelState.Count == 7)
             {
                 //Lưu tên file
                 var fileName = Path.GetFileName(fileUpload.FileName);
@@ -220,6 +220,5 @@ namespace ShopGiay.Areas.Admin.Controllers
             }
             return View(listSP);
         }
-
     }
 }

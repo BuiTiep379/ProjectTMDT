@@ -147,7 +147,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLChiTietSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLKhachHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLLoaiSPController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLMauSacController.cs" />
@@ -178,6 +180,7 @@
     <Compile Include="Models\MAUSAC.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata\CHITIETSP.cs" />
     <Compile Include="Models\Metadata\HINHANHSP.cs" />
     <Compile Include="Models\Metadata\KHACHHANG.cs" />
     <Compile Include="Models\Metadata\LOAISP.cs" />
@@ -382,6 +385,13 @@
     <Content Include="Models\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\QLChiTietSanPham\DanhSachChiTietSP.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\SidebarMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\HeaderStarts.cshtml" />
+    <Content Include="Areas\Admin\Views\QLChiTietSanPham\AddChiTietSP.cshtml" />
+    <Content Include="Areas\Admin\Views\QLChiTietSanPham\EditChiTietSP.cshtml" />
+    <Content Include="Areas\Admin\Views\QLChiTietSanPham\DeleteCTSP.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

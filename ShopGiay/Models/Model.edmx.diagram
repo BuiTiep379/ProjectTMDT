@@ -14,18 +14,18 @@
         <AssociationConnector Association="ShopGiayModel.FK_DH_KHACHHANG" ManuallyRouted="false" />
         <AssociationConnector Association="ShopGiayModel.FK_DH_NHANVIEN" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ShopGiayModel.CHITIETDONHANG" Width="1.5" PointX="11.25" PointY="13.875" />
-        <EntityTypeShape EntityType="ShopGiayModel.CHITIETSP" Width="1.5" PointX="8.25" PointY="12.125" />
         <EntityTypeShape EntityType="ShopGiayModel.LOAISP" Width="1.5" PointX="3.75" PointY="4.875" />
         <AssociationConnector Association="ShopGiayModel.FK_CTDH_DH" />
         <AssociationConnector Association="ShopGiayModel.FK_CTDH_MAU" />
         <AssociationConnector Association="ShopGiayModel.FK_CTDH_SIZE" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTSP_MAU" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTSP_SIZE" />
         <EntityTypeShape EntityType="ShopGiayModel.SANPHAM" Width="1.5" PointX="6" PointY="1.75" />
         <AssociationConnector Association="ShopGiayModel.FK_CTDH_SP" />
-        <AssociationConnector Association="ShopGiayModel.FK_CTSP_SP" />
         <AssociationConnector Association="ShopGiayModel.FK_SP_LOAI" />
         <AssociationConnector Association="ShopGiayModel.FK_SP_NHANHIEU" />
+        <EntityTypeShape EntityType="ShopGiayModel.CHITIETSP" Width="1.5" PointX="8.25" PointY="11.875" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTSP_MAU" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTSP_SIZE" />
+        <AssociationConnector Association="ShopGiayModel.FK_CTSP_SP" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
