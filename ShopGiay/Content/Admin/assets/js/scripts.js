@@ -1,6 +1,7 @@
 (function () {
-   "use strict";
-
+    "use strict";
+    $('#AlertBox').removeClass('hide');
+    $('#AlertBox').delay(1000).slideUp(500);
    // Toggle Left Menu
    jQuery('.menu-list > a').click(function () {
 

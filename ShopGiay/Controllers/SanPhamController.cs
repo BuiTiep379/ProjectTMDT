@@ -32,18 +32,21 @@ namespace ShopGiay.Controllers
         public ActionResult DanhSachSanPham(string search, int? page, int? size)
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "9", Value = "9" });
-            items.Add(new SelectListItem { Text = "15", Value = "15" });
+            items.Add(new SelectListItem { Text = "3", Value = "3" });
+            items.Add(new SelectListItem { Text = "6", Value = "6" });
+
             foreach (var item in items)
             {
                 if (item.Value == size.ToString())
                     item.Selected = true;
             }
-            ViewBag.Size = size;
-            ViewBag.CurrentSize = items;
-            page = page ?? 1;
-            int pageNumber = page ?? 1;
-            int pageSize = size ?? 9;
+
+            ViewBag.Size = items;
+            ViewBag.CurrentSize = size;
+
+            page = (page ?? 1);
+            int pageNumber = (page ?? 1);
+            int pageSize = (size ?? 3);
             var listSP = from sp in db.SANPHAMs select sp;
             listSP = listSP.OrderBy(x => x.MaSP);
             if (search != null)

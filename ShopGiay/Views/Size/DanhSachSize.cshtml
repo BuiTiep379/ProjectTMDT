@@ -1,0 +1,10 @@
+﻿@model dynamic
+<h4 style="font-size: 15px">SIZE</h4>
+<div class="row row1" style="height: 150px">
+    <div class="col col-2">
+        @foreach (var item in Model)
+        {
+            <label class="checkbox" style="font-size: 15px"><input type="checkbox" name="checkbox"><i></i> @item.Size</label>
+        }
+    </div>
+</div>
