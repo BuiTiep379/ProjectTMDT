@@ -62,6 +62,7 @@ namespace ShopGiay.Areas.Admin.Controllers
         {
             int maNhanHieu = int.Parse(Request.Form["MaNhanHieu"]);
             int maLoai = int.Parse(Request.Form["MaLoai"]);
+                
             ViewBag.MaLoai = new SelectList(db.LOAISPs, "MaLoai", "TenLoai", sp.MaLoai);
             ViewBag.MaNhanHieu = new SelectList(db.NHANHIEUx, "MaNhanHieu", "TenNhanHieu", sp.MaNhanHieu);
             if (fileUpload == null)

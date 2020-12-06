@@ -157,7 +157,11 @@
     <Compile Include="Areas\Admin\Controllers\QLSanPhamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\LoaiController.cs" />
+    <Compile Include="Controllers\MauSacController.cs" />
+    <Compile Include="Controllers\NhanHieuController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\SizeController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -424,6 +428,13 @@
     <Content Include="Views\SanPham\SanPhamNoiBat.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
     <Content Include="Views\SanPham\DanhSachSanPhamNoiBat.cshtml" />
+    <Content Include="Views\SanPham\DanhSachSanPham.cshtml" />
+    <Content Include="Views\Loai\DanhSachLoai.cshtml" />
+    <Content Include="Views\NhanHieu\DanhSachNhanHieu.cshtml" />
+    <Content Include="Views\Shared\_CuaHangLayouts.cshtml" />
+    <Content Include="Views\Store\AllSanPham.cshtml" />
+    <Content Include="Views\MauSac\DanhSachMau.cshtml" />
+    <Content Include="Views\Size\DanhSachSize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

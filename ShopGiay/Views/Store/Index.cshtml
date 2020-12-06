@@ -5,13 +5,13 @@
 }
 
 @section headertop {
-    @Html.Action("HeaderTopPartial", "Store")
+    @{ Html.RenderAction("HeaderTopPartial", "Store");}
 }
 @section headerbottom {
-    @Html.Action("HeaderBottomPartial", "Store")
+    @{ Html.RenderAction("DanhSachLoai", "Loai");}
 }
 @section indexbanner{
-    @Html.Action("SanPhamNoiBat", "SanPham",  Model as IDictionary<string, object>)
+    @Html.Action("SanPhamNoiBat", "SanPham", Model as IDictionary<string, object>)
 }
 <hr />
 @Html.Action("DanhSachSanPhamNoiBat", "SanPham", Model as IDictionary<string, object>)

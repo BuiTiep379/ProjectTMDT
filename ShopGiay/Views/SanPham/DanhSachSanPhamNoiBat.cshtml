@@ -4,19 +4,25 @@
         @foreach (var item in Model)
         {
         <div class="box1">
-            <div class="col_1_of_3 span_1_of_3">
+            <div class="col_1_of_3 span_1_of_3" style="margin-left: 15px; margin-right: 15px">
                 <a href="single.html">
                     <div class="view view-fifth">
                         <div class="top_box">
-                            <h3 class="m_1">@item.TenSP</h3>
-                            <p class="m_2">@item.NHANHIEU.TenNhanHieu</p>
+                            <div style="width: 256px; height: 39px; padding:1px">
+                                <h3 class="m_1">@item.TenSP</h3>
+                            </div>
+                            <div>
+                                <p class="m_2" style="font-weight: bold">@item.NHANHIEU.TenNhanHieu</p>
+                            </div>
                             <div class="grid_img">
                                 <div class="css3"><img src="~/HinhAnh/HinhAnhSP/@item.Anh" style="width:200px;height:173px;" alt="" /></div>
                                 <div class="mask">
                                     <div class="info">Xem ngay</div>
                                 </div>
                             </div>
-                            <div class="price">@item.DonGia</div>
+                            <div>
+                                <p style="font-size: 20px; color: black">@item.DonGia VNĐ</p>
+                            </div>
                         </div>
                     </div>
                     <ul class="list">
@@ -32,8 +38,7 @@
                     <div class="clear"></div>
                 </a>
             </div>
-        </div>
-           
+        </div>   
         }
         <div class="clear"></div>
     </div>

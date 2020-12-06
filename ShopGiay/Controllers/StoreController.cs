@@ -13,6 +13,10 @@ namespace ShopGiay.Controllers
         {
             return View();
         }
+        public ActionResult AllSanPham()
+        {
+            return View();
+        }
         public ActionResult HeaderTopPartial()
         {
             return PartialView();

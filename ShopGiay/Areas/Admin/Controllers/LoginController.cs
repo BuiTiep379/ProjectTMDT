@@ -34,7 +34,9 @@ namespace ShopGiay.Areas.Admin.Controllers
             {
                 if (nv.QuyenNV == "1")
                 {
-                    ViewBag.ThongBao = "Xin chào, Admin:" + nv.TenNV;
+                    string chao = "Xin chào, Admin:" + nv.TenNV;
+                    TempData["ThongBao"] = chao;
+                    
                     Session["TaiKhoanNV"] = nv;
                     Session["User"] = nv.TenNV;
                     Session["Pw"] = nv.MatKhau;
@@ -44,7 +46,8 @@ namespace ShopGiay.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ViewBag.ThongBao = "Hello" + nv.TenNV;
+                    string chao = "Xin chào, nhân viên:" + nv.TenNV;
+                    TempData["ThongBao"] = chao;
                     Session["TaiKhoanNV"] = nv;
                     Session["User"] = nv.TenNV;
                     Session["Pw"] = nv.MatKhau;
@@ -60,6 +63,6 @@ namespace ShopGiay.Areas.Admin.Controllers
             Session.Clear();
             return RedirectToAction("Login");
         }
-
+        
     }
 }
