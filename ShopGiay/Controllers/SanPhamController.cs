@@ -56,6 +56,44 @@ namespace ShopGiay.Controllers
             }
             return PartialView(listSP.ToPagedList(pageNumber, pageSize));
         }
-        
+        //Xem chi tiết giày
+        public ViewResult XemChiTiet(int maSP = 0, int maNhanHieu = 0, int maLoai = 0)
+        {
+            SANPHAM sp = db.SANPHAMs.SingleOrDefault(n => n.MaSP == maSP);
+            if (sp == null)
+            {
+                //Trả về trang báo lỗi
+                Response.StatusCode = 404;
+                return null;
+            }
+            //----
+            var mau = from a in db.CHITIETSPs
+                      join b in db.MAUSACs
+                      on a.MaMau equals b.MaMau
+                      where (a.MaSP == maSP)
+                      select new
+                      {
+                          a.MaMau,
+                          b.MauSac
+                      };
+
+            var size = from a in db.CHITIETSPs
+                       join b in db.SIZEs
+                       on a.MaSize equals b.MaSize
+                       where (a.MaSP == maSP)
+                       select new
+                       {
+                           a.MaSize,
+                           b.Size
+                       };
+            //-
+            ViewBag.NhanHieu = db.NHANHIEUx.Single(x => x.MaNhanHieu == sp.MaNhanHieu).TenNhanHieu;
+            ViewBag.Loai = db.LOAISPs.Single(x => x.MaLoai == sp.MaLoai).TenLoai;
+            ViewBag.MaMau = new SelectList(mau.GroupBy(x => x.MaMau).Select(x => x.FirstOrDefault()), "MaMau", "MauSac");
+            ViewBag.MaSize = new SelectList(size.GroupBy(x => x.MaSize).Select(g => g.FirstOrDefault()), "MaSize", "Size");
+            ViewBag.SPLienQuan = db.SANPHAMs.Where(n => n.MaSP != maSP && n.MaNhanHieu == maNhanHieu && n.MaLoai == maLoai).Take(4).ToList();
+            return View(sp);
+        }
+
     }
 }
