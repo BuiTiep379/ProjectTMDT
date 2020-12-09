@@ -1,81 +1,86 @@
 ﻿@model PagedList.IPagedList<ShopGiay.Models.SANPHAM>
     @using PagedList.Mvc
-<div class="cont span_2_of_3">
-    <div class="mens-toolbar">
-        <div class="sort">
-            <div class="sort-by">
-                <label  style="font-size:15px">Sort By</label>
-                <select>
-                    <option value="">
-                        Popularity
-                    </option>
-                    <option value="">
-                        Price : High to Low
-                    </option>
-                    <option value="">
-                        Price : Low to High
-                    </option>
-                </select>
-                <a href=""><img src="images/arrow2.gif" alt="" class="v-middle"></a>
+<div class="main-content">
+    <div class="cont span_2_of_3">
+        <div class="mens-toolbar">
+            <div class="sort">
+                <div class="sort-by">
+                    <label style="font-size:15px">Sort By</label>
+                    <select>
+                        <option value="">
+                            Popularity
+                        </option>
+                        <option value="">
+                            Price : High to Low
+                        </option>
+                        <option value="">
+                            Price : Low to High
+                        </option>
+                    </select>
+                    <a href=""><img src="images/arrow2.gif" alt="" class="v-middle"></a>
+                </div>
             </div>
-        </div>
-        <div class="pager">
+            <div class="pager">
 
-            <div class="limiter visible-desktop" >
-                
-                @using (Html.BeginForm("AllSanPham", "Store", FormMethod.Get))
-                {
-                <label style="font-size:15px">Show &nbsp;</label>@Html.DropDownList("size", (List<SelectListItem>)ViewBag.Size, new { @onchange = "this.form.submit();" }); <label style="font-size:15px">&nbsp;per page</label>
-                } 
+                <div class="limiter visible-desktop">
+
+                    @using (Html.BeginForm("AllSanPham", "Store", FormMethod.Get))
+                    {
+                        <label style="font-size:15px">Show &nbsp;</label>@Html.DropDownList("size", (List<SelectListItem>)ViewBag.Size, new { @onchange = "this.form.submit();" }); <label style="font-size:15px">&nbsp;per page</label>
+                    }
+                </div>
+                <ul class="dc_pagination dc_paginationA dc_paginationA06">
+                    <li><a href="#" class="previous">Pages</a></li>
+                    <li>@Html.PagedListPager(Model, page => Url.Action("AllSanPham", "Store", new { page, size = ViewBag.CurrentSize }))</li>
+                </ul>
+                <div class="clear"></div>
             </div>
-            <ul class="dc_pagination dc_paginationA dc_paginationA06">
-                <li><a href="#" class="previous">Pages</a></li>
-                <li>@Html.PagedListPager(Model, page => Url.Action("AllSanPham", "Store", new { page, size = ViewBag.CurrentSize }))</li>
-            </ul>
             <div class="clear"></div>
         </div>
-        <div class="clear"></div>
-    </div>
-  
-    @foreach (var item in Model)
-    {
-        <div class="box1">
-            <div class="col_1_of_3 span_1_of_3" style="margin-left: 15px; margin-right: 0px ">
-                <a href="single.html">
-                    <div class="view view-fifth">
-                        <div class="top_box">
-                            <div style="width: 256px; height: 39px; padding:1px">
-                                <h3 class="m_1" style="color: black">@item.TenSP</h3>
-                            </div>
-                            <div>
-                                <p class="m_2" style="font-weight: bold; color: black" >@item.NHANHIEU.TenNhanHieu</p>
-                            </div>
-                            <div class="grid_img">
-                                <div class="css3"><img src="~/HinhAnh/HinhAnhSP/@item.Anh" style="width:200px;height:173px;" alt="" /></div>
-                                <div class="mask">
-                                    <div class="info">Xem ngay</div>
+
+        @foreach (var item in Model)
+        {
+            <div class="box1">
+                <div class="col_1_of_3 span_1_of_3" style="margin-left: 15px; margin-right: 0px ">
+                    <a href="single.html">
+                        <div class="view view-fifth">
+                            <div class="top_box">
+                                <div style="width: 256px; height: 39px; padding:1px">
+                                    <h3 class="m_1" style="color: black">@item.TenSP</h3>
+                                </div>
+                                <div>
+                                    <p class="m_2" style="font-weight: bold; color: black">@item.NHANHIEU.TenNhanHieu</p>
+                                </div>
+                                <div class="grid_img">
+                                    <div class="css3"><img src="~/HinhAnh/HinhAnhSP/@item.Anh" style="width:200px;height:173px;" alt="" /></div>
+                                    <div class="mask">
+                                        <div class="info">
+                                            <a href="@Url.Action("XemChiTiet", "SanPham", new { @masp = item.MaSP, @nhanhieu = item.MaNhanHieu, @loai = item.MaLoai })">Xem ngay </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p style="font-size: 20px; color: black">@string.Format("{0:0,0}", @item.DonGia) VNĐ</p>
                                 </div>
                             </div>
-                            <div>
-                                <p style="font-size: 20px; color: black">@item.DonGia VNĐ</p>
-                            </div>
                         </div>
-                    </div>
-                    <ul class="list">
-                        <li>
-                            <img style="margin-left :7px" src="~/Content/Client/images/plus.png" alt="" />
-                            <ul class="icon1 sub-icon1 profile_img">
-                                <li>
-                                    <a class="active-icon c1" href="#">Thêm vào giỏ</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="clear"></div>
-                </a>
+                        <ul class="list">
+                            <li>
+                                <img style="margin-left :7px" src="~/Content/Client/images/plus.png" alt="" />
+                                <ul class="icon1 sub-icon1 profile_img">
+                                    <li>
+                                        <a class="active-icon c1" href="#">Thêm vào giỏ</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </a>
+                </div>
             </div>
-        </div>
-    }
+        }
 
+    </div>
 </div>
+
 
