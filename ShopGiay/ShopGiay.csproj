@@ -382,13 +382,6 @@
     <Content Include="Areas\Admin\Views\QLSanPham\DetailSanPham.cshtml" />
     <Content Include="Areas\Admin\Views\QLSanPham\ShowSanPham.cshtml" />
     <Content Include="Areas\Admin\Views\QLSanPham\DeleteSanPham.cshtml" />
-    <EntityDeploy Include="Models\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\QLChiTietSanPham\DanhSachChiTietSP.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\SidebarMenu.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\HeaderStarts.cshtml" />
@@ -396,6 +389,13 @@
     <Content Include="Areas\Admin\Views\QLChiTietSanPham\EditChiTietSP.cshtml" />
     <Content Include="Areas\Admin\Views\QLChiTietSanPham\DeleteCTSP.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
