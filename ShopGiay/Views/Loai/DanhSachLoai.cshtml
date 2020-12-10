@@ -1,15 +1,13 @@
 ﻿@model dynamic
-<div class="header-bottom">
-    <div class="wrap">
-        <!-- start header menu -->
-        <ul class="megamenu skyblue">
-            <li><a class="color1" href="#">Home</a></li>
-            @foreach (var item in Model)
-            {
-                <li><a href="#">@item.TenLoai</a></li>
-            }
-        </ul>
-        <div class="clear"></div>
-    </div>
+<div class="border p-4 rounded mb-4">
+    <h3 class="mb-3 h6 text-uppercase text-black d-block">CATEGORIES</h3>
+    <ul class="list-unstyled mb-0">
+        @foreach (var item in Model)
+        {
+            <li class="mb-1"><a href="#" class="d-flex"><span>@item.TenLoai</span></a></li>
+        }
+    </ul>
 </div>
+
+
 

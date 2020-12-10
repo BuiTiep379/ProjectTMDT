@@ -1,40 +1,32 @@
 ﻿@model dynamic 
  
-<div class="index-banner">
-    <div class="wmuSlider example1" style="height: 560px;">
-        <div class="wmuSliderWrapper">
-            @foreach (var item in Model)
-            {
-                <article style="position: relative; width: 100%; opacity: 1;">
-                    <div class="banner-wrap">
-                        <div class="slider-left">
-                            <div style="text-align: center">
-                                <img src="~/HinhAnh/HinhAnhSP/@item.Anh" style="width:500px;height:400px;" alt="" />
+<div class="site-section block-3 site-blocks-2 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 site-section-heading text-center pt-4">
+                <h2>Featured Products</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nonloop-block-3 owl-carousel">
+                    @foreach (var item in Model)
+                    {
+                        <div class="item">
+                            <div class="block-4 text-center">
+                                <figure class="block-4-image"style="margin-left: 30px; width: 280px">
+                                    <img src="~/HinhAnh/HinhAnhSP/@item.Anh" alt="Image placeholder" class="img-fluid">
+                                </figure>
+                                <div class="block-4-text p-4">
+                                    <h3><a href="#">@item.NHANHIEU.TenNhanHieu</a></h3>
+                                    <p class="mb-0">@item.TenSP</p>
+                                    <p class="text-primary font-weight-bold">@string.Format("{0:0,0}", item.DonGia) VNĐ</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="slider-right">
-                            <p style="font-size: 35px; color:black">@item.TenSP</p>
-                            <p style="font-weight: bold; font-size: 25px; color: black">@item.NHANHIEU.TenNhanHieu</p>
-                            <div class="btn"><a href="shop.html" style="font-weight: bold">Mua ngay</a></div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </article>
-            }
+                    }
+                </div>
+            </div>
         </div>
-        <a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
-        <ul class="wmuSliderPagination">
-            <li><a href="#" class="">0</a></li>
-            <li><a href="#" class="">1</a></li>
-            <li><a href="#" class="wmuActive">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-        </ul>
-        <a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a><ul class="wmuSliderPagination"><li><a href="#" class="wmuActive">0</a></li><li><a href="#" class="">1</a></li><li><a href="#" class="">2</a></li><li><a href="#" class="">3</a></li><li><a href="#" class="">4</a></li></ul>
     </div>
-    <script src="~/Content/Client/js/jquery.wmuSlider.js"></script>
-    <script type="text/javascript" src="~/Content/Client/js/modernizr.custom.min.js"></script>
-    <script>
-        $('.example1').wmuSlider();
-    </script>
 </div>

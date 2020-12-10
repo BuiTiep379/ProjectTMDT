@@ -101,7 +101,7 @@ namespace ShopGiay.Controllers
                 sanpham = new GIOHANG(maSP, maMau, maSize);
                 listGioHang.Add(sanpham);
                 TempData["ThanhCong"] = "Thêm vào giỏ hàng thành công";
-                return RedirectToAction("GioHang", "GioHang");
+                return RedirectToAction("XemChiTiet", "SanPham", new { @maSP = sp.MaSP, @maNhanHieu = sp.MaNhanHieu, @maLoai = sp.MaLoai });
             }    
             else
             {
@@ -110,5 +110,61 @@ namespace ShopGiay.Controllers
                 return RedirectToAction("XemChiTiet", "SanPham", new { @maSP = sp.MaSP, @maNhanHieu = sp.MaNhanHieu, @maLoai = sp.MaLoai });
             }    
         }
+        public ActionResult CapNhatGioHang(int maSP, int maMau, int maSize, FormCollection f)
+        {
+            int check = Int32.Parse(Request.Form["txtSoLuong"]);// số lượng giày cần mua
+            var soLuongGiay = db.CHITIETSPs.SingleOrDefault(x => x.MaSP == maSP && x.MaMau == maMau && x.MaSize == maSize).SoLuong;// số lượng giày trong kho
+            if (check > soLuongGiay)
+            {
+                TempData["LoiSL"] = "Sản phẩm hiện không đủ số lượng. Vui lòng chọn ít hơn!";
+                ModelState.AddModelError("LoiSP", " ");
+                return RedirectToAction("GioHang", "GioHang");
+            }    
+            if (check < 1)
+            {
+                TempData["LoiSL"] = "Không thể mua với số lượng nhỏ hơn 1. Vui lòng chọn nhiều hơn!";
+                ModelState.AddModelError("LoiSL", " ");
+                return RedirectToAction("GioHang", "GioHang");
+            }
+            else
+            {
+                SANPHAM sp = db.SANPHAMs.SingleOrDefault(n => n.MaSP == maSP);
+                if (sp == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                List<GIOHANG> listGioHang = LayGioHang();
+                GIOHANG sanPham = listGioHang.SingleOrDefault(n => n.MaSP == maSP && n.MaMau == maMau && n.MaSize == maSize);
+                if (sanPham != null)
+                {
+                    sanPham.SoLuong = int.Parse(f["txtSoLuong"].ToString());
+                }
+                return RedirectToAction("GioHang", "GioHang");
+            }
+        }
+        public ActionResult XoaGioHang(int maSP, int maMau, int maSize)
+        {
+            // kiểm tra sản phẩm 
+            SANPHAM sp = db.SANPHAMs.SingleOrDefault(n => n.MaSP == maSP);
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            List<GIOHANG> listGioHang = LayGioHang();
+            GIOHANG sanpham = listGioHang.SingleOrDefault(n => n.MaSP == maSP && n.MaMau == maMau && n.MaSize == maSize);
+            if (sanpham != null)
+            {
+                listGioHang.RemoveAll(n => n.MaSP == maSP && n.MaMau == maMau && n.MaSize == maSize);
+
+            }
+            if (listGioHang.Count == 0)
+            {
+                return RedirectToAction("Index", "Store");
+            }
+            return RedirectToAction("GioHang");
+        }
+
     }
 }

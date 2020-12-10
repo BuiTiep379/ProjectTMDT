@@ -24,6 +24,7 @@ namespace ShopGiay.Controllers
             return PartialView(listSP);
         }
         //Danh sách sản phẩm ở body store
+        [ChildActionOnly]
         public ActionResult DanhSachSanPhamNoiBat()
         {
             var ListSP = db.SANPHAMs.OrderBy(x => x.MaSP).Take(9);

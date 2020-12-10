@@ -13,26 +13,44 @@ namespace ShopGiay.Controllers
         {
             return View();
         }
-        public ActionResult AllSanPham()
+        public ActionResult Shop()
         {
             return View();
         }
-        public ActionResult HeaderTopPartial()
+        [ChildActionOnly]
+        public ActionResult SiteNavBar()
         {
             return PartialView();
         }
-        public ActionResult HeaderBottomPartial()
+        [ChildActionOnly]
+        public ActionResult SiteBlocksCover()
         {
             return PartialView();
         }
-        public ActionResult IndexBanner()
+        [ChildActionOnly]
+        public ActionResult SiteSection()
         {
             return PartialView();
         }
-        public ActionResult FooterPartial()
+        [ChildActionOnly]
+        public ActionResult SiteBlocks2()
         {
             return PartialView();
         }
-       
+        [ChildActionOnly]
+        public ActionResult SiteBlocks3()
+        {
+            return PartialView();
+        }
+        [ChildActionOnly]
+        public ActionResult SiteBlocks8()
+        {
+            return PartialView();
+        }
+        [ChildActionOnly]
+        public ActionResult SiteFooter()
+        {
+            return PartialView();
+        }
     }
 }
