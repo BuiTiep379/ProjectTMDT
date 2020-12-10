@@ -4,6 +4,9 @@
     ViewBag.Title = "GioHang";
     Layout = "~/Views/Shared/_CuaHangLayouts.cshtml";
 }
+@section JsFooter {
+    <script src="~/Content/Client/js/Cart.js"></script>
+}
 @section headertop {
     @{ Html.RenderAction("HeaderTopPartial", "Store");}
 }
@@ -12,12 +15,12 @@
 }
 <div class="site-wrap" style="margin: 30px">
     <div class="site-section">
-        <div class="container">
+        <div style="margin: 100px;">
             <h3 style="text-align: center; margin-bottom: 30px">GIỎ HÀNG CỦA BẠN</h3>
-            @if (TempData["LoiSP"] != null)
+            @if (TempData["LoiSL"] != null)
             {
-                <div class="alert alert-danger alert-dismissible" role="alert">
-                    <strong>@TempData["LoiSP"]</strong>
+                <div class="alert alert-danger alert-dismissible" role="alert" style="height: 50px">
+                    <strong>@TempData["LoiSL"]</strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -29,52 +32,48 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th class="product-thumbnail">Ảnh</th>
-                                    <th class="product-name">Sản phẩm</th>
-                                    <th>Màu sắc</th>
-                                    <th>Size</th>
-                                    <th class="product-price">Giá</th>
-                                    <th class="product-quantity">Số lượng</th>
-                                    <th class="product-total">Tổng cộng</th>
-                                    <th class="product-remove">Xóa</th>
+                                    <th class="product-thumbnail text-center" style="font-weight: bold;">Ảnh</th>
+                                    <th class="product-name text-center" style="font-weight: bold;">Sản phẩm</th>
+                                    <th class="product-name text-center" style="font-weight: bold;">Màu sắc</th>
+                                    <th class="product-name text-center" style="font-weight: bold;">Size</th>
+                                    <th class="product-price text-center" style="font-weight: bold;">Giá</th>
+                                    <th class="product-quantity text-center" style="font-weight: bold;">Số lượng</th>
+                                    <th class="product-total text-center" style="font-weight: bold;">Tổng cộng</th>
+                                    <th class="product-remove text-center" style="font-weight: bold;">Xóa</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
-                                { 
+                                {
                                     <tr>
-                                        <td class="product-thumbnail">
-                                            <a href="@Url.Action("XemChiTiet", "SanPham", new { @masp = item.MaSP})"> <img src="@Url.Content("~/HinhAnh/HinhAnhSP/"+ item.HinhAnh)" alt="Image" class="img-fluid"></a>
+                                        <td class="product-thumbnail" style="width: 200px">
+                                            <a href="@Url.Action("XemChiTiet", "SanPham", new { @maSP = item.MaSP})"> <img src="@Url.Content("~/HinhAnh/HinhAnhSP/"+ item.HinhAnh)" style="width: 150px; height: 100px;" class="img-fluid"></a>
+                                        </td>
+                                        <td class="product-name" style="width: 400px; height: 100px;">
+                                            <h2 class="h5">@item.TenSP</h2>
                                         </td>
                                         <td class="product-name">
-                                            <h2 class="h5 text-black">@item.TenSP</h2>
+                                            <h2 class="h5 text-center">@item.TenMau</h2>
                                         </td>
-                                        @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @masp = item.MaSP, @mamau = item.MaMau, @masize = item.MaSize }))
-                                        {
-                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                            <td class="product-name">
-                                                <h2 class="h5 text-black">@item.TenMau</h2>
-                                            </td>
-                                            <td class="product-name">
-                                                <h2 class="h5 text-black">@item.TenSize</h2>
-                                            </td>
-                                            <td>@string.Format("{0:0,0}", @item.DonGia) VNĐ</td>
-                                            <td>
-                                                <div class="input-group mb-3" style="max-width: 120px;">
-                                                    <div class="input-group-prepend">
-                                                        <button class="btn btn-outline-primary js-btn-minus" type="button">−</button>
-                                                    </div>
-                                                    @Html.TextBox("txtSoLuong", item.SoLuong, new { @type = "text" , @class="form-control text-center"})
-                                                    <div class="input-group-append">
-                                                        <button class="btn btn-outline-primary js-btn-plus" type="button">+</button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        }
-                                    <td>@string.Format("{0:0,0}", @item.ThanhTien) VNĐ</td>
-                                        <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
+                                        <td class="product-name">
+                                            <h2 class="h5 text-center">@item.TenSize</h2>
+                                        </td>
+                                        <td class="product-name"><h2 class="h5  text-center">@string.Format("{0:0,0}", @item.DonGia) VNĐ</h2></td>
+                                        <td>
+                                            <div class="input-group mb-3">
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                @Html.TextBox("txtSoLuong", item.SoLuong, new { @type = "number", @class = "form-control", @style = "font-weight: bold" });
+                                                @Html.ValidationMessage("LoiSl", new { @class = "text-danger" })
+                                            </div>
+                                        </td>
+                                        <td class="product-name"><h2 class="h5 text-center">@string.Format("{0:0,0}", @item.ThanhTien) VNĐ</h2></td>
+                                        <td>
+                                            <input type="submit" value="Cập nhật" class="btn btn-success" />
+                                            <br />
+                                            @Html.ActionLink("X", "XoaGioHang", new { @maSP = item.MaSP, @maMau = item.MaMau, @maSize = item.MaSize }, new { @class = "btn btn-danger btn-sm" })
+                                        </td>
                                     </tr>
-                                 }
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -85,22 +84,10 @@
                 <div class="col-md-6">
                     <div class="row mb-5">
                         <div class="col-md-6 mb-3 mb-md-0">
-                            <button class="btn btn-primary btn-sm btn-block">Update Cart</button>
+                            <button id="btnUpdate" class="btn btn-success btn-sm btn-block">Cập nhật giỏ hàng</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label class="text-black h4" for="coupon">Coupon</label>
-                            <p>Enter your coupon code if you have one.</p>
-                        </div>
-                        <div class="col-md-8 mb-3 mb-md-0">
-                            <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-primary btn-sm">Apply Coupon</button>
+                            <button id="btnContinue" class="btn btn-outline-success btn-sm btn-block">Tiếp tụp mua hàng</button>
                         </div>
                     </div>
                 </div>
@@ -109,29 +96,22 @@
                         <div class="col-md-7">
                             <div class="row">
                                 <div class="col-md-12 text-right border-bottom mb-5">
-                                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                                    <h3 class="text-black h4 text-uppercase">TỔNG ĐƠN HÀNG</h3>
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <span class="text-black">Subtotal</span>
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    <strong class="text-black">$230.00</strong>
-                                </div>
-                            </div>
+
                             <div class="row mb-5">
                                 <div class="col-md-6">
-                                    <span class="text-black">Total</span>
+                                    <span class="text-black">Tổng cộng:</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <strong class="text-black">$230.00</strong>
+                                    <strong style="font-size: 20px; font-weight: bold">@string.Format("{0:0,0}", TempData["TongTien"]) VNĐ</strong>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</button>
+                                    <button class="btn btn-success btn-lg py-3 btn-block" id="btnPayment" onclick="window.location='checkout.html'">Thanh toán</button>
                                 </div>
                             </div>
                         </div>

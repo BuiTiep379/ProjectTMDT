@@ -29,19 +29,19 @@ namespace ShopGiay.Models
         ShopGiayEntities db = new ShopGiayEntities();
         public GIOHANG(int maSP, int maMau, int maSize)
         {
-            var masp = maSP;
+            MaSP = maSP;
             SANPHAM sp = db.SANPHAMs.SingleOrDefault(x => x.MaSP == maSP);
-            var tensp = sp.TenSP;
-            var hinhanh = sp.Anh;
-            var dongia = double.Parse(sp.DonGia.ToString());
-            var soluong = 1;
+            TenSP = sp.TenSP;
+            HinhAnh = sp.Anh;
+            DonGia = decimal.Parse(sp.DonGia.ToString());
+            SoLuong = 1;
             CHITIETSP ct = db.CHITIETSPs.SingleOrDefault(x => x.MaSP == maSP && x.MaMau == maMau && x.MaSize == maSize);
-            var mamau = ct.MaMau;
-            var masize = ct.MaSize;
-            MAUSAC mau = db.MAUSACs.SingleOrDefault(x => x.MaMau == mamau);
-            var tenmau = mau.MauSac;
-            SIZE size = db.SIZEs.SingleOrDefault(x => x.MaSize == masize);
-            var tensize = size.Size;
+            MaMau = ct.MaMau;
+            MaSize = ct.MaSize;
+            MAUSAC mau = db.MAUSACs.SingleOrDefault(x => x.MaMau == maMau);
+            TenMau = mau.MauSac;
+            SIZE size = db.SIZEs.SingleOrDefault(x => x.MaSize == maSize);
+            TenSize = size.Size;
         }
     }
 }
