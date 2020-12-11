@@ -1,11 +1,11 @@
 ﻿@model dynamic
-
-<h4 style="font-size: 15px">MÀU SẮC</h4>
-<div class="row row1" style="height: 150px">
-    <div class="col col-4">
-        @foreach (var item in Model)
-        {
-            <label class="checkbox" style="font-size: 15px"><input type="checkbox" name="checkbox"><i></i> @item.MauSac</label>
-        }
-    </div>
+<div class="mb-4">
+    <h3 class="mb-3 h6 text-uppercase text-black d-block" style="color: black;  font-weight: 600; font-size: 20px">Color</h3>
+    @foreach (var item in Model)
+    {
+        <a href="#" class="d-flex color-item align-items-center">
+            <span class="color d-inline-block rounded-circle mr-2"></span> <span class="text-black">@item.MauSac</span>
+        </a>
+        
+    }
 </div>

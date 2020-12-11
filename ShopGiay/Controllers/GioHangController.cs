@@ -28,7 +28,8 @@ namespace ShopGiay.Controllers
         {
             if (Session["GIOHANG"] == null)
             {
-                return RedirectToAction("Index", "Store");
+                TempData["KhongCo"] = "Cart is empty";
+                return View();
             }
             List<GIOHANG> listGioHang = LayGioHang();
             TempData["TongTien"] = TongTien();
@@ -81,7 +82,7 @@ namespace ShopGiay.Controllers
             CHITIETSP ct = db.CHITIETSPs.SingleOrDefault(x => x.MaSP == maSP && x.MaSize == maSize && x.MaMau == maMau);
             if (ct == null)
             {
-                TempData["KhongThanhCong"] = "Sản phẩm hiện hết hàng. Bạn thử lựa chọn màu sắc hoặc size khác!";
+                TempData["KhongThanhCong"] = "Products are out of stock. You can try different colors or sizes!";
                 return RedirectToAction("XemChiTiet", "SanPham", new { @maSP = sp.MaSP, @maNhanHieu = sp.MaNhanHieu, @maLoai = sp.MaLoai });
             }
             //Lấy ra session giỏ hàng
@@ -92,7 +93,7 @@ namespace ShopGiay.Controllers
             TempData["TongSoLuong"] = TongSoLuong();
             if (TongSoLuongSP(maSP) >= slsp && sanpham != null)
             {
-                TempData["LoiSL"] = "Sản phẩm hiện không đủ số lượng yêu cầu. Vui lòng chọn ít hơn";
+                TempData["LoiSL"] = "The product does not have the required quantity. Please choose less!";
                 ModelState.AddModelError("LoiSP", "");
                 return RedirectToAction("XemChiTiet", "SanPham", new { @maSP = sp.MaSP, @maNhanHieu = sp.MaNhanHieu, @maLoai = sp.MaLoai });
             }
@@ -100,16 +101,17 @@ namespace ShopGiay.Controllers
             {
                 sanpham = new GIOHANG(maSP, maMau, maSize);
                 listGioHang.Add(sanpham);
-                TempData["ThanhCong"] = "Thêm vào giỏ hàng thành công";
+                TempData["ThanhCong"] = "Add to cart successfully";
                 return RedirectToAction("XemChiTiet", "SanPham", new { @maSP = sp.MaSP, @maNhanHieu = sp.MaNhanHieu, @maLoai = sp.MaLoai });
-            }    
+            }
             else
             {
                 sanpham.SoLuong++;
-                TempData["ThanhCong"] = "Thêm vào giỏ hàng thành công";
+                TempData["ThanhCong"] = "Add to cart successfully";
                 return RedirectToAction("XemChiTiet", "SanPham", new { @maSP = sp.MaSP, @maNhanHieu = sp.MaNhanHieu, @maLoai = sp.MaLoai });
-            }    
+            }
         }
+
         public ActionResult CapNhatGioHang(int maSP, int maMau, int maSize, FormCollection f)
         {
             int check = Int32.Parse(Request.Form["txtSoLuong"]);// số lượng giày cần mua
@@ -119,7 +121,7 @@ namespace ShopGiay.Controllers
                 TempData["LoiSL"] = "Sản phẩm hiện không đủ số lượng. Vui lòng chọn ít hơn!";
                 ModelState.AddModelError("LoiSP", " ");
                 return RedirectToAction("GioHang", "GioHang");
-            }    
+            }
             if (check < 1)
             {
                 TempData["LoiSL"] = "Không thể mua với số lượng nhỏ hơn 1. Vui lòng chọn nhiều hơn!";
@@ -165,6 +167,17 @@ namespace ShopGiay.Controllers
             }
             return RedirectToAction("GioHang");
         }
-
+        [ChildActionOnly]
+        public ActionResult GioHangPartial()
+        {
+            if (TongSoLuong() == 0)
+            {
+                return PartialView();
+            }
+            
+            ViewBag.TongSoLuong = TongSoLuong();
+            ViewBag.TongTien = TongTien();
+            return PartialView();
+        }
     }
 }

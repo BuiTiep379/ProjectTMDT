@@ -303,6 +303,7 @@
     <Content Include="Content\Client\images\women.jpg" />
     <Content Include="Content\Client\js\aos.js" />
     <Content Include="Content\Client\js\bootstrap.min.js" />
+    <Content Include="Content\Client\js\Cart.js" />
     <Content Include="Content\Client\js\jquery-3.3.1.min.js" />
     <Content Include="Content\Client\js\jquery-ui.js" />
     <Content Include="Content\Client\js\jquery.magnific-popup.min.js" />
@@ -505,6 +506,7 @@
     <Content Include="Views\Store\SiteBlocks8.cshtml" />
     <Content Include="Views\Shared\_ShopLayouts.cshtml" />
     <Content Include="Views\Store\Shop.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

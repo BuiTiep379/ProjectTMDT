@@ -12,7 +12,7 @@
 
                 <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
                     <div class="site-logo">
-                        <a href="/" class="js-logo-clone" style="color:orangered; font-weight: bold">SHOP GIÀY</a>
+                        <a href="/" ref ="nofollow" class="js-logo-clone" style="color:orangered; font-weight: bold">SHOP GIÀY</a>
                     </div>
                 </div>
 
@@ -21,12 +21,7 @@
                         <ul>
                             <li><a href="#"><span class="icon icon-person"></span></a></li>
                             <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-                            <li>
-                                <a href="cart.html" class="site-cart">
-                                    <span class="icon icon-shopping_cart"></span>
-                                    <span class="count"></span>
-                                </a>
-                            </li>
+                            @{Html.RenderAction("GioHangPartial", "GioHang");}
                             <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                         </ul>
                     </div>

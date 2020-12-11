@@ -1,13 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+
     <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
     <link rel="stylesheet" href="~/Content/Client/fonts/icomoon/style.css">
-
+    
     <link rel="stylesheet" href="~/Content/Client/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/Content/Client/css/magnific-popup.css">
     <link rel="stylesheet" href="~/Content/Client/css/jquery-ui.css">
@@ -15,9 +16,10 @@
     <link rel="stylesheet" href="~/Content/Client/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="~/Content/Client/css/aos.css">
     <link rel="stylesheet" href="~/Content/Client/css/style.css">
+
 </head>
 <body>
-    
+
     <div class="site-wrap">
         @RenderSection("SiteNavBar")
         <div class="bg-light py-3">
@@ -28,55 +30,25 @@
             </div>
         </div>
         @RenderBody()
-    <div class="row">
-        <div class="col-md-12">
-            <div class="site-section site-blocks-2">
-                <div class="row justify-content-center text-center mb-5">
-                    <div class="col-md-7 site-section-heading pt-4">
-                        <h2>Categories</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0 aos-init" data-aos="fade" data-aos-delay="">
-                        <a class="block-2-item" href="#">
-                            <figure class="image">
-                                <img src="images/women.jpg" alt="" class="img-fluid">
-                            </figure>
-                            <div class="text">
-                                <span class="text-uppercase">Collections</span>
-                                <h3>Women</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0 aos-init" data-aos="fade" data-aos-delay="100">
-                        <a class="block-2-item" href="#">
-                            <figure class="image">
-                                <img src="images/children.jpg" alt="" class="img-fluid">
-                            </figure>
-                            <div class="text">
-                                <span class="text-uppercase">Collections</span>
-                                <h3>Children</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0 aos-init" data-aos="fade" data-aos-delay="200">
-                        <a class="block-2-item" href="#">
-                            <figure class="image">
-                                <img src="images/men.jpg" alt="" class="img-fluid">
-                            </figure>
-                            <div class="text">
-                                <span class="text-uppercase">Collections</span>
-                                <h3>Men</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+        @RenderSection("SiteBlocks3")
         @RenderSection("SiteFooter")
     </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
     <script src="~/Content/Client/js/jquery-3.3.1.min.js"></script>
     <script src="~/Content/Client/js/jquery-ui.js"></script>
     <script src="~/Content/Client/js/popper.min.js"></script>
