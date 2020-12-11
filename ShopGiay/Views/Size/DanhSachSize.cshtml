@@ -1,10 +1,14 @@
 ﻿@model dynamic
-<h4 style="font-size: 15px">SIZE</h4>
-<div class="row row1" style="height: 150px">
-    <div class="col col-2">
+<div class="mb-4">
+    <h3 class="mb-3 h6 text-uppercase text-black d-block" style="        color: black;
+        font-weight: 600;
+        font-size: 20px
+">Size</h3>
+    <ul>
         @foreach (var item in Model)
         {
-            <label class="checkbox" style="font-size: 15px"><input type="checkbox" name="checkbox"><i></i> @item.Size</label>
+            <li><a href="#" class="d-flex text-black"><span>@item.Size</span></a></li>
         }
-    </div>
+    </ul>
 </div>
+

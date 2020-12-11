@@ -6,12 +6,12 @@
             <div class="float-md-left mb-4">
 
                 <div class="btn-group">
-                    <label style="font-size: 20px; margin-top: 4px; font-weight: 300; color: black;">Show &nbsp;</label>
+                    <label style="font-size: 20px; margin-top: 10px; font-weight: 300; color: black;">Show &nbsp;</label>
                     @using (Html.BeginForm("Shop", "Store", FormMethod.Get))
                     {
                         @Html.DropDownList("size", (List<SelectListItem>)ViewBag.Size, new { @class = "btn btn-secondary btn-sm dropdown-toggle", @onchange = "this.form.submit();", @style = "font-size: 50px" });
                     }
-                    <label style="font-size: 20px; margin-top: 4px; font-weight: 300; color: black;">&nbsp;per page</label>
+                    <label style="font-size: 20px; margin-top: 10px; font-weight: 300; color: black;">&nbsp;per page</label>
                 </div>
                 
             </div>
@@ -41,8 +41,8 @@
                         <a  href="@Url.Action("XemChiTiet", "SanPham", new { @masp = item.MaSP, @nhanhieu = item.MaNhanHieu, @loai = item.MaLoai })"><img src="~/HinhAnh/HinhAnhSP/@item.Anh" alt="Image placeholder" class="img-fluid"></a>
                     </figure>
                     <div class="block-4-text p-4">
-                        <div style="width: 205px; height: 72px"><h3><a href="@Url.Action("XemChiTiet", "SanPham", new { @masp = item.MaSP, @nhanhieu = item.MaNhanHieu, @loai = item.MaLoai })">@item.TenSP</a></h3></div>
-                        <p class="mb-0">@item.NHANHIEU.TenNhanHieu</p>
+                        <div style="width: 205px; height: 72px"><h3><a href="@Url.Action("XemChiTiet", "SanPham", new { @masp = item.MaSP, @nhanhieu = item.MaNhanHieu, @loai = item.MaLoai })" style="color: black;">@item.TenSP</a></h3></div>
+                        <p class="mb-0" style="color: black;  font-weight: 600">@item.NHANHIEU.TenNhanHieu</p>
                         <p class="text-primary font-weight-bold">@string.Format("{0:0,0}", @item.DonGia) VNĐ</p>
                     </div>
                 </div>

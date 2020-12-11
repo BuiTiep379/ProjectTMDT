@@ -2,227 +2,93 @@
 @model SANPHAM
 @{
     ViewBag.Title = "XemChiTiet";
-    Layout = "~/Views/Shared/_ChitietSPLayouts.cshtml";
+    Layout = "~/Views/Shared/_ClientLayouts.cshtml";
 }
-@section headertop {
-    @{ Html.RenderAction("HeaderTopPartial", "Store");}
+@section SiteNavBar {
+    @{ Html.RenderAction("SiteNavBar", "Store");}
 }
-@section headerbottom {
-    @{ Html.RenderAction("DanhSachLoai", "Loai");}
+@section SiteBlocksCover {
+
 }
-<div class="single">
-    <div class="wrap">
-        <div class="rsidebar span_1_of_left">
-            <section class="sky-form">
-                @{ Html.RenderAction("DanhSachNhanHieu", "NhanHieu");}
-                @{ Html.RenderAction("DanhSachSize", "Size");}
-            </section>
-        </div>
-        <div class="cont span_2_of_3" style="margin-top: 50px;">
-           
-            <div class="labout span_1_of_a1">
-                @if (TempData["KhongThanhCong"] != null)
-                {
-                    <div class="alert alert-danger alert-dismissible" role="alert" style="margin: 10px; padding: 10px">
-                        @TempData["KhongThanhCong"]
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                }
-                @if (TempData["ThanhCong"] != null)
-                {
-                    <div class="alert alert-success alert-dismissible" role="alert">
-                        @TempData["ThanhCong"]
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                }
-                @if (TempData["LoiSP"] != null)
-                {
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                        @TempData["LoiSL"]
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                }
-                <!-- start product_slider -->
-                <ul id="etalage">
-                    <li>
-                        <a href="optionallink.html">
-                            <img style=" width: 600px; margin-right: 25px;" class="etalage_thumb_image" src="@Url.Content("~/HinhAnh/HinhAnhSP/"+Model.Anh)" />
-                            <img style=" width: 350px;" class="etalage_source_image" src="@Url.Content("~/HinhAnh/HinhAnhSP/"+Model.Anh2)" />
-                        </a>
-                    </li>
-                    <li>
-                        <img style=" width: 600px; margin-right: 25px;" class="etalage_thumb_image" src="@Url.Content("~/HinhAnh/HinhAnhSP/"+Model.Anh2)" />
-                        <img style=" width: 350px;" class="etalage_source_image" src="@Url.Content("~/HinhAnh/HinhAnhSP/"+Model.Anh2)" />
-                    </li>
-                    <li>
-                        <img style=" width: 600px; margin-right: 25px;" class="etalage_thumb_image" src="@Url.Content("~/HinhAnh/HinhAnhSP/"+Model.Anh3)" />
-                        <img style=" width: 350px;" class="etalage_source_image" src="@Url.Content("~/HinhAnh/HinhAnhSP/"+Model.Anh3)" />
-                    </li>
-                </ul>
-                <!-- end product_slider -->
+@section SiteSection {
+
+}
+<div class="site-section" style="padding-top: 40px">
+    <div class="container">
+        @if (TempData["KhongThanhCong"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible" role="alert" style="margin: 10px; padding: 10px">
+                @TempData["KhongThanhCong"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-top: 4px">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="cont1 span_2_of_a1">
+        }
+        @if (TempData["ThanhCong"] != null)
+        {
+            <div class="alert alert-success alert-dismissible" role="alert">
+                @TempData["ThanhCong"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-top: 4px">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        @if (TempData["LoiSL"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                @TempData["LoiSL"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-top: 4px">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Url.Content("~/HinhAnh/HinhAnhSP/"+Model.Anh)" alt="Image" class="img-fluid" style="width: 500px; padding-left: 10px">
+            </div>
+            <div class="col-md-6">
                 @using (Html.BeginForm("ThemSanPham", "GioHang", new { @maSP = Model.MaSP, @URL = Request.Url.ToString() }))
                 {
-                    <h2 class="m_3" style="font-size: 35px;">@Model.TenSP</h2>
-                    <div class="price_single">
-                        <span class="actual" style="font-size: 25px;">Giá: @string.Format("{0:0,0}", Model.DonGia) VNĐ</span>
-                    </div>
-                    <div>
-                        <h2 class="m_9" style="font-size: 25px;">Chọn size</h2>
-                        @Html.DropDownList("MaSize", (IEnumerable<SelectListItem>)ViewBag.MaSize, new { @style = "font-size= 25px; width:40px; height:30px; margin:15px 0px;" })
-                        <div class="clear"></div>
-                    </div>
-                    <div>
-                        <h2 class="m_9" style="font-size: 25px;">Chọn màu</h2>
-                        @Html.DropDownList("MaMau", (IEnumerable<SelectListItem>)ViewBag.MaMau, new { @style = "font-size= 25px; width:100px; height:30px ; margin:15px 0px;" })
-                        <div class="clear"></div>
-                    </div>
-                    <div class="btn_form">
-                        <form>
-                            <span>
-                                <input style=" background-color: Crimson;  border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 25px;" type="submit" onclick="Validate()" value="Mua ngay" title="">
-                            </span>
-                            <input type="submit" style=" background-color: SeaGreen;  border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 25px;" name="submit" onclick="Validate()" value=" Thêm vào giỏ hàng" title="">
-                        </form>
-                    </div>
-                    <p class="m_desc" style="font-size: 20px; text-align: justify; color: black">@Model.MoTa</p>
-                    @*<div class="social_single">
-                    <ul>
-                        <li class="fb"><a href="#"><span> </span></a></li>
-                        <li class="tw"><a href="#"><span> </span></a></li>
-                        <li class="g_plus"><a href="#"><span> </span></a></li>
-                        <li class="rss"><a href="#"><span> </span></a></li>
-                    </ul>
-                </div>*@
-                }
-            </div>
-            <div class="clear"></div>
-            <div class="new_arrivals">
-                <h2>Sản phẩm liên quan</h2>
+                    <h2 class="text-black">@Model.TenSP</h2>
+                    <h2 style="color: dimgray">@Model.NHANHIEU.TenNhanHieu</h2>
+                    <p class="mb-4" style="text-align: justify; font-size: 17px; ">@Model.MoTa</p>
+                    <p><strong class="text-primary h4">@string.Format("{0:0,0}", Model.DonGia) VNĐ</strong></p>
+                    <div class="mb-1 d-flex">
+                        <div style="margin-right: 30px">
+                            <h2 class="m_9" style="font-size: 20px; color: black"> SELECT SIZE</h2>
+                            @Html.DropDownList("MaSize", (IEnumerable<SelectListItem>)ViewBag.MaSize, new { @style = "font-size= 25px; width:60px; height:40px; margin:15px 0px;" })
+                        </div>
+                        <div>
+                            <h2 class="m_9" style="font-size: 20px; color: black">SELECT COLOR</h2>
+                            @Html.DropDownList("MaMau", (IEnumerable<SelectListItem>)ViewBag.MaMau, new { @style = "font-size= 25px; width:100px; height:40px ; margin:15px 0px;" })
 
-                @foreach (var item in ViewBag.SPLienQuan)
-                {
-                    <!-- /womens -->
-                    <div class="col-md-3 product-men women_two">
-                        <div class="product-shoe-info shoe">
-                            <div class="men-pro-item">
-                                <div class="men-thumb-item">
-                                    <img width="200" height="200" src="@Url.Content("~/HinhAnh/HinhAnhSP/" + item.Anh)" alt="">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="@Url.Action("XemChiTiet", "SanPham", new { @masp = item.MaSP, @nhanhieu = item.MaNhanHieu, @loai = item.MaLoai })" class="link-product-add-cart">Xem nhanh</a>
-                                        </div>
-                                    </div>
-                                    @*<span class="product-new-top">New</span>*@
-                                </div>
-                                <div class="item-info-product">
-                                    @*Nếu tên sách dài quá 19 kí tự sẽ cắt tên sách ra lấy từ 0 đến kí tự 18*@
-                                    @if (item.TenSP.Length < 19)
-                                    {
-                                        <h4>
-                                            <a href="@Url.Action("XemChiTiet", "SanPham", new { @masp = item.MaSP, @nhanhieu = item.MaNhanHieu, @loai = item.MaLoai })">@item.TenSP</a>
-                                        </h4>
-                                    }
-                                    else
-                                    {
-                                        <h4>
-                                            <a title="@item.TenSP" href="@Url.Action("XemChiTiet", "SanPham", new { @masp = item.MaSP, @nhanhieu = item.MaNhanHieu, @loai = item.MaLoai })">@item.TenSP.Substring(0, 19)...</a>
-                                        </h4>
-                                    }
-                                    <div class="info-product-price">
-                                        <div class="grid_meta">
-                                            <div class="product_price">
-                                                <div class="grid-price ">
-                                                    <span class="money ">@string.Format("{0:0,0}", item.DonGia) VNĐ</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @*<div class="shoe single-item hvr-outline-out">
-                                        <button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
-                                    </div>*@
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
                         </div>
                     </div>
-                    <!-- //womens -->
+                    <input type="submit" class="buy-now btn btn-sm btn-success" name="submit"  value=" Thêm vào giỏ hàng" title="">
                 }
-                <div class="clear"></div>
+
             </div>
-            <!--//new_arrivals-->
-            <script type="text/javascript">
-                $(window).load(function () {
-                    $("#flexiselDemo1").flexisel();
-                    $("#flexiselDemo2").flexisel({
-                        enableResponsiveBreakpoints: true,
-                        responsiveBreakpoints: {
-                            portrait: {
-                                changePoint: 480,
-                                visibleItems: 1
-                            },
-                            landscape: {
-                                changePoint: 640,
-                                visibleItems: 2
-                            },
-                            tablet: {
-                                changePoint: 768,
-                                visibleItems: 3
-                            }
-                        }
-                    });
-
-                    $("#flexiselDemo3").flexisel({
-                        visibleItems: 5,
-                        animationSpeed: 1000,
-                        autoPlay: true,
-                        autoPlaySpeed: 3000,
-                        pauseOnHover: true,
-                        enableResponsiveBreakpoints: true,
-                        responsiveBreakpoints: {
-                            portrait: {
-                                changePoint: 480,
-                                visibleItems: 1
-                            },
-                            landscape: {
-                                changePoint: 640,
-                                visibleItems: 2
-                            },
-                            tablet: {
-                                changePoint: 768,
-                                visibleItems: 3
-                            }
-                        }
-                    });
-
-                });
-                function Validate() {
-                    var e = document.getElementById("MaMau");
-                    var f = document.getElementById("MaSize");
-                    var strS = f.options[f.selectedIndex].value;
-                    var strM = e.options[e.selectedIndex].value;
-
-                    if (strM == null || strM == "") {
-                        alert("Vui lòng chọn màu sắc");
-                    }
-                    if (strS == null || strS == "") {
-                        alert("Vui lòng chọn size");
-                    }
-                }
-            </script>
-            <script type="text/javascript" src="~/Content/Client/js/jquery.flexisel.js"></script>
         </div>
-        <div class="clear"></div>
+       
+       
     </div>
 </div>
-
-@section footer{
-    @Html.Action("FooterPartial", "Store")
+@section SiteBlocks2{
+   
 }
+
+@section SiteBlocks8{
+    
+}
+
+@section SiteBlocks3{
+    @{ Html.RenderAction("SanPhamNoiBat", "SanPham");}
+}
+
+
+@section SiteFooter{
+    @Html.Action("SiteFooter", "Store")
+}
+
+
+

@@ -65,7 +65,7 @@ a {
     border-color: #e6e7e9;
     color: #000; }
   .btn.btn-sm {
-    font-size: 14px !important;
+    font-size: 20px !important;
     padding: 10px 20px !important; }
   .btn.btn-primary {
     font-size: 17px;
@@ -227,7 +227,8 @@ a {
         text-transform: uppercase;
         letter-spacing: .05em;
         color: #25262a;
-        font-size: 15px;
+        font-size: 20px;
+        font-weight: 500;
         text-decoration: none !important; }
         .site-navbar .site-navigation .site-menu > li > a:hover {
           color: #7971ea; }
@@ -266,7 +267,7 @@ a {
         -o-transition: 0.2s 0s;
         transition: 0.2s 0s; }
         .site-navbar .site-navigation .site-menu .has-children .dropdown a {
-          font-size: 16px;
+          font-size: 20px;
           text-transform: none;
           letter-spacing: normal;
           -webkit-transition: 0s all;
@@ -434,14 +435,14 @@ a {
           display: block; }
           .site-mobile-menu .site-nav-wrap > li > ul > li > a {
             padding-left: 40px;
-            font-size: 16px; }
+            font-size: 20px; }
           .site-mobile-menu .site-nav-wrap > li > ul > li > ul {
             padding: 0;
             margin: 0; }
             .site-mobile-menu .site-nav-wrap > li > ul > li > ul > li {
               display: block; }
               .site-mobile-menu .site-nav-wrap > li > ul > li > ul > li > a {
-                font-size: 16px;
+                font-size: 20px;
                 padding-left: 60px; }
 
 /* Blocks */
@@ -464,7 +465,7 @@ a {
     font-size: 20px;
     line-height: 35px; }
   .site-blocks-cover .intro-text {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.5; }
 
 .site-blocks-1 {
@@ -695,8 +696,8 @@ a {
 #slider-range {
   height: 8px; }
   #slider-range .ui-slider-handle {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     border: none !important;
     background: #7971ea; }
