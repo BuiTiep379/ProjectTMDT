@@ -163,7 +163,7 @@ namespace ShopGiay.Controllers
             }
             if (listGioHang.Count == 0)
             {
-                return RedirectToAction("Index", "Store");
+                return RedirectToAction("Shop", "Store");
             }
             return RedirectToAction("GioHang");
         }
