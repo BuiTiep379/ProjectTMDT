@@ -1,0 +1,78 @@
+﻿@model ShopGiay.Models.KHACHHANG
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_ClientLayouts.cshtml";
+}
+@section SiteNavBar {
+    @{ Html.RenderAction("SiteNavBar", "Store");}
+}
+@section SiteBlocksCover {
+
+}
+@section SiteSection {
+
+}
+<div class="container">
+    <div class="col-8" style="margin-left: 180px">
+        <div class="wrap">
+            <h3 style="text-align: center; margin-bottom: 10px; font-weight: 600; color: forestgreen">REGISTER</h3>
+            <div class="comments-area">
+                @using (Html.BeginForm("Register", "Store", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group" style="padding-top: 10px">
+                        @Html.TextBoxFor(m => m.TenKH, new { @class = "form-control", @placeholder = "Tên khách hàng" })
+                        @Html.ValidationMessageFor(m => m.TenKH, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group" style="padding-top: 10px">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
+                        @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                        @if (ViewBag.error != null)
+                        {
+                            <span class="badge badge-danger" style="font-size: 20px">@ViewBag.error</span>
+                        }
+                    </div>
+                    <div class="form-group" style="padding-top: 10px">
+                        @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control", @placeholder = "Địa chỉ" })
+                        @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group" style="padding-top: 10px">
+                        @Html.TextBoxFor(m => m.Sdt, new { @class = "form-control", @placeholder = "Số điện thoại" })
+                        @Html.ValidationMessageFor(m => m.Sdt, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group" style="padding-top: 10px">
+                        <input data-val="true" style= " width: 710px; height: 43px"data-val-regex="Mật khẩu phải tối thiểu sáu ký tự, ít nhất một chữ cái và một số" data-val-regex-pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" data-val-required="Mật khẩu không được để trống" id="MatKhau" name="MatKhau" placeholder="Mật khẩu" type="password">
+                        @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group" style="padding-top: 10px">
+                        <input data-val="true" style= " width: 710px; height: 43px" data-val-equalto="Xác nhận mật khẩu không trùng khớp với mật khẩu" data-val-equalto-other="*.MatKhau" data-val-required="Xác nhận mật khẩu không được để trống" id="XacNhanMatKhau" name="XacNhanMatKhau" placeholder=" Xác nhận Mật khẩu" type="password">
+                        @Html.ValidationMessageFor(m => m.XacNhanMatKhau, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group" style="padding-top: 20px">
+                        <input type="submit" value="ĐĂNG KÝ">
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section SiteBlocks2{
+
+}
+
+@section SiteBlocks8{
+
+}
+
+@section SiteBlocks3{
+
+}
+
+
+@section SiteFooter{
+    @Html.Action("SiteFooter", "Store")
+}
+

@@ -340,7 +340,7 @@
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QLNhanVien\DanhSachNV.cshtml" />
     <Content Include="Areas\Admin\Views\QLNhanVien\AddNhanVien.cshtml" />
-    <Content Include="Areas\Admin\Views\QLNhanVien\DeleteNhanvien.cshtml" />
+    <Content Include="Areas\Admin\Views\QLNhanVien\DeleteNhanVien.cshtml" />
     <Content Include="Areas\Admin\Views\QLKhachHang\DanhSachKH.cshtml" />
     <Content Include="Areas\Admin\Views\QLKhachHang\DetailKhachHang.cshtml" />
     <Content Include="Areas\Admin\Views\QLKhachHang\DeleteKhachHang.cshtml" />
@@ -488,9 +488,7 @@
     <Content Include="Views\Store\SiteNavbar.cshtml" />
     <Content Include="Views\Store\SiteBlocksCover.cshtml" />
     <Content Include="Views\Store\SiteSection.cshtml" />
-    <Content Include="Views\KhachHang\Register.cshtml" />
     <Content Include="Views\KhachHang\Index.cshtml" />
-    <Content Include="Views\KhachHang\Login.cshtml" />
     <Content Include="Views\SanPham\SanPhamNoiBat.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
     <Content Include="Views\SanPham\DanhSachSanPham.cshtml" />
@@ -507,6 +505,9 @@
     <Content Include="Views\Shared\_ShopLayouts.cshtml" />
     <Content Include="Views\Store\Shop.cshtml" />
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\Store\Register.cshtml" />
+    <Content Include="Views\Store\Login.cshtml" />
+    <Content Include="Views\Store\UpdateInfoCaNhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

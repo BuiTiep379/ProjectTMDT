@@ -92,7 +92,7 @@ namespace ShopGiay.Areas.Admin.Controllers
             }
             return View(nv);
         }
-        public ActionResult DeleteNhanvien(int? maNV)
+        public ActionResult DeleteNhanVien(int? maNV)
         {
             if (maNV == null)
             {

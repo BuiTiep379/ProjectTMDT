@@ -9,7 +9,7 @@ namespace ShopGiay.Models
 {
     [MetadataType(typeof(KHACHHANGMetadata))]
     public partial class KHACHHANG
-    {
+    { 
         public string XacNhanMatKhau { get; set; }
     }
     public partial class KHACHHANGMetadata
@@ -28,7 +28,7 @@ namespace ShopGiay.Models
         [Display(Name = "Email")]
         [Index(IsUnique = true)]
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", 
+        [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
             ErrorMessage = "Vui lòng nhập đúng đinh dạng là Email")]
         public string Email { get; set; }
         [Required(ErrorMessage = "{0} không được để trống")]
@@ -43,8 +43,9 @@ namespace ShopGiay.Models
         public string MatKhau { get; set; }
         [NotMapped]
         [Display(Name = "Xác nhận mật khẩu")]
-        [Compare("MatKhau",ErrorMessage ="{0} không trùng khớp với mật khẩu")]
-        [Required(ErrorMessage ="{0} không được để trống")]
+        [Compare("MatKhau", ErrorMessage = "{0} không trùng khớp với mật khẩu")]
+        [Required(ErrorMessage = "{0} không được để trống")]
         public string XacNhanMatKhau { get; set; }
+        
     }
 }
