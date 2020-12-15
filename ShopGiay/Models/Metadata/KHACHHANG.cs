@@ -9,16 +9,16 @@ namespace ShopGiay.Models
 {
     [MetadataType(typeof(KHACHHANGMetadata))]
     public partial class KHACHHANG
-    { 
+    {
         public string XacNhanMatKhau { get; set; }
     }
-    public partial class KHACHHANGMetadata
+    public class KHACHHANGMetadata
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Display(Name = "Mã khách hàng")]
         public int MaKH { get; set; }
-        [Required(ErrorMessage = "{0} không được để trống")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} không được để trống")]
         [Display(Name = "Họ tên")]
         public string TenKH { get; set; }
         [Display(Name = "Địa chỉ")]
@@ -39,13 +39,14 @@ namespace ShopGiay.Models
         public string Sdt { get; set; }
         [Display(Name = "Mật khẩu")]
         [Required(ErrorMessage = "{0} không được để trống")]
+        [DataType(DataType.Password)]
         [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$", ErrorMessage = "Mật khẩu phải tối thiểu sáu ký tự, ít nhất một chữ cái và một số")]
         public string MatKhau { get; set; }
-        [NotMapped]
         [Display(Name = "Xác nhận mật khẩu")]
-        [Compare("MatKhau", ErrorMessage = "{0} không trùng khớp với mật khẩu")]
-        [Required(ErrorMessage = "{0} không được để trống")]
+        [Required(AllowEmptyStrings = false, ErrorMessage ="{0} không được để trống")]
+        [DataType(DataType.Password)]
+        [Compare("MatKhau", ErrorMessage ="{0} không trùng khớp với mật khẩu")]
+        [NotMapped]
         public string XacNhanMatKhau { get; set; }
-        
     }
 }

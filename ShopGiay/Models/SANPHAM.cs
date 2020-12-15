@@ -34,9 +34,9 @@ namespace ShopGiay.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
-        public virtual LOAISP LOAISP { get; set; }
-        public virtual NHANHIEU NHANHIEU { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETSP> CHITIETSPs { get; set; }
+        public virtual LOAISP LOAISP { get; set; }
+        public virtual NHANHIEU NHANHIEU { get; set; }
     }
 }

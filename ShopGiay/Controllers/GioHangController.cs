@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ShopGiay.Models;
+using System.Data.Entity;
 
 
 namespace ShopGiay.Controllers
@@ -26,6 +27,12 @@ namespace ShopGiay.Controllers
         }
         public ActionResult GioHang()
         {
+            int maKH = int.Parse(Session["UserID"].ToString());
+            KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.MaKH == maKH);
+            ViewBag.MaKH = maKH;
+            ViewBag.Email = kh.Email;
+            ViewBag.DiaChi = kh.DiaChi;
+            ViewBag.Sdt = kh.Sdt;
             if (Session["GIOHANG"] == null)
             {
                 TempData["KhongCo"] = "Cart is empty";
@@ -64,6 +71,7 @@ namespace ShopGiay.Controllers
             {
                 tongtien = listGioHang.Sum(n => n.ThanhTien);
             }
+            Session["TongTien"] = tongtien;
             return tongtien;
         }
         public ActionResult ThemSanPham(int maSP, string url)
@@ -178,6 +186,77 @@ namespace ShopGiay.Controllers
             ViewBag.TongSoLuong = TongSoLuong();
             ViewBag.TongTien = TongTien();
             return PartialView();
+        }
+        
+        public ActionResult ThanhToan(int maKH,string email, string diaChiGiao, string sdt)
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Store");
+            }
+            else
+            {
+                if (Session["GioHang"] == null)
+                {
+                    TempData["ThongBao"] = "Giỏ hàng của bạn trống";
+                    return RedirectToAction("Shop", "Store");
+                }
+                else
+                {
+                    List<GIOHANG> listGioHang = LayGioHang();
+                    TempData["TongTien"] = TongTien();
+                    maKH = int.Parse(Session["UserID"].ToString());
+                    KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.MaKH == maKH);
+                    ViewBag.TenKH = kh.TenKH;
+                    ViewBag.Email = kh.Email;
+                    ViewBag.DiaChi = kh.DiaChi;
+                    ViewBag.Sdt = kh.Sdt;
+                    return View(listGioHang);
+                }
+            }
+            
+        }
+        [HttpPost, ActionName("ThanhToan")]
+        [ValidateAntiForgeryToken]
+        public ActionResult XacNhanThanhToan(int maKH,string email, string diaChiGiao, string sdt)
+        {
+            KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.MaKH == maKH);
+            DONHANG dh = new DONHANG()
+            {
+                MaKH = int.Parse(Session["UserID"].ToString()),
+                NgayDatHang = DateTime.Now,
+                NgayGiaoHang = DateTime.Now,
+                DiaChiGiao = diaChiGiao,
+                TongTien = TongTien(),
+                ThanhToan = "Cash",
+                TinhTrang = "Chưa xác nhận",
+                HoTen = kh.TenKH,
+                Email = email,
+                Sdt = sdt
+            };
+            db.DONHANGs.Add(dh);
+            db.SaveChanges();
+            List<GIOHANG> listGioHang = LayGioHang();
+            foreach (var item in listGioHang)
+            {
+                int maSP = item.MaSP;
+                int maSize = item.MaSize;
+                int maMau = item.MaMau;
+                int soLuong = item.SoLuong;
+                CHITIETSP ct = db.CHITIETSPs.SingleOrDefault(x => x.MaSP == maSP && x.MaMau == maMau && x.MaSize == maSize);
+                ct.SoLuong -= soLuong;
+                db.Entry(ct).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            Session.Remove("GIOHANG");
+            return RedirectToAction("ThanksYou");
+        }
+        public ActionResult ThanksYou()
+        {
+            int maKH = int.Parse(Session["UserID"].ToString());
+            KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.MaKH == maKH);
+            ViewBag.TenKhachHang = kh.TenKH;
+            return View();
         }
     }
 }

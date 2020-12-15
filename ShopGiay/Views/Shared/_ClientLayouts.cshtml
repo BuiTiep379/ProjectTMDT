@@ -19,14 +19,14 @@
 </head>
 <body>
     <div class="site-wrap">
-        @RenderSection("SiteNavBar");
-        @RenderSection("SiteBlocksCover")
-        @RenderSection("SiteSection")
+        @RenderSection("SiteNavBar", false);
+        @RenderSection("SiteBlocksCover", false)
+        @RenderSection("SiteSection", false)
         @RenderBody()
-        @RenderSection("SiteBlocks2")
-        @RenderSection("SiteBlocks3")
-        @RenderSection("SiteBlocks8")
-        @RenderSection("SiteFooter")
+        @RenderSection("SiteBlocks2", false)
+        @RenderSection("SiteBlocks3", false)
+        @RenderSection("SiteBlocks8", false)
+        @RenderSection("SiteFooter", false)
     </div>
     
     <script src="~/Content/Client/js/jquery-3.3.1.min.js"></script>

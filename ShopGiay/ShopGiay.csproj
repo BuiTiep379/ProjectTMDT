@@ -155,6 +155,7 @@
     <Compile Include="Areas\Admin\Controllers\QLMauSacController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLNhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLSanPhamController.cs" />
+    <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
@@ -356,13 +357,6 @@
     <Content Include="Areas\Admin\Views\QLSanPham\DetailSanPham.cshtml" />
     <Content Include="Areas\Admin\Views\QLSanPham\ShowSanPham.cshtml" />
     <Content Include="Areas\Admin\Views\QLSanPham\DeleteSanPham.cshtml" />
-    <EntityDeploy Include="Models\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\QLChiTietSanPham\DanhSachChiTietSP.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\SidebarMenu.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\HeaderStarts.cshtml" />
@@ -463,6 +457,13 @@
     <Content Include="Content\Client\scss\_site-base.scss" />
     <Content Include="Content\Client\scss\_site-blocks.scss" />
     <Content Include="Content\Client\scss\_site-navbar.scss" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -508,12 +509,16 @@
     <Content Include="Views\Store\Register.cshtml" />
     <Content Include="Views\Store\Login.cshtml" />
     <Content Include="Views\Store\UpdateInfoCaNhan.cshtml" />
+    <Content Include="Views\Store\InfoCaNhan.cshtml" />
+    <Content Include="Views\GioHang\ThanhToan.cshtml" />
+    <Content Include="Views\GioHang\ThanksYou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="HinhAnh\HinhAnhSP\" />
+    <Folder Include="Views\DonHang\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
