@@ -22,7 +22,6 @@ namespace ShopGiay.Models
     
         public int MaDH { get; set; }
         public Nullable<int> MaKH { get; set; }
-        public Nullable<int> MaNV { get; set; }
         public Nullable<System.DateTime> NgayDatHang { get; set; }
         public Nullable<System.DateTime> NgayGiaoHang { get; set; }
         public string DiaChiGiao { get; set; }
@@ -33,9 +32,9 @@ namespace ShopGiay.Models
         public string Email { get; set; }
         public string Sdt { get; set; }
     
-        public virtual KHACHHANG KHACHHANG { get; set; }
-        public virtual NHANVIEN NHANVIEN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
+        public virtual KHACHHANG KHACHHANG { get; set; }
+        public virtual NHANVIEN NHANVIEN { get; set; }
     }
 }

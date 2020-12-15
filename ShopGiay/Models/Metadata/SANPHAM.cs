@@ -11,7 +11,7 @@ namespace ShopGiay.Models
     public partial class SANPHAM
     {
     }
-    public partial class SANPHAMMetadata
+    public class SANPHAMMetadata
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

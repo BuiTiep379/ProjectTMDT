@@ -72,7 +72,7 @@
                         <div class="site-top-icons">
                             <ul>
                                 <li><a href="/Store/Logout">Logout</a></li>
-                                <li><a href="/Store/UpdateInfoCaNhan">Info</a></li>
+                                <li>@Html.ActionLink("Info","InfoCaNhan", "Store", new { @maKH = Session["UserID"]})</li>
                                 @{Html.RenderAction("GioHangPartial", "GioHang");}
                                 <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                             </ul>

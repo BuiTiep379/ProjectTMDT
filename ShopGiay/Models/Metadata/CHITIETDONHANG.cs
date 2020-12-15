@@ -11,7 +11,7 @@ namespace ShopGiay.Models
     public partial class CHITIETDONHANG
     {
     }
-    public partial class CHITIETDONHANGMetadata
+    public class CHITIETDONHANGMetadata
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

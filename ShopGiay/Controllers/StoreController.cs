@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -54,7 +56,7 @@ namespace ShopGiay.Controllers
             }
             return View();
         }
-
+        [HttpGet]
         public ActionResult Login()
         {
             return View();
@@ -64,16 +66,16 @@ namespace ShopGiay.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(FormCollection f)
         {
-            string sEmail = Request.Form["Email"].ToString();
-            string sMatKhau = Request.Form["MatKhau"].ToString();
+            string sEmail = f["txtemail"].ToString();
+            string sMatKhau = f["txtmatkhau"].ToString();
             var f_password = GetMD5(sMatKhau);
-            var kh = db.KHACHHANGs.Where(s => s.Email.Equals(sEmail) && s.MatKhau.Equals(f_password)).ToList();
+            var kh = db.KHACHHANGs.SingleOrDefault(x => x.Email == sEmail && x.MatKhau == f_password);
             if (kh != null)
             {
                 ViewBag.ThongBao = "Đăng nhập thành công";
-                Session["UserID"] = kh.FirstOrDefault().MaKH;
-                Session["Email"] = kh.FirstOrDefault().Email;
-                Session["UserName"] = kh.FirstOrDefault().TenKH;
+                Session["UserID"] = kh.MaKH;
+                Session["Email"] = kh.Email;
+                Session["UserName"] = kh.TenKH;
                 return RedirectToAction("Index");
             }
             ViewBag.ThongBao = "Tên tài khoản hoặc mật khẩu không đúng!!!";
@@ -113,17 +115,35 @@ namespace ShopGiay.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult UpdateInfoCaNhan(string email)
+        public ActionResult InfoCaNhan(int? maKH)
         {
-            email = Session["Email"].ToString();
-            if (email == null)
+            maKH = int.Parse(Session["UserID"].ToString());
+            if (maKH == 0)
+            {
+                return RedirectToAction("Shop");
+            }    
+            else
+            {
+                KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.MaKH == maKH);
+                if (kh == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                return View(kh);
+            }
+        }
+        [HttpGet]
+        public ActionResult UpdateInfoCaNhan(int? maKH)
+        {
+            maKH = int.Parse(Session["UserID"].ToString());
+            if (maKH == null)
             {
                 return RedirectToAction("Login");
             }
             else
             {
-                KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.Email == email);
+                KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.MaKH == maKH);
                 if (kh == null)
                 {
                     Response.StatusCode = 404;
@@ -134,11 +154,12 @@ namespace ShopGiay.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult UpdateInfoCaNhan([Bind(Include ="TenKH, Email, Sdt")]KHACHHANG kh)
+        public ActionResult UpdateInfoCaNhan([Bind(Exclude ="XacNhanMatKhau")]KHACHHANG kh)
         {
+            
             if (ModelState.Count == 6)
             {
-                db.Entry(kh).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(kh).State = EntityState.Modified;
                 db.SaveChanges();
                 TempData["ThongBao"] = "Chỉnh sửa thông tin khách hàng thành công!";
             }
@@ -146,6 +167,7 @@ namespace ShopGiay.Controllers
             {
                 TempData["ThongBao"] = "Chỉnh sửa thông tin khách hàng không thành công!";
             }
+
             return View(kh);
         }
         public ActionResult Shop()

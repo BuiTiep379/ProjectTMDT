@@ -30,7 +30,6 @@
     </Key>
     <Property Name="MaDH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaKH" Type="int" />
-    <Property Name="MaNV" Type="int" />
     <Property Name="NgayDatHang" Type="datetime" />
     <Property Name="NgayGiaoHang" Type="datetime" />
     <Property Name="DiaChiGiao" Type="nvarchar" MaxLength="50" />
@@ -206,18 +205,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DH_NHANVIEN">
-    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
-    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NHANVIEN">
-        <PropertyRef Name="MaNV" />
-      </Principal>
-      <Dependent Role="DONHANG">
-        <PropertyRef Name="MaNV" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_SP_LOAI">
     <End Role="LOAISP" Type="Self.LOAISP" Multiplicity="0..1" />
     <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
@@ -283,10 +270,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_DH_KHACHHANG" Association="Self.FK_DH_KHACHHANG">
       <End Role="KHACHHANG" EntitySet="KHACHHANG" />
-      <End Role="DONHANG" EntitySet="DONHANG" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DH_NHANVIEN" Association="Self.FK_DH_NHANVIEN">
-      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
       <End Role="DONHANG" EntitySet="DONHANG" />
     </AssociationSet>
     <AssociationSet Name="FK_SP_LOAI" Association="Self.FK_SP_LOAI">

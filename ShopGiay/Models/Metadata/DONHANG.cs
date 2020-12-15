@@ -10,6 +10,7 @@ namespace ShopGiay.Models
     [MetadataType(typeof(DONHANGMetadata))]
     public partial class DONHANG
     {
+       
     }
     public partial class DONHANGMetadata
     {
@@ -19,8 +20,6 @@ namespace ShopGiay.Models
         public int MaDH { get; set; }
         [Display(Name = "Mã khách hàng")]
         public Nullable<int> MaKH { get; set; }
-        [Display(Name = "Mã nhân viên")]
-        public Nullable<int> MaNV { get; set; }
         [Display(Name = "Ngày đặt hàng")]
         public Nullable<System.DateTime> NgayDatHang { get; set; }
         [Display(Name = "Ngày giao hàng")]
