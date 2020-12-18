@@ -22,9 +22,11 @@
         <AssociationConnector Association="ShopGiayModel.FK_CTSP_SP" ManuallyRouted="false" />
         <AssociationConnector Association="ShopGiayModel.FK_SP_LOAI" ManuallyRouted="false" />
         <AssociationConnector Association="ShopGiayModel.FK_SP_NHANHIEU" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ShopGiayModel.DONHANG" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="ShopGiayModel.PROMOCODE" Width="1.5" PointX="3.375" PointY="9.125" />
+        <EntityTypeShape EntityType="ShopGiayModel.DONHANG" Width="1.5" PointX="5.625" PointY="8.375" />
         <AssociationConnector Association="ShopGiayModel.FK_CTDH_DH" />
         <AssociationConnector Association="ShopGiayModel.FK_DH_KHACHHANG" />
+        <AssociationConnector Association="ShopGiayModel.FK_DH_Promo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
