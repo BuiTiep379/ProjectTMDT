@@ -12,7 +12,7 @@ namespace ShopGiay.Models
     {
        
     }
-    public partial class DONHANGMetadata
+    public class DONHANGMetadata
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -20,6 +20,8 @@ namespace ShopGiay.Models
         public int MaDH { get; set; }
         [Display(Name = "Mã khách hàng")]
         public Nullable<int> MaKH { get; set; }
+        [Display(Name = "Mã giảm giá")]
+        public Nullable<int> PromoID { get; set; }
         [Display(Name = "Ngày đặt hàng")]
         public Nullable<System.DateTime> NgayDatHang { get; set; }
         [Display(Name = "Ngày giao hàng")]

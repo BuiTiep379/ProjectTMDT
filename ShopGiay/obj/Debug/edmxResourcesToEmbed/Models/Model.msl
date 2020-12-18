@@ -100,6 +100,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="PROMOCODEs">
+      <EntityTypeMapping TypeName="ShopGiayModel.PROMOCODE">
+        <MappingFragment StoreEntitySet="PROMOCODE">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="DONHANGs">
       <EntityTypeMapping TypeName="ShopGiayModel.DONHANG">
         <MappingFragment StoreEntitySet="DONHANG">
@@ -112,6 +123,7 @@
           <ScalarProperty Name="DiaChiGiao" ColumnName="DiaChiGiao" />
           <ScalarProperty Name="NgayGiaoHang" ColumnName="NgayGiaoHang" />
           <ScalarProperty Name="NgayDatHang" ColumnName="NgayDatHang" />
+          <ScalarProperty Name="PromoID" ColumnName="PromoID" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="MaDH" ColumnName="MaDH" />
         </MappingFragment>

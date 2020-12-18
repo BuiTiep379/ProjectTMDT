@@ -271,3 +271,5 @@ C:\Users\BUITIEP\Desktop\ProjectTMDT\ShopGiay\bin\Newtonsoft.Json.xml
 C:\Users\BUITIEP\Desktop\ProjectTMDT\ShopGiay\bin\Antlr3.Runtime.pdb
 C:\Users\BUITIEP\Desktop\ProjectTMDT\ShopGiay\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\BUITIEP\Desktop\ProjectTMDT\ShopGiay\obj\Debug\ShopGiay.csproj.CopyComplete
+C:\Users\BUITIEP\Desktop\ProjectTMDT\ShopGiay\bin\Common.dll
+C:\Users\BUITIEP\Desktop\ProjectTMDT\ShopGiay\bin\Common.pdb

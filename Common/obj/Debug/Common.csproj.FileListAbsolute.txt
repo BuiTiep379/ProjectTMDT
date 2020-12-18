@@ -1,0 +1,6 @@
+C:\Users\BUITIEP\Desktop\ProjectTMDT\Common\bin\Debug\Common.dll
+C:\Users\BUITIEP\Desktop\ProjectTMDT\Common\bin\Debug\Common.pdb
+C:\Users\BUITIEP\Desktop\ProjectTMDT\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\BUITIEP\Desktop\ProjectTMDT\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\BUITIEP\Desktop\ProjectTMDT\Common\obj\Debug\Common.dll
+C:\Users\BUITIEP\Desktop\ProjectTMDT\Common\obj\Debug\Common.pdb

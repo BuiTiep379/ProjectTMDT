@@ -10,7 +10,7 @@ namespace ShopGiay.Models
     [MetadataType(typeof(KHACHHANGMetadata))]
     public partial class KHACHHANG
     {
-        public string XacNhanMatKhau { get; set; }
+        
     }
     public class KHACHHANGMetadata
     {
@@ -42,11 +42,5 @@ namespace ShopGiay.Models
         [DataType(DataType.Password)]
         [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$", ErrorMessage = "Mật khẩu phải tối thiểu sáu ký tự, ít nhất một chữ cái và một số")]
         public string MatKhau { get; set; }
-        [Display(Name = "Xác nhận mật khẩu")]
-        [Required(AllowEmptyStrings = false, ErrorMessage ="{0} không được để trống")]
-        [DataType(DataType.Password)]
-        [Compare("MatKhau", ErrorMessage ="{0} không trùng khớp với mật khẩu")]
-        [NotMapped]
-        public string XacNhanMatKhau { get; set; }
     }
 }

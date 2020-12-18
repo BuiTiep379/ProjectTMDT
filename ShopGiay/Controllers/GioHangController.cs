@@ -188,7 +188,7 @@ namespace ShopGiay.Controllers
             return PartialView();
         }
         
-        public ActionResult ThanhToan(int maKH,string email, string diaChiGiao, string sdt)
+        public ActionResult ThanhToan(int maKH)
         {
             if (Session["UserID"] == null)
             {
@@ -218,22 +218,23 @@ namespace ShopGiay.Controllers
         }
         [HttpPost, ActionName("ThanhToan")]
         [ValidateAntiForgeryToken]
-        public ActionResult XacNhanThanhToan(int maKH,string email, string diaChiGiao, string sdt)
+        public ActionResult XacNhanThanhToan(int maKH)
         {
             KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.MaKH == maKH);
             DONHANG dh = new DONHANG()
             {
                 MaKH = int.Parse(Session["UserID"].ToString()),
                 NgayDatHang = DateTime.Now,
-                NgayGiaoHang = DateTime.Now,
-                DiaChiGiao = diaChiGiao,
+                NgayGiaoHang = null,
+                DiaChiGiao = ViewBag.DiaChi,
                 TongTien = TongTien(),
                 ThanhToan = "Cash",
                 TinhTrang = "Chưa xác nhận",
                 HoTen = kh.TenKH,
-                Email = email,
-                Sdt = sdt
+                Email = ViewBag.Email,
+                Sdt = ViewBag.Sdt
             };
+
             db.DONHANGs.Add(dh);
             db.SaveChanges();
             List<GIOHANG> listGioHang = LayGioHang();
@@ -243,11 +244,30 @@ namespace ShopGiay.Controllers
                 int maSize = item.MaSize;
                 int maMau = item.MaMau;
                 int soLuong = item.SoLuong;
-                CHITIETSP ct = db.CHITIETSPs.SingleOrDefault(x => x.MaSP == maSP && x.MaMau == maMau && x.MaSize == maSize);
-                ct.SoLuong -= soLuong;
-                db.Entry(ct).State = EntityState.Modified;
+                CHITIETSP ctsp = db.CHITIETSPs.SingleOrDefault(x => x.MaSP == maSP && x.MaMau == maMau && x.MaSize == maSize);
+                ctsp.SoLuong -= soLuong;
+                db.Entry(ctsp).State = EntityState.Modified;
                 db.SaveChanges();
             }
+            foreach (var item in listGioHang)
+            {
+                int maSP = item.MaSP;
+                int maSize = item.MaSize;
+                int maMau = item.MaMau;
+                int soLuong = item.SoLuong;
+                decimal donGia = item.ThanhTien;
+                CHITIETDONHANG ctdh = new CHITIETDONHANG()
+                {
+                    MaDH = dh.MaDH,
+                    MaSP = maSP,
+                    MaMau = maMau,
+                    MaSize = maSize,
+                    SoLuong = soLuong,
+                    DonGia = donGia
+                };
+                db.CHITIETDONHANGs.Add(ctdh);
+                db.SaveChanges();
+            }    
             Session.Remove("GIOHANG");
             return RedirectToAction("ThanksYou");
         }

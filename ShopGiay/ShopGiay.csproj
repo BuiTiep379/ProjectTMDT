@@ -154,6 +154,7 @@
     <Compile Include="Areas\Admin\Controllers\QLLoaiSPController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLMauSacController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLNhanVienController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLPromoCodeController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLSanPhamController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Models\Metadata\MAUSAC.cs" />
     <Compile Include="Models\Metadata\NHANHIEU.cs" />
     <Compile Include="Models\Metadata\NHANVIEN.cs" />
+    <Compile Include="Models\Metadata\PROMOCODE.cs" />
     <Compile Include="Models\Metadata\SANPHAM.cs" />
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -216,6 +218,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NHANVIEN.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PROMOCODE.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SANPHAM.cs">
@@ -271,7 +276,6 @@
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Client\css\aos.css" />
     <Content Include="Content\Client\css\bootstrap.min.css" />
     <Content Include="Content\Client\css\bootstrap\bootstrap-grid.css" />
@@ -281,12 +285,8 @@
     <Content Include="Content\Client\css\owl.carousel.min.css" />
     <Content Include="Content\Client\css\owl.theme.default.min.css" />
     <Content Include="Content\Client\css\style.css" />
-    <Content Include="Content\Client\fonts\icomoon\demo-files\demo.css" />
-    <Content Include="Content\Client\fonts\icomoon\demo-files\demo.js" />
-    <Content Include="Content\Client\fonts\icomoon\demo.html" />
-    <Content Include="Content\Client\fonts\icomoon\fonts\icomoon.svg" />
-    <Content Include="Content\Client\fonts\icomoon\Read Me.txt" />
-    <Content Include="Content\Client\fonts\icomoon\style.css" />
+    <Content Include="Content\Client\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Client\fonts\themify.svg" />
     <Content Include="Content\Client\images\blog_1.jpg" />
     <Content Include="Content\Client\images\children.jpg" />
     <Content Include="Content\Client\images\cloth_1.jpg" />
@@ -364,10 +364,6 @@
     <Content Include="Areas\Admin\Views\QLChiTietSanPham\EditChiTietSP.cshtml" />
     <Content Include="Areas\Admin\Views\QLChiTietSanPham\DeleteCTSP.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
-    <Content Include="Content\Client\fonts\icomoon\fonts\icomoon.eot" />
-    <Content Include="Content\Client\fonts\icomoon\fonts\icomoon.ttf" />
-    <Content Include="Content\Client\fonts\icomoon\fonts\icomoon.woff" />
-    <Content Include="Content\Client\fonts\icomoon\selection.json" />
     <Content Include="Content\Client\scss\.DS_Store" />
     <Content Include="Content\Client\scss\bootstrap\.DS_Store" />
     <Content Include="Content\Client\scss\bootstrap\bootstrap-grid.scss" />
@@ -464,6 +460,17 @@
     <Content Include="Models\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\QLPromoCode\DanhSachPromoCode.cshtml" />
+    <Content Include="Areas\Admin\Views\QLPromoCode\AddPromoCode.cshtml" />
+    <Content Include="Areas\Admin\Views\QLPromoCode\EditPromoCode.cshtml" />
+    <Content Include="Areas\Admin\Views\QLPromoCode\DeletePromoCode.cshtml" />
+    <Content Include="Content\Client\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Client\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Client\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Client\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Client\fonts\themify.eot" />
+    <Content Include="Content\Client\fonts\themify.ttf" />
+    <Content Include="Content\Client\fonts\themify.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -512,6 +519,9 @@
     <Content Include="Views\Store\InfoCaNhan.cshtml" />
     <Content Include="Views\GioHang\ThanhToan.cshtml" />
     <Content Include="Views\GioHang\ThanksYou.cshtml" />
+    <Content Include="Views\Store\ChangePassword.cshtml" />
+    <Content Include="Views\Store\DonMua.cshtml" />
+    <Content Include="Views\Store\DetailDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -536,6 +546,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{22b7db49-4cfb-4f80-8481-edddbb9f2969}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

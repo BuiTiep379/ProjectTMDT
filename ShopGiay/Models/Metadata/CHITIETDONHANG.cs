@@ -13,7 +13,6 @@ namespace ShopGiay.Models
     }
     public class CHITIETDONHANGMetadata
     {
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name ="Mã đơn hàng")]
         public int MaDH { get; set; }

@@ -34,6 +34,7 @@ namespace ShopGiay.Models
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
         public virtual DbSet<SIZE> SIZEs { get; set; }
+        public virtual DbSet<PROMOCODE> PROMOCODEs { get; set; }
         public virtual DbSet<DONHANG> DONHANGs { get; set; }
     }
 }

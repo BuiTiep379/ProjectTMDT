@@ -249,6 +249,7 @@
       <End Role="NHANHIEU" EntitySet="NHANHIEUx" />
       <End Role="SANPHAM" EntitySet="SANPHAMs" />
     </AssociationSet>
+    <EntitySet Name="PROMOCODEs" EntityType="ShopGiayModel.PROMOCODE" />
     <EntitySet Name="DONHANGs" EntityType="ShopGiayModel.DONHANG" />
     <AssociationSet Name="FK_CTDH_DH" Association="ShopGiayModel.FK_CTDH_DH">
       <End Role="DONHANG" EntitySet="DONHANGs" />
@@ -258,17 +259,33 @@
       <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
       <End Role="DONHANG" EntitySet="DONHANGs" />
     </AssociationSet>
+    <AssociationSet Name="FK_DH_Promo" Association="ShopGiayModel.FK_DH_Promo">
+      <End Role="PROMOCODE" EntitySet="PROMOCODEs" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="PROMOCODE">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="250" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="DONHANGs" Relationship="ShopGiayModel.FK_DH_Promo" FromRole="PROMOCODE" ToRole="DONHANG" />
+  </EntityType>
   <EntityType Name="DONHANG">
     <Key>
       <PropertyRef Name="MaDH" />
     </Key>
     <Property Name="MaDH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MaKH" Type="Int32" />
+    <Property Name="PromoID" Type="Int32" />
     <Property Name="NgayDatHang" Type="DateTime" Precision="3" />
     <Property Name="NgayGiaoHang" Type="DateTime" Precision="3" />
     <Property Name="DiaChiGiao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="TongTien" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TongTien" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="ThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -276,6 +293,7 @@
     <Property Name="Sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="CHITIETDONHANGs" Relationship="ShopGiayModel.FK_CTDH_DH" FromRole="DONHANG" ToRole="CHITIETDONHANG" />
     <NavigationProperty Name="KHACHHANG" Relationship="ShopGiayModel.FK_DH_KHACHHANG" FromRole="DONHANG" ToRole="KHACHHANG" />
+    <NavigationProperty Name="PROMOCODE" Relationship="ShopGiayModel.FK_DH_Promo" FromRole="DONHANG" ToRole="PROMOCODE" />
   </EntityType>
   <Association Name="FK_CTDH_DH">
     <End Type="ShopGiayModel.DONHANG" Role="DONHANG" Multiplicity="1" />
@@ -298,6 +316,18 @@
       </Principal>
       <Dependent Role="DONHANG">
         <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DH_Promo">
+    <End Type="ShopGiayModel.PROMOCODE" Role="PROMOCODE" Multiplicity="0..1" />
+    <End Type="ShopGiayModel.DONHANG" Role="DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROMOCODE">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="PromoID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

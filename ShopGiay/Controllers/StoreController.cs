@@ -35,18 +35,37 @@ namespace ShopGiay.Controllers
         //POST: Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(KHACHHANG user)
+        public ActionResult Register(FormCollection form)
         {
+            string tenKH = form["txttenkh"].ToString();
+            string email = form["txtemail"].ToString();
+            string diaChi = form["txtdiachi"].ToString();
+            string sdt = form["txtsdt"].ToString();
+            string matKhau = form["txtmatkhau"].ToString();
+            string xacNhanMK = form["txtxnmk"].ToString();
+            if (matKhau != xacNhanMK)
+            {
+                ViewBag.ThongBao = "Xác nhận mật khẩu không trùng khớp";
+                return View();
+            }
+            
             if (ModelState.IsValid)
             {
-                var check = db.KHACHHANGs.FirstOrDefault(s => s.Email == user.Email);
+                var check = db.KHACHHANGs.FirstOrDefault(s => s.Email == email);
                 if (check == null)
                 {
-                    user.MatKhau = GetMD5(user.MatKhau);
-                    db.Configuration.ValidateOnSaveEnabled = false;
-                    db.KHACHHANGs.Add(user);
+                    var maHoa = GetMD5(matKhau);
+                    KHACHHANG kh = new KHACHHANG()
+                    {
+                        TenKH = tenKH,
+                        DiaChi = diaChi,
+                        Email = email,
+                        Sdt = sdt,
+                        MatKhau = maHoa,
+                    };
+                    db.KHACHHANGs.Add(kh);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Login");
                 }
                 else
                 {
@@ -68,6 +87,7 @@ namespace ShopGiay.Controllers
         {
             string sEmail = f["txtemail"].ToString();
             string sMatKhau = f["txtmatkhau"].ToString();
+            
             var f_password = GetMD5(sMatKhau);
             var kh = db.KHACHHANGs.SingleOrDefault(x => x.Email == sEmail && x.MatKhau == f_password);
             if (kh != null)
@@ -75,10 +95,9 @@ namespace ShopGiay.Controllers
                 ViewBag.ThongBao = "Đăng nhập thành công";
                 Session["UserID"] = kh.MaKH;
                 Session["Email"] = kh.Email;
-                Session["UserName"] = kh.TenKH;
                 return RedirectToAction("Index");
             }
-            ViewBag.ThongBao = "Tên tài khoản hoặc mật khẩu không đúng!!!";
+            ViewBag.ThongBao = "Tên tài khoản hoặc mật khẩu không đúng!!";
             return View();
         }
 
@@ -86,7 +105,8 @@ namespace ShopGiay.Controllers
         //Logout
         public ActionResult Logout()
         {
-            Session.Clear();//remove session
+            Session.Remove("UserID");
+            Session.Remove("Email");
             return RedirectToAction("Login");
         }
 
@@ -118,6 +138,7 @@ namespace ShopGiay.Controllers
         public ActionResult InfoCaNhan(int? maKH)
         {
             maKH = int.Parse(Session["UserID"].ToString());
+            
             if (maKH == 0)
             {
                 return RedirectToAction("Shop");
@@ -130,6 +151,7 @@ namespace ShopGiay.Controllers
                     Response.StatusCode = 404;
                     return null;
                 }
+                ViewBag.TenKH = kh.TenKH;
                 return View(kh);
             }
         }
@@ -149,27 +171,116 @@ namespace ShopGiay.Controllers
                     Response.StatusCode = 404;
                     return null;
                 }
+                ViewBag.TenKH = kh.TenKH;
                 return View(kh);
             }
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult UpdateInfoCaNhan([Bind(Exclude ="XacNhanMatKhau")]KHACHHANG kh)
+        public ActionResult UpdateInfoCaNhan(KHACHHANG kh)
         {
-            
-            if (ModelState.Count == 6)
+            string tenKH = Request.Form["TenKh"].ToString();
+            string email = Request.Form["Email"].ToString();
+            string diaChi = Request.Form["DiaChi"].ToString();
+            string sdt = Request.Form["Sdt"].ToString();
+            if (ModelState.Count == 5)
             {
+                kh = db.KHACHHANGs.SingleOrDefault(x => x.Email == email);
+                kh.TenKH = tenKH;
+                kh.Email = email;
+                kh.Sdt = sdt;
+                kh.DiaChi = diaChi;
                 db.Entry(kh).State = EntityState.Modified;
                 db.SaveChanges();
-                TempData["ThongBao"] = "Chỉnh sửa thông tin khách hàng thành công!";
-            }
+                TempData["ThongBao"] = "Thay đổi thông tin thành công!";
+                return RedirectToAction("InfoCaNhan");
+            }    
             else
             {
-                TempData["ThongBao"] = "Chỉnh sửa thông tin khách hàng không thành công!";
+                TempData["ThongBao"] = "Thay đổi thông tin không thành công!";
             }
-
             return View(kh);
         }
+
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(FormCollection form)
+        {
+            string email = form["email"].ToString();
+            string matKhau = form["matKhau"].ToString();
+            string matKhauMoi = form["matKhauMoi"].ToString();
+            string xacNhanMatKhau = form["xacNhanMatKhau"].ToString();
+
+            var kh = db.KHACHHANGs.SingleOrDefault(x => x.Email == email);
+            ViewBag.TenKH = kh.TenKH;
+            if (kh == null)
+            {
+                ViewBag.Error = "User not existed or wrong password";
+                return View();
+            }
+            if (email == null || matKhau == null || matKhauMoi == null || xacNhanMatKhau == null)
+            {
+                ViewBag.Error = "Fields are required";
+                return View();
+            }
+            if (matKhau == matKhauMoi)
+            {
+                ViewBag.Error = "The new password is the same as the old one";
+                return View();
+            }    
+            if (matKhauMoi != xacNhanMatKhau)
+            {
+                ViewBag.Error = "Password not matched";
+                return View();
+            }
+            var f_matKhau = GetMD5(matKhauMoi);
+            kh.MatKhau = f_matKhau;
+            db.Entry(kh).State = EntityState.Modified;
+            TempData["ThongBao"] = "Đổi mật khẩu thành công!";
+            db.SaveChanges();
+            return RedirectToAction("InfoCaNhan");
+        }
+        // hiện thị list đơn hàng theo maKH
+        [HttpGet]
+        public ActionResult DonMua(int? maKH)
+        {
+            KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.MaKH == maKH);
+            var dh = db.DONHANGs.Where(x => x.MaKH == maKH).ToList();
+           
+            
+            if (dh == null)
+            {
+                TempData["ThongBao"] = "Bạn chưa mua sản phẩm nào";
+                return View();
+            }    
+            
+            return View(dh);
+        }
+       
+       public ActionResult DetailDonHang(int? maDH)
+        {
+            var dh = db.DONHANGs.SingleOrDefault(x => x.MaDH == maDH);
+            ViewBag.TenKH = dh.HoTen;
+            ViewBag.Sdt = dh.Sdt;
+            ViewBag.DiaChi = dh.DiaChiGiao;
+            ViewBag.TinhTrang = dh.TinhTrang;
+            ViewBag.TongTien = dh.TongTien;
+            var ctdh = db.CHITIETDONHANGs.Where(x => x.MaDH == maDH);
+            if (ctdh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }    
+            else
+            {
+                return View(ctdh.ToList());
+            }    
+        }
+       
+        
         public ActionResult Shop()
         {
             return View();
