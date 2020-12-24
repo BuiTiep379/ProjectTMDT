@@ -49,17 +49,17 @@
             <div class="col-md-6">
                 @using (Html.BeginForm("ThemSanPham", "GioHang", new { @maSP = Model.MaSP, @URL = Request.Url.ToString() }))
                 {
-                    <h2 class="text-black">@Model.TenSP</h2>
-                    <h2 style="color: dimgray">@Model.NHANHIEU.TenNhanHieu</h2>
-                    <p class="mb-4" style="text-align: justify; font-size: 17px; ">@Model.MoTa</p>
+                    <h3 class="text-black">@Model.TenSP</h3>
+                    <h3 style="color: dimgray">@Model.NHANHIEU.TenNhanHieu</h3>
+                    <p class="mb-4" style="text-align: justify; font-size: 15px; ">@Model.MoTa</p>
                     <p><strong class="text-primary h4">@string.Format("{0:0,0}", Model.DonGia) VNĐ</strong></p>
                     <div class="mb-1 d-flex">
                         <div style="margin-right: 30px">
-                            <h2 class="m_9" style="font-size: 20px; color: black"> SELECT SIZE</h2>
+                            <h2 class="m_9" style="font-size: 15px; color: black"> SELECT SIZE</h2>
                             @Html.DropDownList("MaSize", (IEnumerable<SelectListItem>)ViewBag.MaSize, new { @style = "font-size= 25px; width:60px; height:40px; margin:15px 0px;" })
                         </div>
                         <div>
-                            <h2 class="m_9" style="font-size: 20px; color: black">SELECT COLOR</h2>
+                            <h2 class="m_9" style="font-size: 15px; color: black">SELECT COLOR</h2>
                             @Html.DropDownList("MaMau", (IEnumerable<SelectListItem>)ViewBag.MaMau, new { @style = "font-size= 25px; width:100px; height:40px ; margin:15px 0px;" })
 
                         </div>

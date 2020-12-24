@@ -1,18 +1,16 @@
 ﻿
-<li>
-    <a href="@Url.Action("GioHang","GioHang")" class="site-cart">
-        @{
-            if (ViewBag.TongSoLuong == null)
-            {
-                <span class="icon icon-shopping_cart"></span>
-                <span class="count">0</span>
-            }
-            else
-            {
-                <span class="icon icon-shopping_cart"></span>
-                <span class="count">@ViewBag.TongSoLuong</span>
-            }
+
+<a href="@Url.Action("GioHang","GioHang")" class="fa fa-shopping-cart">
+    @{
+        if (ViewBag.TongSoLuong == null)
+        {
+            <span class="count">0</span>
         }
-    </a>
-</li>
+        else
+        {
+            <span class="count">@ViewBag.TongSoLuong</span>
+        }
+    }
+</a>
+
 

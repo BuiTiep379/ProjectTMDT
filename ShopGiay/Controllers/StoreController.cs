@@ -95,6 +95,7 @@ namespace ShopGiay.Controllers
                 ViewBag.ThongBao = "Đăng nhập thành công";
                 Session["UserID"] = kh.MaKH;
                 Session["Email"] = kh.Email;
+                Session["TenKH"] = kh.TenKH;
                 return RedirectToAction("Index");
             }
             ViewBag.ThongBao = "Tên tài khoản hoặc mật khẩu không đúng!!";
@@ -204,7 +205,22 @@ namespace ShopGiay.Controllers
 
         public ActionResult ChangePassword()
         {
-            return View();
+            int maKH = int.Parse(Session["UserID"].ToString());
+            if (maKH == null)
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.MaKH == maKH);
+                if (kh == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                ViewBag.TenKH = kh.TenKH;
+                return View();
+            }
         }
         [HttpPost]
         public ActionResult ChangePassword(FormCollection form)
@@ -215,7 +231,7 @@ namespace ShopGiay.Controllers
             string xacNhanMatKhau = form["xacNhanMatKhau"].ToString();
 
             var kh = db.KHACHHANGs.SingleOrDefault(x => x.Email == email);
-            ViewBag.TenKH = kh.TenKH;
+            
             if (kh == null)
             {
                 ViewBag.Error = "User not existed or wrong password";
@@ -238,6 +254,7 @@ namespace ShopGiay.Controllers
             }
             var f_matKhau = GetMD5(matKhauMoi);
             kh.MatKhau = f_matKhau;
+            ViewBag.TenKH = kh.TenKH;   
             db.Entry(kh).State = EntityState.Modified;
             TempData["ThongBao"] = "Đổi mật khẩu thành công!";
             db.SaveChanges();
@@ -249,7 +266,7 @@ namespace ShopGiay.Controllers
         {
             KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.MaKH == maKH);
             var dh = db.DONHANGs.Where(x => x.MaKH == maKH).ToList();
-           
+            ViewBag.TenKH = kh.TenKH;
             
             if (dh == null)
             {
