@@ -280,6 +280,8 @@
     <Content Include="Content\Client\css\bootstrap.min.css" />
     <Content Include="Content\Client\css\bootstrap\bootstrap-grid.css" />
     <Content Include="Content\Client\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Content\Client\css\font-awesome.css" />
+    <Content Include="Content\Client\css\font-awesome.min.css" />
     <Content Include="Content\Client\css\jquery-ui.css" />
     <Content Include="Content\Client\css\magnific-popup.css" />
     <Content Include="Content\Client\css\owl.carousel.min.css" />
@@ -522,6 +524,8 @@
     <Content Include="Views\Store\ChangePassword.cshtml" />
     <Content Include="Views\Store\DonMua.cshtml" />
     <Content Include="Views\Store\DetailDonHang.cshtml" />
+    <Content Include="Views\GioHang\ThayDoiDiaChi.cshtml" />
+    <Content Include="Views\GioHang\ApplyPromoCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

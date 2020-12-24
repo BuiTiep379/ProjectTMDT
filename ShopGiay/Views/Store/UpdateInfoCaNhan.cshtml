@@ -1,7 +1,7 @@
 ﻿@model ShopGiay.Models.KHACHHANG
 @{
     ViewBag.Title = "UpdateInfoCaNhan";
-    Layout = "~/Views/Shared/_ShopLayouts.cshtml";
+    Layout = "~/Views/Shared/_ClientLayouts.cshtml";
 }
 @section SiteNavBar{
     @{ Html.RenderAction("SiteNavBar", "Store");}
@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-md-9 order-2">
-                <h2>CHANGE INFOMATION</h2>
+                <h3 style="text-align: center">CHANGE INFOMATION</h3>
                 <div class="col-12 md-5">
                     <div>
                         <form action="/Store/UpdateInfoCaNhan" method="post">

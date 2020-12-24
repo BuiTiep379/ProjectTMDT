@@ -33,8 +33,8 @@ namespace ShopGiay.Controllers
         public ActionResult DanhSachSanPham(string search, int? page, int? size)
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "3", Value = "3" });
             items.Add(new SelectListItem { Text = "6", Value = "6" });
+            items.Add(new SelectListItem { Text = "12", Value = "12" });
 
             foreach (var item in items)
             {

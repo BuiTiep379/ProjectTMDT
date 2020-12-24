@@ -14,13 +14,14 @@
     
 }
 
-<div class="site-section">
+<div class="site-section" style="padding-top: 50px; padding-bottom: 50px ">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mb-5 mb-md-0">
-                <h2 class="h3 mb-3 text-black">Billing Details</h2>
-                <div class="p-3 p-lg-5" style="border: 1px solid black">
-                    <table class="table site-block-order-table mb-5">
+            <div class="col-md-12 mb-5 mb-md-0">
+                <h3 class="h3 mb-3 text-black">Billing Details</h3>
+
+                <div class="p-3 p-lg-5" style="border: 0.5px solid black">
+                    <table class="table site-block-order-table mb-5" style="margin-bottom: 10px; padding-bottom: 50px">
                         <thead>
                             <tr>
                                 <th>ĐỊA CHỈ NHẬN HÀNG</th>
@@ -28,36 +29,26 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><label>@ViewBag.TenKH </label><strong> <label>@ViewBag.DiaChi</label></strong> <br /> <label style="font-size: 15px">@ViewBag.Sdt</label> </td>
+                                <td><label>@ViewBag.TenKH </label><strong> <label>@ViewBag.DiaChi</label></strong> <br /> <label style="font-size: 15px" id="diachi">@ViewBag.Sdt</label> </td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-            <div class="col-md-6" style="padding-left: 30px">
-                <div class="row mb-5">
-                    <div class="col-md-12">
-                        <h2 class="h3 mb-3 text-black">Coupon Code</h2>
-                        <div class="p-3 p-lg-5" style="border: 1px solid black">
-                            <label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
-                            <div class="input-group w-75">
-                                <input type="text" class="form-control" id="c_code" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-success" type="button" id="button-addon2" style="height: 45px;padding: 10px;font-size: 15px;">
-                                        Apply
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                    <div>
+                        <button class="btn btn-secondary">@Html.ActionLink("Thay đổi địa chỉ", "ThayDoiDiaChi", new { @maKH = Session["UserID"] })</button>
+                        <button class="btn btn-secondary">
+                            @Html.ActionLink("Apply Promo code", "ApplyPromoCode", new {@maKH = Session["UserID"] })</button>
                     </div>
+
                 </div>
+
             </div>
+
             <div class="col-md-12" style="padding-top: 50px">
                 <div class="row mb-5">
                     <div class="col-md-12">
-                        <h2 class="h3 mb-3 text-black">Your Order</h2>
-                        <div class="p-3 p-lg-5" style=" border: 1px solid black">
-                            <table class="table site-block-order-table mb-5">
+                        <h3 class="h3 mb-3 text-black">Your Order</h3>
+                        <div class="p-3 p-lg-5" style=" border: 0.5px solid black">
+                            <table class="table site-block-order-table mb-5" >
                                 <thead>
                                     <tr>
                                         <th>Product</th>
@@ -77,37 +68,47 @@
                                                     @item.TenMau
                                                 </strong>
                                             </td>
-                                            <td><strong class="mx-2"> @item.TenSize</strong></td>
-                                            <td><strong class="mx-2"> @item.SoLuong</strong></td>
+                                            <td> @item.TenSize</td>
+                                            <td> @item.SoLuong</td>
                                             <td>@string.Format("{0:0,0}", @item.ThanhTien) VNĐ</td>
                                         </tr>
                                     }
                                     <tr>
-                                        <td class="text-black font-weight-bold" colspan="4"><strong>Order Total</strong></td>
-                                        <td class="text-black font-weight-bold"><strong>@string.Format("{0:0,0}", TempData["TongTien"]) VNĐ</strong></td>
+                                        <td class="text-black " colspan="4"></td>
+                                        <td class="text-black " style="float: left">@string.Format("{0:0,0}", ViewBag.TongTien) VNĐ</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-black " colspan="4"></td>
+                                        <td class="text-black" style="float: left">@string.Format("{0:0,0}", ViewBag.TongGiam) VNĐ</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-black" colspan="4">Order Total</td>
+                                        <td class="text-black "> @string.Format("{0:0,0}", TempData["TongTien"]) VNĐ</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
                 <div>
-                    <button class="btn btn-success btn-lg py-3 btn-block" type="submit">Place Order</button>
+                    <button class="btn btn-success" type="submit">Xác nhận thanh toán</button>
+                    <button class="btn btn-danger" style="float: left">@Html.ActionLink("Hủy thanh toán", "HuyThanhToan",new { @maKH = Session["UserID"]})</button>
                 </div>
             }
             <!-- </form> -->
         </div>
-</div>
+     </div>
+   </div>
+
 
 @section SiteFooter{
     @Html.Action("SiteFooter", "Store")
 }
+
 
 
